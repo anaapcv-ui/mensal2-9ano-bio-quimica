@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Resumo — Biologia 9º ano — Evolução dos seres vivos (Cap. 4)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f5f2e9;--bg2:#efe9da;--panel:#fffdf8;--panel2:#f3efe3;--line:#ded7c4;
+  --txt:#26332a;--muted:#6d7a6b;--soft:#3f5142;
+  --green:#2e9e63;--green2:#1f7a4d;--green-soft:#e2f2e8;--dark:#123b28;
+  --amber:#e08a1e;--amber-soft:#fbefd8;--amber-deep:#b96f0f;
+  --red:#c8503a;--red-soft:#f8e5df;--blue:#3d7ea6;--purple:#8a63b0;
+  --shadow:0 8px 26px rgba(58,74,52,.10);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Nunito',sans-serif;background:var(--bg);
+  background-image:radial-gradient(circle at 12% 6%,rgba(46,158,99,.08) 0,transparent 42%),radial-gradient(circle at 90% 12%,rgba(224,138,30,.06) 0,transparent 45%);
+  color:var(--txt);line-height:1.6;min-height:100vh;padding-bottom:60px;font-size:17px}
+header{text-align:center;padding:38px 20px 24px;background:linear-gradient(180deg,var(--green-soft),transparent);border-bottom:1px solid var(--line);position:relative;overflow:hidden}
+.leaf{position:absolute;font-size:42px;opacity:.13}
+.badge{display:inline-flex;align-items:center;gap:8px;background:var(--panel);border:1px solid var(--green);color:var(--green2);padding:6px 15px;border-radius:99px;font-size:.78rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:13px}
+h1{font-family:'Sora',sans-serif;font-size:clamp(1.7rem,5.5vw,2.7rem);font-weight:800;color:var(--green2);margin-bottom:5px}
+.subtitle{font-size:1rem;color:var(--muted)}
+.unit-tag{display:block;margin-top:9px;font-size:.84rem;color:var(--soft)}
+main{max-width:900px;margin:0 auto;padding:22px 18px}
+.save-panel{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:13px 16px;margin-bottom:8px;display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;box-shadow:var(--shadow)}
+.save-info{font-size:.84rem;color:var(--muted)}
+.save-btns{display:flex;gap:8px;flex-wrap:wrap}
+.sbtn{border:none;border-radius:9px;padding:8px 13px;font-size:.82rem;font-weight:700;cursor:pointer;font-family:inherit;color:#fff}
+.sbtn.exp{background:var(--blue)}.sbtn.imp{background:var(--amber)}.sbtn.zer{background:var(--red)}
+.progress-box{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin-bottom:22px;box-shadow:var(--shadow)}
+.progress-top{display:flex;justify-content:space-between;font-size:.85rem;color:var(--muted);margin-bottom:8px}
+.progress-top b{color:var(--green2);font-family:'Sora',sans-serif}
+.progress-bar{height:8px;background:var(--panel2);border-radius:99px;overflow:hidden}
+.progress-fill{height:100%;width:0%;background:linear-gradient(90deg,var(--green),var(--amber));border-radius:99px;transition:width .5s}
+h2.sec{font-family:'Sora',sans-serif;font-size:1.35rem;color:var(--green2);margin:30px 0 6px;display:flex;align-items:center;gap:10px}
+h2.sec .ck{margin-left:auto;font-size:.78rem;font-weight:700;color:var(--muted);background:var(--panel);border:1px solid var(--line);border-radius:99px;padding:5px 12px;cursor:pointer;font-family:'Nunito',sans-serif}
+h2.sec .ck.on{background:var(--green-soft);border-color:var(--green);color:var(--green2)}
+.sec-desc{color:var(--muted);font-size:.92rem;margin-bottom:14px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px;box-shadow:var(--shadow)}
+.card h3{font-family:'Sora',sans-serif;font-size:1.05rem;color:var(--txt);margin-bottom:7px}
+.card p{font-size:.94rem;color:var(--soft)}
+.card p b{color:var(--green2)}
+.flip{background:transparent;perspective:1000px;height:180px;cursor:pointer}
+.flip-in{position:relative;width:100%;height:100%;transition:transform .6s;transform-style:preserve-3d}
+.flip.on .flip-in{transform:rotateY(180deg)}
+.flip-f,.flip-b{position:absolute;inset:0;backface-visibility:hidden;border-radius:14px;padding:18px;display:flex;flex-direction:column;justify-content:center;box-shadow:var(--shadow)}
+.flip-f{background:linear-gradient(140deg,var(--green),var(--green2));color:#fff;text-align:center;align-items:center}
+.flip-f .em{font-size:2rem;margin-bottom:6px}
+.flip-f h3{font-family:'Sora',sans-serif;font-size:1.15rem;color:#fff}
+.flip-f .hint{font-size:.76rem;color:#d6f0e2;margin-top:8px}
+.flip-b{background:var(--panel);border:1px solid var(--green);color:var(--soft);transform:rotateY(180deg);font-size:.9rem;overflow:auto}
+.flip-b b{color:var(--green2)}
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.compare .col{border-radius:14px;padding:18px;box-shadow:var(--shadow)}
+.compare .lam{background:var(--amber-soft);border:1px solid var(--amber)}
+.compare .dar{background:var(--green-soft);border:1px solid var(--green)}
+.compare h3{font-family:'Sora',sans-serif;font-size:1.05rem;margin-bottom:8px}
+.compare .lam h3{color:var(--amber-deep)}.compare .dar h3{color:var(--green2)}
+.compare p{font-size:.92rem;color:var(--soft)}
+.postit{background:#fff7c2;border:1px solid #ecdb7a;border-radius:10px;padding:15px 17px;box-shadow:0 6px 16px rgba(180,150,20,.16);font-size:.93rem;color:#5a4a12;position:relative}
+.postit b{color:#7a5c00}
+.postit::before{content:'📌';position:absolute;top:-10px;left:14px;font-size:1.1rem}
+.trap{background:var(--red-soft);border:1px solid var(--red);border-left:5px solid var(--red);border-radius:12px;padding:15px 17px;font-size:.93rem;color:var(--soft)}
+.trap b{color:var(--red)}
+.gloss{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:8px 4px;box-shadow:var(--shadow)}
+.gloss .row{display:flex;gap:12px;padding:11px 14px;border-bottom:1px dashed var(--line);font-size:.93rem}
+.gloss .row:last-child{border:none}
+.gloss .term{flex:0 0 140px;font-weight:800;color:var(--green2);font-family:'Sora',sans-serif;font-size:.92rem}
+.gloss .def{color:var(--soft)}
+.timeline{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px 20px;box-shadow:var(--shadow)}
+.timeline .t{display:flex;gap:14px;padding:9px 0;border-bottom:1px dashed var(--line)}
+.timeline .t:last-child{border:none}
+.timeline .yr{flex:0 0 92px;font-family:'Sora',sans-serif;font-weight:800;color:var(--amber-deep)}
+.timeline .ev{color:var(--soft);font-size:.94rem}
+.fim{text-align:center;color:var(--soft);background:var(--panel2);border:1px solid var(--green);border-radius:14px;padding:20px;margin-top:26px}
+@media(max-width:600px){.compare{grid-template-columns:1fr}.gloss .term{flex:0 0 110px}}
+</style>
+</head>
+<body>
+
+<header>
+  <span class="leaf" style="top:14px;left:8%">🧬</span>
+  <span class="leaf" style="top:56px;right:9%">🌿</span>
+  <span class="leaf" style="bottom:8px;left:16%">🦎</span>
+  <span class="badge">🗂️ Resumo Interativo · Biologia</span>
+  <h1>Evolução dos Seres Vivos</h1>
+  <p class="subtitle">vire os cards, leia os post-its e cuidado com as pegadinhas</p>
+  <span class="unit-tag">Capítulo 4 · Conteúdo Mensal 2</span>
+</header>
+
+<main>
+  <div class="save-panel">
+    <div class="save-info" id="saveInfo">💾 Marque o que já estudou — salva sozinho neste navegador.</div>
+    <div class="save-btns">
+      <button class="sbtn exp" onclick="exportar()">📥 Exportar</button>
+      <button class="sbtn imp" onclick="document.getElementById('arq').click()">📤 Importar</button>
+      <button class="sbtn zer" onclick="zerar()">🗑️ Zerar</button>
+      <input type="file" id="arq" accept=".json" style="display:none" onchange="importar(event)">
+    </div>
+  </div>
+  <div class="progress-box">
+    <div class="progress-top"><span>Seções estudadas</span><span><b id="pdone">0</b> de 7</span></div>
+    <div class="progress-bar"><div class="progress-fill" id="pfill"></div></div>
+  </div>
+
+  <h2 class="sec">🌍 O que é evolução <span class="ck" data-s="0" onclick="toggleSec(0)">estudei</span></h2>
+  <p class="sec-desc">A ideia central do capítulo em três cartões.</p>
+  <div class="grid">
+    <div class="card"><h3>Evolução</h3><p><b>Mudança dos seres vivos ao longo das gerações.</b> Com muito tempo, pode gerar <b>novas espécies</b>. As espécies não foram sempre iguais.</p></div>
+    <div class="card"><h3>Ancestral comum</h3><p>Muitos seres vivos possivelmente descendem de um <b>mesmo ancestral</b>. É por isso que existem tantas semelhanças entre espécies diferentes.</p></div>
+    <div class="card"><h3>Não é "de propósito"</h3><p>Evolução <b>não</b> é ficar mais forte querendo. As mudanças <b>surgem ao acaso</b> e o ambiente vai selecionando.</p></div>
+  </div>
+
+  <h2 class="sec">🔎 As 3 evidências <span class="ck" data-s="1" onclick="toggleSec(1)">estudei</span></h2>
+  <p class="sec-desc">Toque em cada card para ver a explicação. 👆</p>
+  <div class="grid">
+    <div class="flip" onclick="this.classList.toggle('on')"><div class="flip-in"><div class="flip-f"><div class="em">🦴</div><h3>Anatomia comparada</h3><div class="hint">toque para ver</div></div><div class="flip-b"><b>Mesmos ossos</b> no braço humano, na asa do morcego e na nadadeira do golfinho — em formatos diferentes. São <b>estruturas homólogas</b>: indicam ancestral comum.</div></div></div>
+    <div class="flip" onclick="this.classList.toggle('on')"><div class="flip-in"><div class="flip-f"><div class="em">👶</div><h3>Embriologia comparada</h3><div class="hint">toque para ver</div></div><div class="flip-b">Os <b>embriões</b> de peixe, galinha, coelho e ser humano são <b>muito parecidos</b> no início do desenvolvimento.</div></div></div>
+    <div class="flip" onclick="this.classList.toggle('on')"><div class="flip-in"><div class="flip-f"><div class="em">🧬</div><h3>Bioquímica comparada</h3><div class="hint">toque para ver</div></div><div class="flip-b">Comparando o <b>DNA</b> e as <b>proteínas</b>, dá para medir o quanto duas espécies são "parentes".</div></div></div>
+  </div>
+
+  <h2 class="sec">🧠 As teorias da evolução <span class="ck" data-s="2" onclick="toggleSec(2)">estudei</span></h2>
+  <p class="sec-desc">Vire os cards: nome na frente, ideia-chave atrás.</p>
+  <div class="grid">
+    <div class="flip" onclick="this.classList.toggle('on')"><div class="flip-in"><div class="flip-f"><div class="em">🗿</div><h3>Fixismo</h3><div class="hint">toque</div></div><div class="flip-b"><b>Aristóteles.</b> Os seres foram criados como são e <b>nunca mudam</b>. Durou ~2000 anos.</div></div></div>
+    <div class="flip" onclick="this.classList.toggle('on')"><div class="flip-in"><div class="flip-f"><div class="em">🦆</div><h3>Lamarckismo</h3><div class="hint">toque</div></div><div class="flip-b"><b>Lamarck.</b> Lei do <b>uso e desuso</b> + <b>transmissão dos caracteres adquiridos</b>. Está errado hoje, mas foi pioneiro.</div></div></div>
+    <div class="flip" onclick="this.classList.toggle('on')"><div class="flip-in"><div class="flip-f"><div class="em">🐢</div><h3>Darwinismo</h3><div class="hint">toque</div></div><div class="flip-b"><b>Darwin (e Wallace).</b> <b>Seleção natural</b>: a variação já existe; o ambiente seleciona os mais adaptados. Livro: <i>A origem das espécies</i> (1859).</div></div></div>
+    <div class="flip" onclick="this.classList.toggle('on')"><div class="flip-in"><div class="flip-f"><div class="em">🔬</div><h3>Neodarwinismo</h3><div class="hint">toque</div></div><div class="flip-b">Darwin + <b>genética</b>. Acrescenta <b>mutação</b> e <b>recombinação</b> como fontes de variabilidade. A seleção natural continua.</div></div></div>
+  </div>
+
+  <h2 class="sec">🦒 Lamarck × Darwin (as girafas) <span class="ck" data-s="3" onclick="toggleSec(3)">estudei</span></h2>
+  <p class="sec-desc">O exemplo que mais cai na prova.</p>
+  <div class="compare">
+    <div class="col lam"><h3>👉 Segundo Lamarck</h3><p>A girafa <b>esticava</b> o pescoço para alcançar folhas. O pescoço <b>cresceu pelo uso</b> e isso passou aos filhotes. <br><i>(o esforço cria a mudança)</i></p></div>
+    <div class="col dar"><h3>👉 Segundo Darwin</h3><p>Já existiam girafas de <b>pescoços variados</b>. As de pescoço <b>longo</b> comiam melhor e sobreviviam; as outras morriam. Sobraram as de pescoço longo. <br><i>(a variação já existe; o ambiente seleciona)</i></p></div>
+  </div>
+
+  <h2 class="sec">🎭 Adaptações da seleção natural <span class="ck" data-s="4" onclick="toggleSec(4)">estudei</span></h2>
+  <p class="sec-desc">Toque para lembrar cada estratégia de sobrevivência.</p>
+  <div class="grid">
+    <div class="flip" onclick="this.classList.toggle('on')"><div class="flip-in"><div class="flip-f"><div class="em">🦉</div><h3>Camuflagem</h3><div class="hint">toque</div></div><div class="flip-b">O animal se <b>confunde com o ambiente</b> para se esconder (ex.: a coruja no tronco).</div></div></div>
+    <div class="flip" onclick="this.classList.toggle('on')"><div class="flip-in"><div class="flip-f"><div class="em">🐸</div><h3>Aposematismo</h3><div class="hint">toque</div></div><div class="flip-b"><b>Cores fortes que avisam</b> "sou venenoso/perigoso" (ex.: a rã azul). Afasta o predador.</div></div></div>
+    <div class="flip" onclick="this.classList.toggle('on')"><div class="flip-in"><div class="flip-f"><div class="em">🐍</div><h3>Mimetismo</h3><div class="hint">toque</div></div><div class="flip-b">Um animal <b>imita</b> outro perigoso (ex.: a cobra-coral-<b>falsa</b> imita a verdadeira).</div></div></div>
+    <div class="flip" onclick="this.classList.toggle('on')"><div class="flip-in"><div class="flip-f"><div class="em">🦌</div><h3>Seleção sexual</h3><div class="hint">toque</div></div><div class="flip-b">Características que ajudam a <b>conquistar par</b> (patas azuis do atobá, chifres dos alces) tendem a ser mais transmitidas.</div></div></div>
+  </div>
+
+  <h2 class="sec">🌽 Seleção artificial <span class="ck" data-s="5" onclick="toggleSec(5)">estudei</span></h2>
+  <p class="sec-desc">Quem seleciona aqui é o <b>ser humano</b>, não o ambiente.</p>
+  <div class="grid">
+    <div class="card"><h3>🌽 Milho</h3><p>O milho de hoje veio do <b>teosinto</b> (um milho selvagem bem diferente), selecionado por milhares de anos.</p></div>
+    <div class="card"><h3>🥦 Mostarda selvagem</h3><p>Dela vieram <b>repolho, couve-flor, brócolis, couve-de-bruxelas</b> e outros — cada um de uma parte da planta.</p></div>
+    <div class="card"><h3>🐕 Cães</h3><p>Todas as raças de cães vêm da <b>domesticação do lobo-cinzento</b>, escolhendo características ao longo do tempo.</p></div>
+  </div>
+
+  <h2 class="sec">⏳ Linha do tempo <span class="ck" data-s="6" onclick="toggleSec(6)">estudei</span></h2>
+  <div class="timeline">
+    <div class="t"><div class="yr">~2000 anos</div><div class="ev">Aristóteles difunde o <b>fixismo</b> (seres imutáveis).</div></div>
+    <div class="t"><div class="yr">1809</div><div class="ev">Lamarck publica o <i>Filosofia zoológica</i> (uso e desuso).</div></div>
+    <div class="t"><div class="yr">1831</div><div class="ev">Darwin embarca no <b>HMS Beagle</b> (Galápagos, tentilhões).</div></div>
+    <div class="t"><div class="yr">1858</div><div class="ev">Darwin e <b>Wallace</b> apresentam juntos a seleção natural.</div></div>
+    <div class="t"><div class="yr">1859</div><div class="ev">Publicação de <b>A origem das espécies</b>.</div></div>
+    <div class="t"><div class="yr">Séc. XX</div><div class="ev">Descoberta do DNA → <b>neodarwinismo</b> (teoria sintética).</div></div>
+  </div>
+
+  <h2 class="sec">📌 Dicas de prova</h2>
+  <div class="grid">
+    <div class="postit"><b>Lamarck</b> = uso/desuso + transmissão. <b>Darwin</b> = variação + seleção natural. Não troque na hora da prova!</div>
+    <div class="postit"><b>Resistência</b> (bactéria a antibiótico, erva a agrotóxico) = <b>seleção natural</b>. Nunca "se acostumar".</div>
+    <div class="postit"><b>Homólogas</b> = mesma origem (braço/asa/nadadeira). Evidência de <b>ancestral comum</b>.</div>
+  </div>
+
+  <h2 class="sec">⚠️ Pegadinhas</h2>
+  <div class="grid">
+    <div class="trap"><b>Cuidado:</b> "o órgão cresceu porque foi muito usado e passou pros filhos" = <b>Lamarck</b>, não Darwin.</div>
+    <div class="trap"><b>Cuidado:</b> as características <b>não surgem porque o animal precisa</b>. Surgem ao acaso.</div>
+    <div class="trap"><b>Cuidado:</b> mutação <b>não é dirigida</b>. Pode ser maléfica, neutra ou benéfica.</div>
+  </div>
+
+  <h2 class="sec">📖 Glossário</h2>
+  <div class="gloss">
+    <div class="row"><div class="term">Evolução</div><div class="def">mudança dos seres vivos ao longo das gerações.</div></div>
+    <div class="row"><div class="term">Hipertrofia</div><div class="def">(Lamarck) crescimento de um órgão pelo uso.</div></div>
+    <div class="row"><div class="term">Atrofia</div><div class="def">(Lamarck) diminuição/perda de um órgão pelo desuso.</div></div>
+    <div class="row"><div class="term">Seleção natural</div><div class="def">o ambiente favorece os indivíduos mais adaptados.</div></div>
+    <div class="row"><div class="term">Variabilidade</div><div class="def">as diferenças que existem entre os indivíduos de uma população.</div></div>
+    <div class="row"><div class="term">Mutação</div><div class="def">"erro" aleatório no DNA; fonte de novas características.</div></div>
+    <div class="row"><div class="term">Recombinação</div><div class="def">mistura de genes na formação dos gametas (crossing-over).</div></div>
+    <div class="row"><div class="term">Seleção artificial</div><div class="def">escolha feita pelo ser humano (milho, cães, brócolis).</div></div>
+  </div>
+
+  <div class="fim">✅ Terminou o resumo? Agora encare o <b style="color:var(--amber-deep)">Simulado</b> para treinar no estilo da prova. Você consegue! 🍀</div>
+</main>
+
+<script>
+const KEY='bioq_evol_resumo_v1';
+let estado=carregar();
+function carregar(){try{const s=JSON.parse(localStorage.getItem(KEY));if(s)return s;}catch(e){}return{secs:{},ultimo:null};}
+function salvar(){estado.ultimo=new Date().toLocaleString('pt-BR');localStorage.setItem(KEY,JSON.stringify(estado));document.getElementById('saveInfo').textContent='✅ Salvo em '+estado.ultimo;}
+function toggleSec(s){estado.secs[s]=!estado.secs[s];salvar();paint();}
+function paint(){
+  document.querySelectorAll('.ck').forEach(el=>{const s=el.dataset.s;const on=!!estado.secs[s];el.classList.toggle('on',on);el.textContent=on?'✓ estudei':'estudei';});
+  const done=Object.values(estado.secs).filter(Boolean).length;
+  document.getElementById('pdone').textContent=done;
+  document.getElementById('pfill').style.width=(done/7*100)+'%';
+  if(estado.ultimo)document.getElementById('saveInfo').textContent='✅ Salvo em '+estado.ultimo;
+}
+function exportar(){const b=new Blob([JSON.stringify(estado,null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='progresso-bio-resumo.json';a.click();}
+function importar(ev){const f=ev.target.files[0];if(!f)return;const r=new FileReader();r.onload=e=>{try{estado=JSON.parse(e.target.result);salvar();paint();}catch(x){alert('Arquivo inválido.');}};r.readAsText(f);}
+function zerar(){if(confirm('Apagar as marcações deste Resumo?')){localStorage.removeItem(KEY);estado={secs:{},ultimo:null};paint();}}
+paint();
+</script>
+</body>
+</html>

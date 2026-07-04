@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Resumo — Química 9º ano — Ligações e Substâncias (Cap. 5 e 6)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#eef3f9;--bg2:#e4ecf5;--panel:#ffffff;--panel2:#eef2f8;--line:#d3ddea;
+  --txt:#1c2a3a;--muted:#5f708a;--soft:#31435c;
+  --green:#1f9d74;--green2:#147a5a;--green-soft:#dcf3ec;
+  --indigo:#4a54c9;--indigo2:#343dab;--indigo-soft:#e4e6fb;--indigo-deep:#2a3299;
+  --cyan:#0e9fb8;--cyan-soft:#d7f1f6;
+  --amber:#e0951e;--amber-soft:#fbeed4;
+  --red:#d1504a;--red-soft:#fae0de;--blue:#3d7ea6;
+  --shadow:0 8px 26px rgba(40,60,90,.10);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Nunito',sans-serif;background:var(--bg);
+  background-image:radial-gradient(circle at 12% 6%,rgba(74,84,201,.08) 0,transparent 42%),radial-gradient(circle at 90% 12%,rgba(14,159,184,.06) 0,transparent 45%);
+  color:var(--txt);line-height:1.6;min-height:100vh;padding-bottom:60px;font-size:17px}
+header{text-align:center;padding:38px 20px 24px;background:linear-gradient(180deg,var(--indigo-soft),transparent);border-bottom:1px solid var(--line);position:relative;overflow:hidden}
+.atom{position:absolute;font-size:42px;opacity:.13}
+.badge{display:inline-flex;align-items:center;gap:8px;background:var(--panel);border:1px solid var(--indigo);color:var(--indigo-deep);padding:6px 15px;border-radius:99px;font-size:.78rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:13px}
+h1{font-family:'Sora',sans-serif;font-size:clamp(1.7rem,5.5vw,2.7rem);font-weight:800;color:var(--indigo2);margin-bottom:5px}
+.subtitle{font-size:1rem;color:var(--muted)}
+.unit-tag{display:block;margin-top:9px;font-size:.84rem;color:var(--soft)}
+main{max-width:900px;margin:0 auto;padding:22px 18px}
+.save-panel{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:13px 16px;margin-bottom:8px;display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;box-shadow:var(--shadow)}
+.save-info{font-size:.84rem;color:var(--muted)}
+.save-btns{display:flex;gap:8px;flex-wrap:wrap}
+.sbtn{border:none;border-radius:9px;padding:8px 13px;font-size:.82rem;font-weight:700;cursor:pointer;font-family:inherit;color:#fff}
+.sbtn.exp{background:var(--blue)}.sbtn.imp{background:var(--amber)}.sbtn.zer{background:var(--red)}
+.progress-box{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin-bottom:22px;box-shadow:var(--shadow)}
+.progress-top{display:flex;justify-content:space-between;font-size:.85rem;color:var(--muted);margin-bottom:8px}
+.progress-top b{color:var(--indigo2);font-family:'Sora',sans-serif}
+.progress-bar{height:8px;background:var(--panel2);border-radius:99px;overflow:hidden}
+.progress-fill{height:100%;width:0%;background:linear-gradient(90deg,var(--indigo),var(--cyan));border-radius:99px;transition:width .5s}
+h2.sec{font-family:'Sora',sans-serif;font-size:1.35rem;color:var(--indigo2);margin:30px 0 6px;display:flex;align-items:center;gap:10px}
+h2.sec .ck{margin-left:auto;font-size:.78rem;font-weight:700;color:var(--muted);background:var(--panel);border:1px solid var(--line);border-radius:99px;padding:5px 12px;cursor:pointer;font-family:'Nunito',sans-serif}
+h2.sec .ck.on{background:var(--green-soft);border-color:var(--green);color:var(--green2)}
+.sec-desc{color:var(--muted);font-size:.92rem;margin-bottom:14px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px;box-shadow:var(--shadow)}
+.card h3{font-family:'Sora',sans-serif;font-size:1.05rem;color:var(--txt);margin-bottom:7px}
+.card p{font-size:.94rem;color:var(--soft)}
+.card p b{color:var(--indigo2)}
+.flip{background:transparent;perspective:1000px;height:190px;cursor:pointer}
+.flip-in{position:relative;width:100%;height:100%;transition:transform .6s;transform-style:preserve-3d}
+.flip.on .flip-in{transform:rotateY(180deg)}
+.flip-f,.flip-b{position:absolute;inset:0;backface-visibility:hidden;border-radius:14px;padding:18px;display:flex;flex-direction:column;justify-content:center;box-shadow:var(--shadow)}
+.flip-f{background:linear-gradient(140deg,var(--indigo),var(--cyan));color:#fff;text-align:center;align-items:center}
+.flip-f .em{font-size:2rem;margin-bottom:6px}
+.flip-f h3{font-family:'Sora',sans-serif;font-size:1.12rem;color:#fff}
+.flip-f .hint{font-size:.76rem;color:#dfe2fb;margin-top:8px}
+.flip-b{background:var(--panel);border:1px solid var(--indigo);color:var(--soft);transform:rotateY(180deg);font-size:.9rem;overflow:auto}
+.flip-b b{color:var(--indigo2)}
+.tbl{width:100%;border-collapse:collapse;background:var(--panel);border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:var(--shadow)}
+.tbl th{background:var(--indigo);color:#fff;font-family:'Sora',sans-serif;font-size:.92rem;padding:11px 13px;text-align:left}
+.tbl td{padding:11px 13px;border-top:1px solid var(--line);font-size:.93rem;color:var(--soft)}
+.tbl td b{color:var(--indigo2)}
+.formula{text-align:center;font-family:'Sora',sans-serif;font-size:1.2rem;color:var(--indigo2);background:var(--cyan-soft);border:1px dashed var(--cyan);border-radius:10px;padding:12px;margin:12px 0}
+.postit{background:#fff7c2;border:1px solid #ecdb7a;border-radius:10px;padding:15px 17px;box-shadow:0 6px 16px rgba(180,150,20,.16);font-size:.93rem;color:#5a4a12;position:relative}
+.postit b{color:#7a5c00}
+.postit::before{content:'📌';position:absolute;top:-10px;left:14px;font-size:1.1rem}
+.trap{background:var(--red-soft);border:1px solid var(--red);border-left:5px solid var(--red);border-radius:12px;padding:15px 17px;font-size:.93rem;color:var(--soft)}
+.trap b{color:var(--red)}
+.gloss{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:8px 4px;box-shadow:var(--shadow)}
+.gloss .row{display:flex;gap:12px;padding:11px 14px;border-bottom:1px dashed var(--line);font-size:.93rem}
+.gloss .row:last-child{border:none}
+.gloss .term{flex:0 0 150px;font-weight:800;color:var(--indigo2);font-family:'Sora',sans-serif;font-size:.92rem}
+.gloss .def{color:var(--soft)}
+.fim{text-align:center;color:var(--soft);background:var(--panel2);border:1px solid var(--indigo);border-radius:14px;padding:20px;margin-top:26px}
+@media(max-width:600px){.gloss .term{flex:0 0 115px}}
+</style>
+</head>
+<body>
+
+<header>
+  <span class="atom" style="top:14px;left:8%">⚛️</span>
+  <span class="atom" style="top:56px;right:9%">🧪</span>
+  <span class="atom" style="bottom:8px;left:16%">🔗</span>
+  <span class="badge">🗂️ Resumo Interativo · Química</span>
+  <h1>Ligações &amp; Substâncias</h1>
+  <p class="subtitle">vire os cards, leia os post-its e cuidado com as pegadinhas</p>
+  <span class="unit-tag">Capítulos 5 e 6 · Conteúdo Mensal 2</span>
+</header>
+
+<main>
+  <div class="save-panel">
+    <div class="save-info" id="saveInfo">💾 Marque o que já estudou — salva sozinho neste navegador.</div>
+    <div class="save-btns">
+      <button class="sbtn exp" onclick="exportar()">📥 Exportar</button>
+      <button class="sbtn imp" onclick="document.getElementById('arq').click()">📤 Importar</button>
+      <button class="sbtn zer" onclick="zerar()">🗑️ Zerar</button>
+      <input type="file" id="arq" accept=".json" style="display:none" onchange="importar(event)">
+    </div>
+  </div>
+  <div class="progress-box">
+    <div class="progress-top"><span>Seções estudadas</span><span><b id="pdone">0</b> de 10</span></div>
+    <div class="progress-bar"><div class="progress-fill" id="pfill"></div></div>
+  </div>
+
+  <h2 class="sec">⚛️ Por que os átomos se ligam <span class="ck" data-s="0" onclick="toggleSec(0)">estudei</span></h2>
+  <p class="sec-desc">A ideia que abre todo o capítulo.</p>
+  <div class="grid">
+    <div class="card"><h3>Estabilidade</h3><p>Os átomos se combinam para ficar <b>estáveis</b>. Sozinhos, a maioria não está "satisfeita".</p></div>
+    <div class="card"><h3>Regra do octeto</h3><p>Estável com <b>8 elétrons</b> na camada de valência. Exceção: o <b>hélio</b> (2 elétrons).</p></div>
+    <div class="card"><h3>Gases nobres</h3><p>Já têm a valência completa → <b>já são estáveis</b> e quase não se combinam. Os outros átomos "querem ficar como eles".</p></div>
+  </div>
+
+  <h2 class="sec">🔗 Os 3 tipos de ligação <span class="ck" data-s="1" onclick="toggleSec(1)">estudei</span></h2>
+  <p class="sec-desc">Toque em cada card para ver como funciona. 👆</p>
+  <div class="grid">
+    <div class="flip" onclick="this.classList.toggle('on')"><div class="flip-in"><div class="flip-f"><div class="em">🧂</div><h3>Iônica</h3><div class="hint">toque para ver</div></div><div class="flip-b"><b>Transferência</b> de elétrons entre <b>metal + não metal</b>. Um doa (vira <b>cátion +</b>), o outro recebe (vira <b>ânion −</b>). Ex.: NaCl (sal).</div></div></div>
+    <div class="flip" onclick="this.classList.toggle('on')"><div class="flip-in"><div class="flip-f"><div class="em">💧</div><h3>Covalente</h3><div class="hint">toque para ver</div></div><div class="flip-b"><b>Compartilhamento</b> de pares de elétrons entre <b>ametais</b> e com o <b>hidrogênio</b>. Forma <b>moléculas</b>. Ex.: H₂, O₂, H₂O.</div></div></div>
+    <div class="flip" onclick="this.classList.toggle('on')"><div class="flip-in"><div class="flip-f"><div class="em">🔩</div><h3>Metálica</h3><div class="hint">toque para ver</div></div><div class="flip-b"><b>Metais entre si</b>. Cátions envolvidos por uma <b>nuvem de elétrons livres</b>. Explica brilho, condução e ductilidade. Ex.: ferro, ligas.</div></div></div>
+  </div>
+
+  <h2 class="sec">✍️ As 3 fórmulas <span class="ck" data-s="2" onclick="toggleSec(2)">estudei</span></h2>
+  <p class="sec-desc">Três jeitos de escrever a mesma substância (exemplo: a água).</p>
+  <table class="tbl">
+    <tr><th>Tipo de fórmula</th><th>O que mostra</th><th>Água</th></tr>
+    <tr><td><b>Química</b></td><td>quantos átomos de cada elemento</td><td>H₂O</td></tr>
+    <tr><td><b>Eletrônica (Lewis)</b></td><td>os elétrons da valência (pontinhos) e as ligações</td><td>H : O : H</td></tr>
+    <tr><td><b>Estrutural plana</b></td><td>cada par de elétrons vira um tracinho</td><td>H—O—H</td></tr>
+  </table>
+  <div class="formula">Massa molecular da água = 2×1 + 16 = <b>18 u</b></div>
+
+  <h2 class="sec">🧂 Ligação iônica passo a passo <span class="ck" data-s="3" onclick="toggleSec(3)">estudei</span></h2>
+  <p class="sec-desc">Como montar uma fórmula iônica.</p>
+  <div class="grid">
+    <div class="card"><h3>1) Quem doa, quem recebe</h3><p>O <b>metal</b> doa elétrons (vira <b>cátion +</b>). O <b>não metal</b> recebe (vira <b>ânion −</b>).</p></div>
+    <div class="card"><h3>2) Cargas se equilibram</h3><p>A soma das cargas tem que dar <b>zero</b>. Ex.: Mg²⁺ precisa de <b>2</b> Cl⁻ → <b>MgCl₂</b>.</p></div>
+    <div class="card"><h3>3) Truque de "tombar"</h3><p>A carga do cátion vira a quantidade do ânion (e vice-versa). Só com <b>cargas &gt; 1</b>.</p></div>
+  </div>
+  <div class="formula">Na⁺ + Cl⁻ → NaCl &nbsp;·&nbsp; Mg²⁺ + 2 Cl⁻ → MgCl₂</div>
+
+  <h2 class="sec">🔩 Metais e ligas <span class="ck" data-s="4" onclick="toggleSec(4)">estudei</span></h2>
+  <p class="sec-desc">O que a "nuvem de elétrons" explica e as ligas famosas.</p>
+  <div class="grid">
+    <div class="card"><h3>Propriedades</h3><p>Condução de <b>eletricidade e calor</b>, <b>maleabilidade</b> (lâminas), <b>ductilidade</b> (fios) e <b>brilho</b>.</p></div>
+    <div class="card"><h3>🥇 Latão / Bronze</h3><p><b>Latão</b> = zinco + cobre. <b>Bronze</b> = liga antiga, ainda usada hoje.</p></div>
+    <div class="card"><h3>⚙️ Aço / Aço inox</h3><p><b>Aço</b> = ferro + carbono. <b>Aço inoxidável</b> = ferro + cromo + níquel (resiste à ferrugem).</p></div>
+  </div>
+
+  <h2 class="sec">⏱️ Tabela-relâmpago <span class="ck" data-s="5" onclick="toggleSec(5)">estudei</span></h2>
+  <p class="sec-desc">O quadro que resume a prova inteira.</p>
+  <table class="tbl">
+    <tr><th>Ligação</th><th>Entre</th><th>O que acontece</th><th>Íon/Molécula</th></tr>
+    <tr><td><b>Iônica</b></td><td>metal + não metal</td><td>transfere elétrons</td><td>cátion + ânion</td></tr>
+    <tr><td><b>Covalente</b></td><td>ametais / com H</td><td>compartilha elétrons</td><td>molécula</td></tr>
+    <tr><td><b>Metálica</b></td><td>metais entre si</td><td>nuvem de elétrons livres</td><td>cátions + "mar" de e⁻</td></tr>
+  </table>
+
+  <h2 class="sec">🧪 Substâncias: puras, simples e compostas <span class="ck" data-s="6" onclick="toggleSec(6)">estudei</span></h2>
+  <p class="sec-desc">Capítulo 6 · como a Química organiza a matéria.</p>
+  <div class="grid">
+    <div class="card"><h3>Substância pura</h3><p>Formada por <b>um só tipo de componente</b>. Tem composição constante e propriedades definidas (densidade, fusão, ebulição). Ex.: <b>ouro (Au)</b>, água destilada, ferro puro.</p></div>
+    <div class="card"><h3>Substância simples</h3><p>Um <b>único elemento</b> químico (átomos iguais). Ex.: gás oxigênio <b>O₂</b>, gás nitrogênio <b>N₂</b>, hélio <b>He</b>, ferro <b>Fe</b>.</p></div>
+    <div class="card"><h3>Substância composta</h3><p>União de <b>2 ou mais elementos diferentes</b>. Ex.: <b>CO₂</b>, CO, <b>H₂O</b>, NaCl, NaNO₃.</p></div>
+  </div>
+  <div class="formula">Atmosfera = 78% N₂ · 21% O₂ · 1% CO₂ e outros gases</div>
+
+  <h2 class="sec">💎 Alotropia <span class="ck" data-s="7" onclick="toggleSec(7)">estudei</span></h2>
+  <p class="sec-desc">Toque nos cards. O mesmo elemento, organizado de jeitos diferentes. 👆</p>
+  <div class="grid">
+    <div class="flip" onclick="this.classList.toggle('on')"><div class="flip-in"><div class="flip-f"><div class="em">💎</div><h3>Carbono</h3><div class="hint">toque para ver</div></div><div class="flip-b"><b>Alótropos do carbono:</b> grafite (do lápis), diamante (o mais duro), <b>fulereno</b> e <b>grafeno</b>. Todos são só carbono, arrumado de formas diferentes.</div></div></div>
+    <div class="flip" onclick="this.classList.toggle('on')"><div class="flip-in"><div class="flip-f"><div class="em">🌬️</div><h3>Oxigênio</h3><div class="hint">toque para ver</div></div><div class="flip-b"><b>Alótropos do oxigênio:</b> gás oxigênio <b>O₂</b> (2 átomos, o que respiramos) e gás <b>ozônio O₃</b> (3 átomos, filtra o raio ultravioleta do Sol).</div></div></div>
+    <div class="flip" onclick="this.classList.toggle('on')"><div class="flip-in"><div class="flip-f"><div class="em">🔬</div><h3>A regra</h3><div class="hint">toque para ver</div></div><div class="flip-b"><b>Alotropia</b> = mesmo <b>elemento</b> se organiza de maneiras diferentes, formando substâncias <b>simples</b> distintas (os alótropos).</div></div></div>
+  </div>
+
+  <h2 class="sec">🥤 Misturas <span class="ck" data-s="8" onclick="toggleSec(8)">estudei</span></h2>
+  <p class="sec-desc">Duas ou mais substâncias que <b>não se combinam</b> quimicamente.</p>
+  <table class="tbl">
+    <tr><th>Mistura</th><th>Como é</th><th>Fases</th><th>Exemplos</th></tr>
+    <tr><td><b>Homogênea</b> (solução)</td><td>aspecto uniforme, igual em todas as porções</td><td>1 fase</td><td>água + sal, água + açúcar, bronze, ar</td></tr>
+    <tr><td><b>Heterogênea</b></td><td>não é uniforme, dá para ver as partes</td><td>2 ou mais fases</td><td>água + óleo, granito, água + areia</td></tr>
+  </table>
+  <div class="grid" style="margin-top:14px">
+    <div class="card"><h3>Soluto e solvente</h3><p>Na solução, o que é <b>dissolvido</b> é o <b>soluto</b> (o sal); o que <b>dissolve</b> é o <b>solvente</b> (a água).</p></div>
+    <div class="card"><h3>Fase</h3><p>É cada <b>porção uniforme</b> da mistura (mesma cor, mesmo aspecto). Na água + óleo há <b>2 fases</b>.</p></div>
+  </div>
+
+  <h2 class="sec">🧫 Sistema químico e fases <span class="ck" data-s="9" onclick="toggleSec(9)">estudei</span></h2>
+  <p class="sec-desc">Sistema = a porção de matéria que está sendo estudada.</p>
+  <table class="tbl">
+    <tr><th>Nº de fases</th><th>Nome do sistema</th><th>Também é...</th></tr>
+    <tr><td>1 fase</td><td><b>Monofásico</b></td><td>homogêneo (substância pura ou mistura homogênea)</td></tr>
+    <tr><td>2 fases</td><td><b>Bifásico</b></td><td>heterogêneo</td></tr>
+    <tr><td>3 ou mais</td><td><b>Trifásico / polifásico</b></td><td>heterogêneo</td></tr>
+  </table>
+
+  <h2 class="sec">📌 Dicas de prova</h2>
+  <div class="grid">
+    <div class="postit"><b>Cátion +</b> (perdeu e⁻, é metal). <b>Ânion −</b> (ganhou e⁻, é não metal). Decore o sinal!</div>
+    <div class="postit"><b>Iônica</b> transfere · <b>Covalente</b> compartilha · <b>Metálica</b> = nuvem de elétrons.</div>
+    <div class="postit"><b>NaCl sólido não conduz.</b> Só conduz dissolvido em água ou fundido.</div>
+    <div class="postit"><b>Simples</b> = 1 elemento (O₂, Fe). <b>Composta</b> = 2+ elementos (CO₂, H₂O). Conte os símbolos diferentes!</div>
+    <div class="postit"><b>Homogênea</b> = 1 fase (uniforme). <b>Heterogênea</b> = 2+ fases (dá para ver as partes).</div>
+    <div class="postit"><b>Alótropos</b>: mesmo elemento, formas diferentes → grafite/diamante (C) e O₂/O₃ (oxigênio).</div>
+  </div>
+
+  <h2 class="sec">⚠️ Pegadinhas</h2>
+  <div class="grid">
+    <div class="trap"><b>Cuidado:</b> <b>dúctil</b> = fios; <b>maleável</b> = lâminas. Não troque!</div>
+    <div class="trap"><b>Cuidado:</b> o numerozinho da fórmula vale só para o átomo <b>antes</b> dele (H₂O = 2 H, 1 O).</div>
+    <div class="trap"><b>Cuidado:</b> gases nobres <b>já são estáveis</b> — não precisam se ligar.</div>
+    <div class="trap"><b>Cuidado:</b> o <b>ozônio (O₃) é substância SIMPLES</b>, não composta! Tem 3 átomos, mas todos do mesmo elemento (oxigênio).</div>
+    <div class="trap"><b>Cuidado:</b> substância composta <b>não é mistura</b>. Na composta os átomos se <b>combinam</b> quimicamente; na mistura, não.</div>
+    <div class="trap"><b>Cuidado:</b> composta = <b>2 ou mais</b> elementos (não só 2). Ex.: NaNO₃ tem 3 elementos.</div>
+  </div>
+
+  <h2 class="sec">📖 Glossário</h2>
+  <div class="gloss">
+    <div class="row"><div class="term">Camada de valência</div><div class="def">a última camada de elétrons do átomo.</div></div>
+    <div class="row"><div class="term">Regra do octeto</div><div class="def">estabilidade com 8 elétrons na valência (hélio: 2).</div></div>
+    <div class="row"><div class="term">Cátion</div><div class="def">íon positivo (perdeu elétrons).</div></div>
+    <div class="row"><div class="term">Ânion</div><div class="def">íon negativo (ganhou elétrons).</div></div>
+    <div class="row"><div class="term">Ligação iônica</div><div class="def">transferência de elétrons (metal + não metal).</div></div>
+    <div class="row"><div class="term">Ligação covalente</div><div class="def">compartilhamento de elétrons (ametais/H).</div></div>
+    <div class="row"><div class="term">Ligação metálica</div><div class="def">nuvem de elétrons livres em volta dos cátions.</div></div>
+    <div class="row"><div class="term">Liga metálica</div><div class="def">mistura de metais (latão, bronze, aço).</div></div>
+    <div class="row"><div class="term">Massa molecular</div><div class="def">soma das massas atômicas da fórmula, em "u".</div></div>
+    <div class="row"><div class="term">Substância pura</div><div class="def">formada por um só tipo de componente, com propriedades definidas.</div></div>
+    <div class="row"><div class="term">Substância simples</div><div class="def">formada por um único elemento químico (ex.: O₂, Fe).</div></div>
+    <div class="row"><div class="term">Substância composta</div><div class="def">união de dois ou mais elementos diferentes (ex.: H₂O, CO₂).</div></div>
+    <div class="row"><div class="term">Alotropia</div><div class="def">mesmo elemento organizado de formas diferentes (grafite/diamante; O₂/O₃).</div></div>
+    <div class="row"><div class="term">Mistura</div><div class="def">duas ou mais substâncias que não se combinam quimicamente.</div></div>
+    <div class="row"><div class="term">Homogênea / Heterogênea</div><div class="def">1 fase (uniforme) / 2 ou mais fases (não uniforme).</div></div>
+    <div class="row"><div class="term">Soluto / Solvente</div><div class="def">o que é dissolvido / o que dissolve, numa solução.</div></div>
+    <div class="row"><div class="term">Fase</div><div class="def">porção uniforme de um sistema (mesmo aspecto e propriedades).</div></div>
+  </div>
+
+  <div class="fim">✅ Terminou o resumo? Agora encare o <b style="color:var(--indigo-deep)">Simulado</b> para treinar no estilo da prova. Você consegue! 🍀</div>
+</main>
+
+<script>
+const KEY='bioq_quim_resumo_v2';
+const TOTAL=10;
+let estado=carregar();
+function carregar(){try{const s=JSON.parse(localStorage.getItem(KEY));if(s)return s;}catch(e){}return{secs:{},ultimo:null};}
+function salvar(){estado.ultimo=new Date().toLocaleString('pt-BR');localStorage.setItem(KEY,JSON.stringify(estado));document.getElementById('saveInfo').textContent='✅ Salvo em '+estado.ultimo;}
+function toggleSec(s){estado.secs[s]=!estado.secs[s];salvar();paint();}
+function paint(){
+  document.querySelectorAll('.ck').forEach(el=>{const s=el.dataset.s;const on=!!estado.secs[s];el.classList.toggle('on',on);el.textContent=on?'✓ estudei':'estudei';});
+  const done=Object.values(estado.secs).filter(Boolean).length;
+  document.getElementById('pdone').textContent=done;
+  document.getElementById('pfill').style.width=(done/TOTAL*100)+'%';
+  if(estado.ultimo)document.getElementById('saveInfo').textContent='✅ Salvo em '+estado.ultimo;
+}
+function exportar(){const b=new Blob([JSON.stringify(estado,null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='progresso-quim-resumo.json';a.click();}
+function importar(ev){const f=ev.target.files[0];if(!f)return;const r=new FileReader();r.onload=e=>{try{estado=JSON.parse(e.target.result);salvar();paint();}catch(x){alert('Arquivo inválido.');}};r.readAsText(f);}
+function zerar(){if(confirm('Apagar as marcações deste Resumo?')){localStorage.removeItem(KEY);estado={secs:{},ultimo:null};paint();}}
+paint();
+</script>
+</body>
+</html>

@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Leitura Guiada — Química 9º ano — Ligações e Substâncias (Cap. 5 e 6)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#eef3f9;--bg2:#e4ecf5;--panel:#ffffff;--panel2:#eef2f8;--line:#d3ddea;
+  --txt:#1c2a3a;--muted:#5f708a;--soft:#31435c;
+  --green:#1f9d74;--green2:#147a5a;--green-soft:#dcf3ec;
+  --indigo:#4a54c9;--indigo2:#343dab;--indigo-soft:#e4e6fb;
+  --cyan:#0e9fb8;--cyan-soft:#d7f1f6;
+  --amber:#e0951e;--amber-soft:#fbeed4;
+  --red:#d1504a;--red-soft:#fae0de;--blue:#3d7ea6;
+  --shadow:0 8px 26px rgba(40,60,90,.10);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Nunito',sans-serif;background:var(--bg);
+  background-image:radial-gradient(circle at 12% 6%,rgba(74,84,201,.08) 0,transparent 42%),radial-gradient(circle at 90% 20%,rgba(14,159,184,.08) 0,transparent 45%);
+  color:var(--txt);line-height:1.65;min-height:100vh;padding-bottom:70px;font-size:17px}
+header{text-align:center;padding:40px 20px 26px;background:linear-gradient(180deg,var(--green-soft),transparent);border-bottom:1px solid var(--line);position:relative;overflow:hidden}
+.atom{position:absolute;font-size:44px;opacity:.14}
+.badge{display:inline-flex;align-items:center;gap:8px;background:var(--panel);border:1px solid var(--green);color:var(--green2);padding:6px 15px;border-radius:99px;font-size:.78rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:14px}
+h1{font-family:'Sora',sans-serif;font-size:clamp(1.8rem,5.5vw,2.9rem);font-weight:800;letter-spacing:-.02em;color:var(--indigo2);margin-bottom:6px}
+.subtitle{font-size:1.05rem;color:var(--muted)}
+.unit-tag{display:block;margin-top:10px;font-size:.85rem;color:var(--soft)}
+.progress-wrap{position:sticky;top:0;z-index:50;background:rgba(238,243,249,.96);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);padding:12px 16px}
+.progress-inner{max-width:820px;margin:0 auto}
+.progress-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;font-size:.82rem;color:var(--muted)}
+.progress-top strong{color:var(--indigo2);font-family:'Sora',sans-serif}
+.progress-bar{height:8px;background:var(--panel2);border-radius:99px;overflow:hidden}
+.progress-fill{height:100%;width:0%;background:linear-gradient(90deg,var(--indigo),var(--cyan));border-radius:99px;transition:width .5s}
+main{max-width:820px;margin:0 auto;padding:24px 18px}
+.save-panel{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin-bottom:22px;display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;box-shadow:var(--shadow)}
+.save-info{font-size:.85rem;color:var(--muted)}
+.save-btns{display:flex;gap:8px;flex-wrap:wrap}
+.sbtn{border:none;border-radius:9px;padding:8px 13px;font-size:.83rem;font-weight:700;cursor:pointer;font-family:inherit;color:#fff}
+.sbtn.exp{background:var(--blue)}.sbtn.imp{background:var(--amber)}.sbtn.zer{background:var(--red)}
+.block{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:24px;margin-bottom:20px;box-shadow:var(--shadow);position:relative}
+.block.locked{opacity:.5;filter:grayscale(.4);pointer-events:none}
+.block.locked::after{content:'🔒 Termine o bloco anterior para abrir';position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(238,242,248,.75);border-radius:16px;color:var(--soft);font-weight:700;font-size:.95rem;backdrop-filter:blur(2px)}
+.block.done{border-color:var(--indigo)}
+.b-head{display:flex;align-items:center;gap:14px;margin-bottom:14px}
+.b-num{flex-shrink:0;width:48px;height:48px;border-radius:14px;background:linear-gradient(135deg,var(--indigo),var(--cyan));color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Sora',sans-serif;font-weight:800;font-size:1.3rem}
+.b-title{font-family:'Sora',sans-serif;font-size:1.28rem;font-weight:700;color:var(--txt)}
+.b-sub{font-size:.85rem;color:var(--muted)}
+.b-text{color:var(--soft);font-size:1.02rem;margin:12px 0}
+.b-text p{margin-bottom:11px}
+.b-text strong{color:var(--indigo2);font-weight:700}
+.b-text em{color:var(--cyan);font-style:normal;font-weight:700}
+.keybox{background:var(--indigo-soft);border-left:4px solid var(--indigo);border-radius:8px;padding:11px 14px;margin:10px 0;font-size:.96rem;color:var(--soft)}
+.keybox b{color:var(--indigo2)}
+.formula{text-align:center;font-family:'Sora',sans-serif;font-size:1.25rem;color:var(--indigo2);background:var(--cyan-soft);border:1px dashed var(--cyan);border-radius:10px;padding:12px;margin:10px 0}
+.q{margin:16px 0 6px}
+.q-label{font-weight:700;color:var(--txt);font-size:.98rem;margin-bottom:6px;display:flex;gap:8px}
+.q-label span{color:var(--cyan)}
+.q textarea{width:100%;background:var(--bg2);border:1px solid var(--line);border-radius:10px;color:var(--txt);font-family:inherit;font-size:.95rem;padding:10px 12px;resize:vertical;min-height:56px}
+.q textarea:focus{outline:none;border-color:var(--indigo)}
+.check-btn{background:var(--indigo);color:#fff;border:none;border-radius:10px;padding:11px 20px;font-weight:700;font-size:.94rem;cursor:pointer;margin-top:12px;font-family:inherit;transition:opacity .2s}
+.check-btn:disabled{opacity:.4;cursor:not-allowed}
+.answers{display:none;margin-top:14px}
+.answers.show{display:block;animation:fade .4s}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+.model{background:var(--indigo-soft);border:1px solid var(--indigo);border-radius:10px;padding:12px 14px;margin-bottom:8px;font-size:.94rem;color:var(--soft)}
+.model b{color:var(--indigo2)}
+.selfeval{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px;align-items:center}
+.selfeval .lab{font-size:.88rem;color:var(--muted)}
+.se-btn{border:1px solid var(--line);background:var(--bg2);color:var(--soft);border-radius:99px;padding:7px 14px;font-size:.86rem;cursor:pointer;font-family:inherit;font-weight:700}
+.se-btn.ok.sel{background:var(--green-soft);border-color:var(--green);color:var(--green2)}
+.se-btn.rev.sel{background:var(--amber-soft);border-color:var(--amber);color:#a86a10}
+.next-btn{background:linear-gradient(135deg,var(--cyan),#22b6cf);color:#fff;border:none;border-radius:10px;padding:11px 22px;font-weight:700;cursor:pointer;margin-top:14px;font-family:inherit;display:none}
+.next-btn.show{display:inline-block}
+.traps{background:var(--red-soft);border:1px solid var(--red);border-left:5px solid var(--red);border-radius:14px;padding:22px;margin:26px 0 10px}
+.traps h3{color:var(--red);font-family:'Sora',sans-serif;font-size:1.22rem;margin-bottom:12px}
+.traps ol{list-style:none;counter-reset:t}
+.traps li{padding:9px 0 9px 32px;position:relative;color:var(--soft);font-size:.95rem;border-bottom:1px dashed rgba(209,80,74,.25)}
+.traps li:last-child{border:none}
+.traps li::before{counter-increment:t;content:counter(t);position:absolute;left:0;top:8px;width:22px;height:22px;background:var(--red);color:#fff;border-radius:50%;font-size:.74rem;font-weight:700;display:flex;align-items:center;justify-content:center}
+.traps b{color:var(--txt)}
+.summary{background:var(--panel2);border:1px solid var(--indigo);border-radius:16px;padding:24px;text-align:center;display:none}
+.summary.show{display:block}
+.summary h3{font-family:'Sora',sans-serif;color:var(--indigo2);font-size:1.4rem;margin-bottom:8px}
+.summary .nums{font-size:1.05rem;color:var(--soft);margin:12px 0}
+.summary .nums b{color:var(--cyan);font-family:'Sora',sans-serif;font-size:1.3rem}
+@media(max-width:600px){main{padding:20px 14px}.block{padding:18px}.b-title{font-size:1.08rem}}
+</style>
+</head>
+<body>
+
+<header>
+  <span class="atom" style="top:14px;left:8%">⚛️</span>
+  <span class="atom" style="top:60px;right:10%">🧪</span>
+  <span class="atom" style="bottom:8px;left:18%">🔗</span>
+  <span class="badge">📖 Leitura Guiada · Química</span>
+  <h1>Bancada dos Átomos</h1>
+  <p class="subtitle">leia com calma, responda e destrave o próximo bloco</p>
+  <span class="unit-tag">Capítulos 5 e 6 · Ligações e substâncias · Conteúdo Mensal 2</span>
+</header>
+
+<div class="progress-wrap">
+  <div class="progress-inner">
+    <div class="progress-top"><span>Sua jornada</span><span><strong id="pdone">0</strong> de 12 blocos concluídos</span></div>
+    <div class="progress-bar"><div class="progress-fill" id="pfill"></div></div>
+  </div>
+</div>
+
+<main>
+  <div class="save-panel">
+    <div class="save-info" id="saveInfo">💾 Seu progresso salva sozinho neste navegador.</div>
+    <div class="save-btns">
+      <button class="sbtn exp" onclick="exportar()">📥 Exportar</button>
+      <button class="sbtn imp" onclick="document.getElementById('arq').click()">📤 Importar</button>
+      <button class="sbtn zer" onclick="zerar()">🗑️ Zerar tudo</button>
+      <input type="file" id="arq" accept=".json" style="display:none" onchange="importar(event)">
+    </div>
+  </div>
+
+  <div id="blocks"></div>
+
+  <div class="traps" id="trapsBox" style="display:none">
+    <h3>⚠️ As pegadinhas que mais derrubam na prova</h3>
+    <ol>
+      <li><b>Regra do octeto:</b> estável com <b>8 elétrons</b> na camada de valência. Exceção: o <b>hélio</b>, que se estabiliza com <b>2</b> (só tem a camada K).</li>
+      <li><b>Cátion</b> = íon <b>positivo</b> (perdeu elétrons, é metal). <b>Ânion</b> = íon <b>negativo</b> (ganhou elétrons, é não metal). Não inverta!</li>
+      <li><b>Iônica</b> = metal + não metal (<b>transfere</b> elétron). <b>Covalente</b> = ametais/H entre si (<b>compartilha</b>). <b>Metálica</b> = metais (nuvem de elétrons).</li>
+      <li>O <b>NaCl sólido NÃO conduz</b> eletricidade. Ele só conduz <b>dissolvido em água</b> ou <b>fundido</b> (derretido).</li>
+      <li><b>Dúctil</b> = pode virar <b>fios</b>. <b>Maleável</b> = pode virar <b>lâminas/chapas</b>. Não confunda.</li>
+      <li>Na fórmula, o <b>numerozinho embaixo</b> multiplica só o átomo <b>antes dele</b>: em H<sub>2</sub>O há <b>2 H</b> e <b>1 O</b>.</li>
+      <li>O truque de <b>"tombar" a carga</b> (cruzar) para achar a fórmula só funciona com <b>cargas maiores que 1</b>.</li>
+      <li><b>Ligas metálicas:</b> latão = zinco + cobre; bronze; aço = ferro + carbono; aço inox = ferro + cromo + níquel.</li>
+      <li><b>Massa molecular</b> = soma das massas atômicas, medida em <b>u</b>. Ex.: água = 2×1 + 16 = <b>18 u</b>.</li>
+      <li>Os <b>gases nobres</b> já são estáveis e <b>quase não se combinam</b> (por isso o nome "nobres").</li>
+      <li><b>Cap. 6 — Simples x composta:</b> simples = <b>1 elemento</b> (O₂, Fe); composta = <b>2 ou mais</b> elementos (CO₂, H₂O). Conte os símbolos <b>diferentes</b>, não os átomos!</li>
+      <li>O <b>ozônio (O₃) é substância SIMPLES</b>, não composta. Tem 3 átomos, mas todos de oxigênio (mesmo elemento).</li>
+      <li><b>Alótropos:</b> mesmo elemento, formas diferentes. Carbono → grafite, diamante, fulereno, grafeno. Oxigênio → O₂ e O₃.</li>
+      <li><b>Mistura x composta:</b> na mistura as substâncias <b>não se combinam</b> (e não têm fórmula); na composta os átomos <b>se combinam</b> quimicamente.</li>
+      <li><b>Homogênea = 1 fase</b> (uniforme, ex.: água + sal). <b>Heterogênea = 2 ou mais fases</b> (ex.: água + óleo, granito).</li>
+      <li><b>Sistema:</b> monofásico = 1 fase (homogêneo); bi/tri/polifásico = várias fases (heterogêneo).</li>
+    </ol>
+  </div>
+
+  <div class="summary" id="summaryBox">
+    <h3>🏁 Você terminou a Leitura Guiada de Química!</h3>
+    <p class="nums">Você marcou <b id="sOk">0</b> blocos como “Entendi” e <b id="sRev">0</b> como “Preciso revisar”.</p>
+    <p style="color:var(--soft);font-size:.96rem">Dica: volte nos blocos de “Preciso revisar” antes do Quiz. Depois siga para o <b style="color:var(--cyan)">Resumo</b>, o <b style="color:var(--cyan)">Quiz</b> e o <b style="color:var(--cyan)">Simulado</b>. Boa prova! 🍀</p>
+  </div>
+</main>
+
+<script>
+const KEY='bioq_quim_lg_v2';
+
+const BLOCKS=[
+{
+  title:"Por que os átomos se combinam",
+  sub:"Estabilidade · regra do octeto · gases nobres",
+  html:`<p>Quase tudo à nossa volta é feito de <strong>átomos combinados</strong>. Mas por que eles se juntam? Para ficarem <strong>estáveis</strong> (mais "satisfeitos" energeticamente).</p>
+  <div class="keybox"><b>Regra do octeto:</b> um átomo tende a ficar estável quando sua <b>camada de valência</b> (a última camada) tem <b>8 elétrons</b>. A única grande exceção é o <b>hélio</b>, que se estabiliza com apenas <b>2</b> (porque só tem a camada K).</div>
+  <p>Os <strong>gases nobres</strong> (como hélio, neônio, argônio) já têm a camada de valência completa. Por isso são <em>estáveis</em> e quase não se combinam com nada. É daí que vem a ideia: os outros átomos "querem ficar iguais" a um gás nobre.</p>`,
+  qs:[
+    {q:"Por que os átomos se combinam uns com os outros?",a:"Para adquirir <b>estabilidade</b>. Combinando-se, eles atingem uma configuração mais estável (geralmente 8 elétrons na camada de valência)."},
+    {q:"O que diz a regra do octeto? Qual é a exceção?",a:"Um átomo fica estável com <b>8 elétrons</b> na camada de valência. A exceção é o <b>hélio</b>, que se estabiliza com <b>2</b> elétrons."},
+    {q:"Por que os gases nobres quase não se combinam?",a:"Porque já têm a camada de valência <b>completa</b> (já estão estáveis). Por isso raramente se ligam a outros átomos."}
+  ]
+},
+{
+  title:"As 3 maneiras de escrever uma substância",
+  sub:"Fórmula química · eletrônica (Lewis) · estrutural plana",
+  html:`<p>Uma substância pode ser representada de três formas. Veja com a água:</p>
+  <div class="keybox"><b>Fórmula química:</b> mostra <b>quantos átomos</b> de cada elemento existem. Ex.: a água é <b>H₂O</b> = 2 hidrogênios e 1 oxigênio. (o numerozinho embaixo vale só para o átomo antes dele!)</div>
+  <div class="keybox"><b>Fórmula eletrônica (de Lewis):</b> mostra os <b>elétrons da camada de valência</b> (em pontinhos) e como eles formam as ligações.</div>
+  <div class="keybox"><b>Fórmula estrutural plana:</b> cada <b>par de elétrons</b> vira um <b>tracinho</b>. A água fica <b>H—O—H</b>.</div>
+  <p>Quem criou a fórmula eletrônica e a teoria do octeto foi o cientista <strong>Gilbert Newton Lewis</strong>. Por isso a fórmula eletrônica também é chamada de "fórmula de Lewis".</p>`,
+  qs:[
+    {q:"Na fórmula H₂O, quantos átomos de cada elemento existem?",a:"<b>2 átomos de hidrogênio</b> (o 2 vale para o H) e <b>1 átomo de oxigênio</b>."},
+    {q:"O que mostra a fórmula estrutural plana?",a:"Mostra as ligações entre os átomos, com <b>cada par de elétrons virando um tracinho</b>. Ex.: a água é <b>H—O—H</b>."},
+    {q:"Quem foi Gilbert Lewis?",a:"O cientista que criou a <b>teoria do octeto</b> e a <b>fórmula eletrônica</b> (fórmula de Lewis), que mostra os elétrons da camada de valência."}
+  ]
+},
+{
+  title:"Ligação iônica — dar e receber elétrons",
+  sub:"NaCl · cátion e ânion",
+  html:`<p>Existem <strong>três tipos</strong> de ligação química: <em>iônica</em>, <em>covalente</em> e <em>metálica</em>. Vamos à primeira.</p>
+  <p>A <strong>ligação iônica</strong> acontece quando um átomo <strong>doa</strong> elétrons e o outro <strong>recebe</strong>. O melhor exemplo é o <strong>sal de cozinha (NaCl)</strong>:</p>
+  <div class="keybox">O <b>sódio (Na)</b> é um metal e tem 1 elétron na última camada. Ele <b>doa</b> esse elétron e vira um <b>cátion Na⁺</b> (íon positivo, porque ficou com mais prótons que elétrons). O <b>cloro (Cl)</b> tem 7 elétrons na última camada; ele <b>recebe</b> 1 elétron e vira um <b>ânion Cl⁻</b> (íon negativo). Ambos ficam com 8 na valência.</div>
+  <p>A ligação iônica é justamente a <strong>atração entre esses íons</strong> (o positivo atrai o negativo). O resultado, o NaCl, é um <strong>sólido cristalino</strong>. Detalhe importante: ele <em>não conduz eletricidade quando está sólido</em>, mas <em>conduz quando está dissolvido em água ou derretido (fundido)</em>.</p>`,
+  qs:[
+    {q:"O que acontece com os elétrons numa ligação iônica?",a:"Um átomo <b>doa</b> elétrons e o outro <b>recebe</b>. Há transferência de elétrons entre eles (ex.: o sódio doa e o cloro recebe)."},
+    {q:"Diferencie cátion e ânion, usando o NaCl como exemplo.",a:"<b>Cátion</b> = íon positivo que perdeu elétrons (o sódio vira <b>Na⁺</b>). <b>Ânion</b> = íon negativo que ganhou elétrons (o cloro vira <b>Cl⁻</b>)."},
+    {q:"O NaCl sólido conduz eletricidade? E quando dissolvido em água?",a:"Sólido, <b>não conduz</b>. Mas <b>conduz</b> quando está <b>dissolvido em água</b> ou <b>fundido</b> (derretido)."}
+  ]
+},
+{
+  title:"Montando fórmulas iônicas",
+  sub:"MgCl₂ · o truque de 'tombar' a carga",
+  html:`<p>Numa ligação iônica, a <strong>soma das cargas</strong> tem que dar <strong>zero</strong> (o composto é neutro). Vamos montar o <strong>cloreto de magnésio</strong>:</p>
+  <p>O <strong>magnésio</strong> é um metal alcalinoterroso com 2 elétrons na valência: ele doa 2 e vira <strong>Mg²⁺</strong>. O <strong>cloro</strong> só recebe 1 elétron, virando <strong>Cl⁻</strong>. Para as cargas se equilibrarem, precisamos de <strong>2 cloros</strong> para 1 magnésio:</p>
+  <div class="formula">Mg²⁺ + 2 Cl⁻ → MgCl₂</div>
+  <div class="keybox"><b>Truque de "tombar" a carga:</b> o número da carga do cátion "desce" e vira a quantidade do ânion, e vice-versa. Só funciona bem com <b>cargas maiores que 1</b>. Lembre também: <b>metais</b> têm 1, 2 ou 3 elétrons na valência (doam); <b>não metais</b> têm 5, 6 ou 7 (recebem). Por isso a ligação iônica é comum entre <b>metal + não metal</b>.</div>`,
+  qs:[
+    {q:"Por que a fórmula do cloreto de magnésio é MgCl₂ (e não MgCl)?",a:"Porque o magnésio doa <b>2 elétrons</b> (Mg²⁺) e cada cloro só recebe <b>1</b> (Cl⁻). São necessários <b>2 cloros</b> para equilibrar as cargas e o composto ficar neutro."},
+    {q:"Quantos elétrons de valência costumam ter os metais e os não metais?",a:"<b>Metais</b>: 1, 2 ou 3 (tendem a <b>doar</b>). <b>Não metais</b>: 5, 6 ou 7 (tendem a <b>receber</b>)."},
+    {q:"Entre quais tipos de elemento a ligação iônica é mais comum?",a:"Entre um <b>metal</b> (que doa elétrons) e um <b>não metal</b> (que recebe elétrons)."}
+  ]
+},
+{
+  title:"Ligação covalente — compartilhar elétrons",
+  sub:"H₂ e O₂ · moléculas",
+  html:`<p>Na <strong>ligação covalente</strong>, os átomos <strong>não doam nem recebem</strong>: eles <strong>compartilham</strong> pares de elétrons. Cada par compartilhado pertence aos <em>dois</em> átomos ao mesmo tempo, e isso forma <strong>moléculas</strong>.</p>
+  <div class="keybox"><b>Gás hidrogênio (H₂):</b> cada H tem só 1 elétron e precisa de 2 para ficar estável (como o hélio). Dois hidrogênios <b>compartilham</b> um par de elétrons: agora cada um "conta" 2. Vira H₂.</div>
+  <div class="keybox"><b>Gás oxigênio (O₂):</b> cada O tem 6 elétrons na valência e precisa de mais 2. Então cada oxigênio compartilha <b>2 pares</b> de elétrons — é uma <b>ligação dupla</b>: O═O.</div>
+  <p>A ligação covalente ocorre entre átomos que tendem a <strong>receber</strong> elétrons: os <em>ametais</em> (não metais) entre si e com o <em>hidrogênio</em>.</p>`,
+  qs:[
+    {q:"O que os átomos fazem com os elétrons numa ligação covalente?",a:"Eles <b>compartilham</b> pares de elétrons (não doam nem recebem). Cada par pertence aos dois átomos ao mesmo tempo, formando moléculas."},
+    {q:"Por que dois hidrogênios se ligam formando H₂?",a:"Cada H tem 1 elétron e precisa de 2 para ficar estável. Eles <b>compartilham</b> um par de elétrons, e cada um passa a “ter” 2, ficando estáveis."},
+    {q:"Entre quais elementos ocorre a ligação covalente?",a:"Entre átomos que tendem a receber elétrons: os <b>ametais (não metais)</b> entre si e com o <b>hidrogênio</b>."}
+  ]
+},
+{
+  title:"Ligação metálica — o mar de elétrons",
+  sub:"nuvem eletrônica · propriedades · ligas",
+  html:`<p>A maioria dos elementos da tabela periódica são <strong>metais</strong>. Nos metais, o núcleo segura fracamente os elétrons de fora, então esses elétrons <strong>se soltam com facilidade</strong>. O resultado: <em>cátions</em> mergulhados numa <strong>"nuvem" (ou mar) de elétrons livres</strong> que se movem por toda a estrutura.</p>
+  <div class="keybox">Essa nuvem de elétrons explica as <b>propriedades dos metais</b>: boa <b>condução de eletricidade e de calor</b>, <b>maleabilidade</b> (viram lâminas), <b>ductilidade</b> (viram fios) e <b>brilho</b> (refletem a luz quando polidos).</div>
+  <p>Metais também formam <strong>ligas metálicas</strong> (misturas de metais), que costumam ser mais resistentes. Exemplos: <strong>latão</strong> (zinco + cobre), <strong>bronze</strong>, <strong>aço</strong> (principalmente ferro) e <strong>aço inoxidável</strong> (ferro + cromo + níquel).</p>`,
+  qs:[
+    {q:"O que é a 'nuvem de elétrons' da ligação metálica?",a:"São os <b>elétrons livres</b> que se soltam dos átomos e se movem por toda a estrutura, envolvendo os <b>cátions</b> do metal. Também chamada de mar de elétrons."},
+    {q:"Cite duas propriedades dos metais explicadas pela ligação metálica.",a:"Qualquer duas: boa <b>condução de eletricidade/calor</b>, <b>maleabilidade</b> (viram lâminas), <b>ductilidade</b> (viram fios) e <b>brilho</b>."},
+    {q:"O que é uma liga metálica? Dê um exemplo.",a:"É uma <b>mistura de metais</b>, geralmente mais resistente. Ex.: <b>latão</b> (zinco + cobre), <b>bronze</b>, <b>aço</b> ou <b>aço inoxidável</b>."}
+  ]
+},
+{
+  title:"Massa molecular e revisão dos 3 tipos",
+  sub:"cálculo em 'u' · fechamento",
+  html:`<p>Depois que os átomos se ligam, podemos calcular a <strong>massa molecular</strong> do composto: basta <strong>somar as massas atômicas</strong> de todos os átomos da fórmula. A unidade é o <strong>u</strong> (que vale 1/12 da massa do átomo de carbono).</p>
+  <div class="keybox"><b>Exemplo — água (H₂O):</b> hidrogênio = 1 u × 2 = 2 u; oxigênio = 16 u × 1 = 16 u. <b>Massa molecular = 2 + 16 = 18 u.</b></div>
+  <p>Para fechar, guarde os <strong>três tipos de ligação</strong>:</p>
+  <div class="keybox"><b>Iônica</b>: metal + não metal, com <b>transferência</b> de elétrons (cátion + ânion). <b>Covalente</b>: ametais/H, com <b>compartilhamento</b> de elétrons (moléculas). <b>Metálica</b>: metais entre si, com <b>nuvem de elétrons</b> livres.</div>`,
+  qs:[
+    {q:"Como se calcula a massa molecular de um composto?",a:"Somando as <b>massas atômicas</b> de todos os átomos que aparecem na fórmula. A unidade é o <b>u</b>."},
+    {q:"Calcule a massa molecular da água (H = 1 u, O = 16 u).",a:"H: 1 × 2 = 2 u; O: 16 × 1 = 16 u. Total = <b>18 u</b>."},
+    {q:"Resuma, em uma frase cada, os três tipos de ligação.",a:"<b>Iônica</b>: transferência de elétrons (metal + não metal). <b>Covalente</b>: compartilhamento de elétrons (ametais/H). <b>Metálica</b>: nuvem de elétrons livres (metais)."}
+  ]
+},
+{
+  title:"Substâncias químicas e substâncias puras",
+  sub:"Cap. 6 · fórmula química · substância pura",
+  html:`<p>Agora começa o <strong>Capítulo 6</strong>. Tudo à nossa volta é feito de <strong>átomos combinados</strong> em compostos, que podem ser <em>moleculares</em>, <em>iônicos</em> ou <em>metálicos</em>. Para representar uma substância, usamos a <strong>fórmula química</strong>: ela mostra quais elementos e quantos átomos existem. A água, por exemplo, é <strong>H₂O</strong> (2 hidrogênios e 1 oxigênio).</p>
+  <div class="keybox"><b>Substância pura:</b> é aquela formada por <b>apenas um tipo de componente</b>. Por isso tem <b>composição constante</b> e <b>propriedades físicas definidas</b> (como densidade e temperaturas de fusão e ebulição), que ajudam a identificá-la.</div>
+  <p>Na natureza, é difícil encontrar substâncias puras, porque elas quase sempre aparecem misturadas a outras. Mesmo assim, existem exemplos: o <strong>gás hidrogênio</strong>, a <strong>água destilada</strong>, o <strong>ferro puro</strong> e o <strong>ouro (Au)</strong> em pepita, que é puro e maleável.</p>`,
+  qs:[
+    {q:"O que a fórmula química de uma substância mostra?",a:"Mostra <b>quais elementos</b> formam a substância e <b>quantos átomos</b> de cada um existem. Ex.: H₂O = 2 hidrogênios e 1 oxigênio."},
+    {q:"O que é uma substância pura?",a:"É aquela formada por <b>apenas um tipo de componente</b>, com <b>composição constante</b> e <b>propriedades definidas</b> (densidade, fusão, ebulição)."},
+    {q:"Dê dois exemplos de substância pura.",a:"Quaisquer dois: <b>gás hidrogênio</b>, <b>água destilada</b>, <b>ferro puro</b> ou <b>ouro (Au)</b>."}
+  ]
+},
+{
+  title:"Substâncias simples e compostas",
+  sub:"átomos iguais x diferentes · a atmosfera",
+  html:`<p>As substâncias puras podem ser <strong>simples</strong> ou <strong>compostas</strong>, dependendo dos átomos que as formam.</p>
+  <div class="keybox"><b>Substância simples:</b> formada por <b>um único elemento químico</b> (átomos iguais). Ex.: gás oxigênio <b>O₂</b>, gás nitrogênio <b>N₂</b>, ouro <b>Au</b>, ferro <b>Fe</b>, gás hélio <b>He</b>.</div>
+  <div class="keybox"><b>Substância composta:</b> formada pela <b>união de átomos de dois ou mais elementos diferentes</b>. Ex.: <b>CO₂</b>, CO, <b>H₂O</b>, NaCl, NaNO₃.</div>
+  <p>Um bom exemplo para entender isso é a <strong>atmosfera</strong>: ela tem cerca de <em>78% de nitrogênio (N₂)</em> e <em>21% de oxigênio (O₂)</em> — os dois são substâncias <strong>simples</strong> — e cerca de <em>1%</em> de outros gases, como o <strong>gás carbônico (CO₂)</strong>, que é uma substância <strong>composta</strong> (tem carbono e oxigênio).</p>`,
+  qs:[
+    {q:"Qual a diferença entre substância simples e composta?",a:"<b>Simples</b> = um único elemento (átomos iguais, ex.: O₂). <b>Composta</b> = dois ou mais elementos diferentes (ex.: CO₂, H₂O)."},
+    {q:"Por que o gás oxigênio (O₂) é uma substância simples?",a:"Porque é formado por um <b>só elemento</b> (só oxigênio), mesmo tendo 2 átomos. Átomos iguais = substância simples."},
+    {q:"Na atmosfera, cite uma substância simples e uma composta.",a:"Simples: <b>N₂</b> (nitrogênio) ou <b>O₂</b> (oxigênio). Composta: <b>CO₂</b> (gás carbônico)."}
+  ]
+},
+{
+  title:"Alotropia — o mesmo elemento, formas diferentes",
+  sub:"carbono (grafite/diamante) · oxigênio (O₂/O₃)",
+  html:`<p>Alguns elementos conseguem <strong>se organizar de maneiras diferentes</strong> e, com isso, formar substâncias simples diferentes. Essa propriedade se chama <strong>alotropia</strong>, e as substâncias formadas são os <strong>alótropos</strong>.</p>
+  <div class="keybox"><b>Carbono:</b> tem vários alótropos. O <b>grafite</b> (cinzento e macio, do lápis) e o <b>diamante</b> (transparente e o mais duro da natureza) são feitos <b>só de carbono</b> — mudam só na forma como os átomos se organizam. O carbono ainda forma o <b>fulereno</b> e o <b>grafeno</b>.</div>
+  <div class="keybox"><b>Oxigênio:</b> forma o gás <b>oxigênio (O₂)</b>, com 2 átomos (o que respiramos), e o gás <b>ozônio (O₃)</b>, com 3 átomos, que fica na estratosfera e filtra a radiação ultravioleta do Sol.</div>
+  <p>Repare: mesmo o ozônio tendo 3 átomos, ele é uma substância <strong>simples</strong>, porque todos os átomos são do <em>mesmo elemento</em> (oxigênio).</p>`,
+  qs:[
+    {q:"O que é alotropia?",a:"É a capacidade de um <b>mesmo elemento</b> se organizar de <b>formas diferentes</b>, formando substâncias simples distintas (os alótropos)."},
+    {q:"Cite os alótropos do carbono.",a:"<b>Grafite</b>, <b>diamante</b>, <b>fulereno</b> e <b>grafeno</b> — todos formados só por carbono."},
+    {q:"O ozônio (O₃) é substância simples ou composta? Por quê?",a:"É <b>simples</b>, porque é formado por um <b>único elemento</b> (oxigênio), mesmo tendo 3 átomos."}
+  ]
+},
+{
+  title:"Misturas — homogêneas e heterogêneas",
+  sub:"soluto e solvente · fases",
+  html:`<p>Diferente das substâncias puras, uma <strong>mistura</strong> é formada por <strong>duas ou mais substâncias que NÃO se combinam quimicamente</strong> (não formam produtos novos). Por isso não dá para representar uma mistura por fórmula, e suas propriedades <em>mudam conforme a composição</em>.</p>
+  <div class="keybox"><b>Mistura homogênea (solução):</b> tem <b>aspecto uniforme</b> e as <b>mesmas propriedades em todas as porções</b> — uma só <b>fase</b>. Ex.: água + sal dissolvido. O que é dissolvido é o <b>soluto</b> (o sal); o que dissolve é o <b>solvente</b> (a água). Outros exemplos: água + açúcar, o bronze e o próprio ar.</div>
+  <div class="keybox"><b>Mistura heterogênea:</b> <b>não</b> tem aspecto uniforme; dá para ver as partes separadas — <b>duas ou mais fases</b>. Ex.: água + óleo (2 fases), o granito (quartzo + feldspato + mica) e água + areia.</div>
+  <p><strong>Fase</strong> é cada porção uniforme da mistura (mesma cor, mesmo aspecto e propriedades).</p>`,
+  qs:[
+    {q:"O que é uma mistura e o que a diferencia de uma substância composta?",a:"Mistura = duas ou mais substâncias que <b>não se combinam quimicamente</b>. Na substância composta, os átomos <b>se combinam</b> e formam algo novo; na mistura, não."},
+    {q:"Diferencie mistura homogênea de heterogênea.",a:"<b>Homogênea</b>: aspecto uniforme, uma só fase (ex.: água + sal). <b>Heterogênea</b>: não uniforme, duas ou mais fases (ex.: água + óleo)."},
+    {q:"Na água com sal, quem é o soluto e quem é o solvente?",a:"O <b>sal</b> é o <b>soluto</b> (dissolvido) e a <b>água</b> é o <b>solvente</b> (dissolve)."}
+  ]
+},
+{
+  title:"Sistema químico e fechamento do Cap. 6",
+  sub:"monofásico x polifásico · revisão",
+  html:`<p>Chamamos de <strong>sistema químico</strong> a <strong>porção de matéria que está sendo estudada</strong> (o conteúdo de um frasco, uma rocha, uma amostra de solo). Um sistema é classificado pelo seu <strong>número de fases</strong>.</p>
+  <div class="keybox">Com <b>uma só fase</b>, o sistema é <b>monofásico</b> (também chamado de <b>homogêneo</b>) — é o caso das substâncias puras e das misturas homogêneas. Com <b>mais de uma fase</b>, é <b>bifásico</b>, <b>trifásico</b> ou <b>polifásico</b> (todos <b>heterogêneos</b>).</div>
+  <p>Para fechar o capítulo, guarde a "escada" da matéria: a matéria é <strong>substância pura</strong> (simples ou composta) ou <strong>mistura</strong> (homogênea ou heterogênea). E lembre da <strong>alotropia</strong>: mesmo elemento, formas diferentes.</p>`,
+  qs:[
+    {q:"O que é um sistema químico?",a:"É a <b>porção de matéria que está sendo estudada</b> (ex.: o conteúdo de um frasco, uma amostra de solo)."},
+    {q:"Quando um sistema é monofásico? E polifásico?",a:"<b>Monofásico</b> = tem <b>uma só fase</b> (homogêneo). <b>Polifásico</b> = tem <b>várias fases</b> (heterogêneo)."},
+    {q:"Resuma como a matéria se divide.",a:"A matéria é <b>substância pura</b> (simples ou composta) ou <b>mistura</b> (homogênea ou heterogênea)."}
+  ]
+}
+];
+
+let estado=carregar();
+function carregar(){try{const s=JSON.parse(localStorage.getItem(KEY));if(s)return s;}catch(e){}return{answers:{},checked:{},eval:{},ultimo:null};}
+function salvar(){estado.ultimo=new Date().toLocaleString('pt-BR');localStorage.setItem(KEY,JSON.stringify(estado));document.getElementById('saveInfo').textContent='✅ Salvo em '+estado.ultimo;}
+
+const wrap=document.getElementById('blocks');
+BLOCKS.forEach((b,i)=>{
+  const div=document.createElement('div');
+  div.className='block';div.id='blk'+i;
+  div.innerHTML=`
+    <div class="b-head"><div class="b-num">${i+1}</div><div><div class="b-title">${b.title}</div><div class="b-sub">${b.sub}</div></div></div>
+    <div class="b-text">${b.html}</div>
+    ${b.qs.map((q,j)=>`
+      <div class="q">
+        <div class="q-label"><span>${j+1}.</span><div>${q.q}</div></div>
+        <textarea id="ta${i}_${j}" placeholder="Escreva sua resposta aqui..." oninput="onType(${i})"></textarea>
+        <div class="answers" id="ans${i}_${j}"><div class="model"><b>Resposta modelo:</b> ${q.a}</div></div>
+      </div>`).join('')}
+    <button class="check-btn" id="chk${i}" onclick="conferir(${i})" disabled>✓ Conferir respostas</button>
+    <div class="selfeval" id="se${i}" style="display:none">
+      <span class="lab">Como você foi neste bloco?</span>
+      <button class="se-btn ok" onclick="setEval(${i},'ok')">😎 Entendi</button>
+      <button class="se-btn rev" onclick="setEval(${i},'rev')">📖 Preciso revisar</button>
+    </div>
+    <button class="next-btn" id="nx${i}" onclick="goNext(${i})">Próximo bloco →</button>
+  `;
+  wrap.appendChild(div);
+});
+
+function onType(i){
+  const b=BLOCKS[i];let all=true;
+  b.qs.forEach((q,j)=>{const v=document.getElementById('ta'+i+'_'+j).value.trim();if(v.length<3)all=false;estado.answers[i+'_'+j]=document.getElementById('ta'+i+'_'+j).value;});
+  document.getElementById('chk'+i).disabled=!all;salvar();
+}
+function conferir(i){
+  const b=BLOCKS[i];
+  b.qs.forEach((q,j)=>document.getElementById('ans'+i+'_'+j).classList.add('show'));
+  document.getElementById('se'+i).style.display='flex';
+  estado.checked[i]=true;salvar();
+}
+function setEval(i,val){
+  estado.eval[i]=val;salvar();
+  const se=document.getElementById('se'+i);
+  se.querySelector('.ok').classList.toggle('sel',val==='ok');
+  se.querySelector('.rev').classList.toggle('sel',val==='rev');
+  document.getElementById('blk'+i).classList.add('done');
+  document.getElementById('nx'+i).classList.add('show');
+  unlock(i+1);updateProgress();maybeFinish();
+}
+function goNext(i){const n=document.getElementById('blk'+(i+1))||document.getElementById('trapsBox');if(n)n.scrollIntoView({behavior:'smooth',block:'start'});}
+function unlock(i){if(i<BLOCKS.length)document.getElementById('blk'+i).classList.remove('locked');}
+function updateProgress(){
+  const done=Object.keys(estado.eval).length;
+  document.getElementById('pdone').textContent=done;
+  document.getElementById('pfill').style.width=(done/BLOCKS.length*100)+'%';
+}
+function maybeFinish(){
+  if(Object.keys(estado.eval).length===BLOCKS.length){
+    document.getElementById('trapsBox').style.display='block';
+    const ok=Object.values(estado.eval).filter(v=>v==='ok').length;
+    const rev=Object.values(estado.eval).filter(v=>v==='rev').length;
+    document.getElementById('sOk').textContent=ok;
+    document.getElementById('sRev').textContent=rev;
+    document.getElementById('summaryBox').classList.add('show');
+  }
+}
+function restore(){
+  BLOCKS.forEach((b,i)=>{
+    b.qs.forEach((q,j)=>{const v=estado.answers[i+'_'+j];if(v!==undefined)document.getElementById('ta'+i+'_'+j).value=v;});
+    if(estado.checked[i])conferir(i);
+    if(estado.eval[i]){const se=document.getElementById('se'+i);se.style.display='flex';se.querySelector('.ok').classList.toggle('sel',estado.eval[i]==='ok');se.querySelector('.rev').classList.toggle('sel',estado.eval[i]==='rev');document.getElementById('blk'+i).classList.add('done');document.getElementById('nx'+i).classList.add('show');}
+    onType(i);
+  });
+  for(let i=1;i<BLOCKS.length;i++){if(!estado.eval[i-1])document.getElementById('blk'+i).classList.add('locked');}
+  updateProgress();maybeFinish();
+  if(estado.ultimo)document.getElementById('saveInfo').textContent='✅ Salvo em '+estado.ultimo;
+}
+function exportar(){const b=new Blob([JSON.stringify(estado,null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='progresso-quim-leitura-guiada.json';a.click();}
+function importar(ev){const f=ev.target.files[0];if(!f)return;const r=new FileReader();r.onload=e=>{try{estado=JSON.parse(e.target.result);salvar();location.reload();}catch(x){alert('Arquivo inválido.');}};r.readAsText(f);}
+function zerar(){if(confirm('Apagar TODO o progresso desta Leitura Guiada?')){localStorage.removeItem(KEY);location.reload();}}
+
+restore();
+/* v2 caps5-6 */
+</script>
+</body>
+</html>

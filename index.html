@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guia de Estudo — Conteúdo Mensal 2 — 9º ano — Biologia &amp; Química</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#eef1f6;--panel:#ffffff;--panel2:#f4f6fb;--line:#d7deea;--txt:#20293a;--muted:#5f6b82;--soft:#3a465c;
+    --green:#2e9e63;--green2:#1f7a4d;--green-soft:#e2f2e8;--amber:#e08a1e;
+    --indigo:#4a54c9;--indigo2:#2a3299;--indigo-soft:#e4e6fb;--cyan:#0e9fb8;--red:#c8503a;
+    --shadow:0 10px 30px rgba(40,55,85,.12);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);
+    background-image:radial-gradient(760px 420px at 6% -6%,rgba(46,158,99,.10),transparent),radial-gradient(760px 420px at 96% -4%,rgba(74,84,201,.10),transparent);
+    color:var(--txt);font-family:'Nunito',sans-serif;font-size:17px;line-height:1.6}
+  .wrap{max-width:900px;margin:0 auto;padding:18px 16px 80px}
+  header{position:relative;overflow:hidden;border-radius:20px;border:1px solid var(--line);margin-bottom:22px;box-shadow:var(--shadow);background:linear-gradient(120deg,#ffffff,#f2f5fb)}
+  .strip-top{height:12px;background:linear-gradient(90deg,var(--green) 0 50%,var(--indigo) 50% 100%)}
+  .sci{position:absolute;font-size:52px;opacity:.10}
+  .h-in{padding:30px 24px 24px;text-align:center}
+  .badge{display:inline-block;background:var(--panel2);border:1px solid var(--line);color:var(--soft);font-size:.82rem;font-weight:800;padding:5px 14px;border-radius:999px;text-transform:uppercase;letter-spacing:.5px;margin-bottom:10px}
+  h1{font-family:'Sora',sans-serif;font-size:clamp(1.7rem,5vw,2.4rem);margin:6px 0 8px;color:var(--txt)}
+  h1 .b{color:var(--green2)}h1 .q{color:var(--indigo2)}
+  .sub{color:var(--soft);font-size:.98rem}
+  .sub b{color:var(--txt)}
+  .track{border-radius:18px;border:1px solid var(--line);padding:20px 20px 8px;margin-bottom:22px;box-shadow:var(--shadow)}
+  .track.bio{background:linear-gradient(180deg,var(--green-soft),#ffffff)}
+  .track.quim{background:linear-gradient(180deg,var(--indigo-soft),#ffffff)}
+  .track-head{display:flex;align-items:center;gap:12px;margin-bottom:4px}
+  .track-ic{width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.7rem;color:#fff;flex-shrink:0}
+  .bio .track-ic{background:linear-gradient(135deg,var(--green),var(--green2))}
+  .quim .track-ic{background:linear-gradient(135deg,var(--indigo),var(--cyan))}
+  .track-head h2{font-family:'Sora',sans-serif;font-size:1.3rem}
+  .bio .track-head h2{color:var(--green2)}.quim .track-head h2{color:var(--indigo2)}
+  .track-head .cap{font-size:.85rem;color:var(--muted)}
+  .track-desc{color:var(--soft);font-size:.92rem;margin:8px 2px 14px}
+  .passos{counter-reset:p}
+  .step{display:flex;gap:14px;align-items:flex-start;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:15px 17px;margin-bottom:11px;text-decoration:none;color:var(--txt);transition:.15s}
+  .bio .step:hover{border-color:var(--green);transform:translateY(-2px)}
+  .quim .step:hover{border-color:var(--indigo);transform:translateY(-2px)}
+  .step .n{flex:0 0 auto;width:42px;height:42px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-family:'Sora',sans-serif;font-weight:800;font-size:1.15rem;color:#fff}
+  .bio .step .n{background:linear-gradient(135deg,var(--green),var(--amber))}
+  .quim .step .n{background:linear-gradient(135deg,var(--indigo),var(--cyan))}
+  .step .n::before{counter-increment:p;content:counter(p)}
+  .step h3{font-family:'Sora',sans-serif;margin:.1em 0 .2em;font-size:1.06rem}
+  .step p{margin:0;color:var(--muted);font-size:.9rem}
+  .step .arrow{margin-left:auto;align-self:center;font-size:1.3rem}
+  .bio .step .arrow{color:var(--green)}.quim .step .arrow{color:var(--indigo)}
+  .tag{display:inline-block;font-size:.68rem;font-weight:800;padding:2px 9px;border-radius:999px;margin-left:6px;text-transform:uppercase;letter-spacing:.04em}
+  .tag.lg{background:var(--green-soft);color:var(--green2);border:1px solid var(--green)}
+  .tag.qz{background:#fbefd8;color:#a86a10;border:1px solid var(--amber)}
+  .tag.re{background:var(--indigo-soft);color:var(--indigo2);border:1px solid var(--indigo)}
+  .tag.sm{background:#f8e5df;color:#a53c28;border:1px solid var(--red)}
+  .mae{background:var(--panel);border:1px solid var(--amber);border-left:5px solid var(--amber);border-radius:16px;padding:20px;margin-top:8px;box-shadow:var(--shadow)}
+  .mae h2{font-family:'Sora',sans-serif;padding:0;margin:0 0 8px;color:#a86a10;font-size:1.15rem}
+  .mae code{background:var(--panel2);border:1px solid var(--line);border-radius:6px;padding:2px 8px;color:var(--indigo2);font-weight:800}
+  .mae ul{margin:.4em 0;padding-left:20px}.mae li{margin:7px 0;color:var(--soft)}
+  .info{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:16px 18px;margin-top:14px;color:var(--muted);font-size:.9rem;box-shadow:var(--shadow)}
+  .info b{color:var(--soft)}
+  footer{text-align:center;color:var(--muted);font-size:.82rem;margin-top:26px}
+  @media(max-width:600px){.h-in{padding:24px 16px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="strip-top"></div>
+    <span class="sci" style="left:20px;top:26px">🧬</span>
+    <span class="sci" style="right:20px;top:26px">⚛️</span>
+    <div class="h-in">
+      <span class="badge">🔬 Ciências · 9º ano · Conteúdo Mensal 2</span>
+      <h1><span class="b">Biologia</span> &amp; <span class="q">Química</span></h1>
+      <p class="sub">
+        Prova de <b>30/06</b> · Colégio Coração Feliz<br>
+        <b>Biologia:</b> Evolução dos seres vivos (Cap. 4) · <b>Química:</b> Ligações químicas e substâncias (Cap. 5 e 6)<br>
+        Este é o guia do kit. Estude uma trilha de cada vez, na ordem dos passos. 👇
+      </p>
+    </div>
+  </header>
+
+  <!-- TRILHA BIOLOGIA -->
+  <section class="track bio">
+    <div class="track-head">
+      <div class="track-ic">🧬</div>
+      <div><h2>Trilha 1 — Biologia</h2><div class="cap">Capítulo 4 · Evolução dos seres vivos</div></div>
+    </div>
+    <p class="track-desc">Fixismo, Lamarck, Darwin, neodarwinismo e seleção artificial. Comece pela Leitura Guiada e vá seguindo os passos.</p>
+    <div class="passos">
+      <a class="step" href="bio-leitura-guiada.html">
+        <span class="n"></span>
+        <div><h3>Leitura Guiada <span class="tag lg">comece aqui</span></h3>
+          <p>8 blocos que explicam tudo com calma e perguntas para responder. O próximo só abre quando você termina o anterior.</p></div>
+        <span class="arrow">→</span>
+      </a>
+      <a class="step" href="bio-quiz.html">
+        <span class="n"></span>
+        <div><h3>Quiz <span class="tag qz">treinar</span></h3>
+          <p>15 questões de múltipla escolha, com código de liberação e gabarito comentado.</p></div>
+        <span class="arrow">→</span>
+      </a>
+      <a class="step" href="bio-resumo.html">
+        <span class="n"></span>
+        <div><h3>Resumo Interativo <span class="tag re">revisar</span></h3>
+          <p>Cards que viram, linha do tempo, post-its, pegadinhas e glossário. Perfeito para a véspera.</p></div>
+        <span class="arrow">→</span>
+      </a>
+      <a class="step" href="bio-simulado.html">
+        <span class="n"></span>
+        <div><h3>Simulado <span class="tag sm">prova final</span></h3>
+          <p>26 questões no estilo da prova: múltipla escolha, V/F, somatório e análise de afirmativas (I, II, III).</p></div>
+        <span class="arrow">→</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- TRILHA QUÍMICA -->
+  <section class="track quim">
+    <div class="track-head">
+      <div class="track-ic">⚛️</div>
+      <div><h2>Trilha 2 — Química</h2><div class="cap">Capítulos 5 e 6 · Ligações químicas e Substâncias</div></div>
+    </div>
+    <p class="track-desc">Regra do octeto e as ligações (iônica, covalente, metálica) e as substâncias (puras, simples, compostas, alotropia e misturas). Comece pela Leitura Guiada e vá seguindo os passos.</p>
+    <div class="passos">
+      <a class="step" href="quim-leitura-guiada.html">
+        <span class="n"></span>
+        <div><h3>Leitura Guiada <span class="tag lg">comece aqui</span></h3>
+          <p>12 blocos: os 3 tipos de ligação (Cap. 5) e as substâncias, alotropia e misturas (Cap. 6). Bloco a bloco, com perguntas.</p></div>
+        <span class="arrow">→</span>
+      </a>
+      <a class="step" href="quim-quiz.html">
+        <span class="n"></span>
+        <div><h3>Quiz <span class="tag qz">treinar</span></h3>
+          <p>15 questões de múltipla escolha, com código de liberação e gabarito comentado.</p></div>
+        <span class="arrow">→</span>
+      </a>
+      <a class="step" href="quim-resumo.html">
+        <span class="n"></span>
+        <div><h3>Resumo Interativo <span class="tag re">revisar</span></h3>
+          <p>Cards que viram, tabelas dos 3 tipos de ligação e das misturas, alotropia, post-its, pegadinhas e glossário.</p></div>
+        <span class="arrow">→</span>
+      </a>
+      <a class="step" href="quim-simulado.html">
+        <span class="n"></span>
+        <div><h3>Simulado <span class="tag sm">prova final</span></h3>
+          <p>28 questões no estilo da prova: múltipla escolha, V/F, somatório e análise de afirmativas (I, II, III).</p></div>
+        <span class="arrow">→</span>
+      </a>
+    </div>
+  </section>
+
+  <div class="mae">
+    <h2>👩 Para a mãe — códigos de liberação</h2>
+    <p style="color:var(--soft)">O <b>gabarito</b> do Quiz e do Simulado só abre com um código que aparece na tela <b>depois</b> que a criança envia as respostas. Assim ela não “espia” antes de tentar.</p>
+    <ul>
+      <li>Quiz: código no formato <code>MED-XX-YY</code> — o <b>XX</b> é quantas questões ela acertou.</li>
+      <li>Simulado: código no formato <code>SIM-XX-YY</code> — o <b>XX</b> é quantas ela acertou.</li>
+    </ul>
+    <p style="margin-bottom:0;color:var(--soft)">Exemplo: se aparecer <code>SIM-18-FW</code>, ela acertou <b>18</b>. O código fica salvo e não muda se fechar e abrir o navegador. 😉</p>
+  </div>
+
+  <div class="info">
+    💾 <b>Tudo salva sozinho</b> neste navegador. Em cada material há os botões <b>Exportar progresso</b>, <b>Importar</b> e <b>Zerar tudo</b> (para outra criança usar do zero).
+    <br>📂 Para abrir o kit, mantenha todos os arquivos na <b>mesma pasta</b> e comece por este <b>index</b>.
+    <br>🗺️ <b>Ordem sugerida:</b> faça a trilha de <b>Biologia</b> inteira e depois a de <b>Química</b> — ou o que estiver mais fresco na memória por último.
+  </div>
+
+  <footer>Kit de estudos · 9º ano · Conteúdo Mensal 2 (30/06) · Biologia (Evolução) &amp; Química (Ligações e substâncias) · Colégio Coração Feliz</footer>
+</div>
+</body>
+</html>

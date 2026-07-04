@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quiz — Biologia 9º ano — Evolução dos seres vivos (Cap. 4)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f5f2e9;--bg2:#efe9da;--panel:#fffdf8;--panel2:#f3efe3;--line:#ded7c4;
+  --txt:#26332a;--muted:#6d7a6b;--soft:#3f5142;
+  --green:#2e9e63;--green2:#1f7a4d;--green-soft:#e2f2e8;
+  --amber:#e08a1e;--amber-soft:#fbefd8;--amber-deep:#b96f0f;
+  --red:#c8503a;--red-soft:#f8e5df;--blue:#3d7ea6;
+  --shadow:0 8px 26px rgba(58,74,52,.10);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Nunito',sans-serif;background:var(--bg);
+  background-image:radial-gradient(circle at 15% 8%,rgba(224,138,30,.07) 0,transparent 45%);
+  color:var(--txt);line-height:1.6;min-height:100vh;padding-bottom:110px;font-size:17px}
+header{text-align:center;padding:34px 20px 22px;background:linear-gradient(180deg,var(--amber-soft),transparent);border-bottom:1px solid var(--line)}
+.badge{display:inline-flex;align-items:center;gap:8px;background:var(--panel);border:1px solid var(--amber);color:var(--amber-deep);padding:6px 15px;border-radius:99px;font-size:.78rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:13px}
+h1{font-family:'Sora',sans-serif;font-size:clamp(1.7rem,5.5vw,2.7rem);font-weight:800;color:var(--green2);margin-bottom:5px}
+.subtitle{font-size:1rem;color:var(--muted)}
+.unit-tag{display:block;margin-top:9px;font-size:.84rem;color:var(--soft)}
+.save-panel{max-width:760px;margin:18px auto 0;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:13px 16px;display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;box-shadow:var(--shadow)}
+.save-info{font-size:.84rem;color:var(--muted)}
+.save-btns{display:flex;gap:8px;flex-wrap:wrap}
+.sbtn{border:none;border-radius:9px;padding:8px 13px;font-size:.82rem;font-weight:700;cursor:pointer;font-family:inherit;color:#fff}
+.sbtn.exp{background:var(--blue)}.sbtn.imp{background:var(--amber)}.sbtn.zer{background:var(--red)}
+.intro{max-width:760px;margin:16px auto 0;background:var(--panel);border:1px solid var(--amber);border-left:5px solid var(--amber);border-radius:14px;padding:18px 20px}
+.intro h2{font-family:'Sora',sans-serif;color:var(--amber-deep);font-size:1.05rem;margin-bottom:9px}
+.intro ul{list-style:none;color:var(--soft);font-size:.92rem}
+.intro li{padding:5px 0 5px 20px;position:relative}
+.intro li::before{content:'▸';position:absolute;left:0;color:var(--green)}
+.progress-wrap{position:sticky;top:0;z-index:50;background:rgba(245,242,233,.96);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);padding:13px 16px;margin-top:18px}
+.progress-inner{max-width:760px;margin:0 auto}
+.progress-top{display:flex;justify-content:space-between;font-size:.8rem;color:var(--muted);margin-bottom:8px}
+.progress-top b{color:var(--amber-deep);font-family:'Sora',sans-serif}
+.progress-bar{height:7px;background:var(--panel2);border-radius:99px;overflow:hidden}
+.progress-fill{height:100%;width:0%;background:linear-gradient(90deg,var(--amber),var(--green));border-radius:99px;transition:width .5s}
+main{max-width:760px;margin:0 auto;padding:24px 18px}
+.codigo-barra{display:none;background:var(--green);color:#fff;border-radius:14px;padding:18px;margin-bottom:20px;text-align:center}
+.codigo-barra.show{display:block;animation:fade .4s}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+.codigo-barra .cod{font-family:'Sora',sans-serif;font-size:1.8rem;font-weight:800;letter-spacing:2px;background:#12432a;color:#ffe6b0;display:inline-block;padding:7px 20px;border-radius:10px;margin:7px 0}
+.question{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:22px;margin-bottom:18px;box-shadow:var(--shadow)}
+.question.missing{border-color:var(--red);box-shadow:0 0 0 3px var(--red-soft)}
+.q-head{display:flex;gap:13px;margin-bottom:13px}
+.q-badge{flex-shrink:0;width:36px;height:36px;background:var(--amber);color:#fff;font-family:'Sora',sans-serif;font-weight:800;border-radius:10px;display:flex;align-items:center;justify-content:center}
+.q-text{color:var(--txt);font-size:1rem;font-weight:600;flex:1}
+.q-text em{color:var(--amber-deep);font-style:normal;font-weight:700}
+.alts{display:flex;flex-direction:column;gap:8px}
+.alt{display:flex;align-items:center;gap:11px;background:var(--bg2);border:1px solid var(--line);border-radius:10px;padding:11px 13px;cursor:pointer;transition:.2s;font-size:.96rem;color:var(--soft)}
+.alt:hover{border-color:var(--amber);color:var(--txt)}
+.alt.sel{border-color:var(--amber);background:var(--amber-soft);color:var(--txt)}
+.alt-letter{flex-shrink:0;width:28px;height:28px;background:var(--panel2);border:1px solid var(--line);color:var(--muted);border-radius:7px;display:flex;align-items:center;justify-content:center;font-family:'Sora',sans-serif;font-weight:700;font-size:.85rem}
+.alt.sel .alt-letter{background:var(--amber);color:#fff;border-color:var(--amber)}
+.alt.correct{border-color:var(--green);background:var(--green-soft)}
+.alt.correct .alt-letter{background:var(--green);color:#fff;border-color:var(--green)}
+.alt.wrong{border-color:var(--red);background:var(--red-soft);opacity:.9}
+.alt.wrong .alt-letter{background:var(--red);color:#fff;border-color:var(--red)}
+.gab{display:none;margin-top:11px;background:var(--green-soft);border-left:3px solid var(--green);border-radius:8px;padding:11px 13px;font-size:.92rem;color:var(--soft)}
+.gab.show{display:block}
+.gab b{color:var(--green2)}
+.submit-bar{position:fixed;bottom:0;left:0;right:0;background:rgba(245,242,233,.97);backdrop-filter:blur(10px);border-top:1px solid var(--line);padding:13px 18px;z-index:40}
+.submit-inner{max-width:760px;margin:0 auto;display:flex;align-items:center;gap:14px;justify-content:space-between}
+.submit-status{font-size:.86rem;color:var(--muted)}
+.submit-status b{color:var(--amber-deep)}
+.submit-btn{background:linear-gradient(135deg,var(--amber),var(--amber-deep));color:#fff;border:none;padding:12px 26px;font-family:'Sora',sans-serif;font-weight:700;border-radius:10px;cursor:pointer;font-size:.95rem}
+.submit-btn:disabled{opacity:.4;cursor:not-allowed}
+.destrava{display:none;background:var(--panel);border:1px dashed var(--amber);border-radius:14px;padding:20px;margin-bottom:20px;text-align:center}
+.destrava.show{display:block}
+.destrava h3{font-family:'Sora',sans-serif;color:var(--amber-deep);margin-bottom:8px}
+.destrava input{background:var(--bg2);border:1px solid var(--line);border-radius:9px;color:var(--txt);padding:10px 14px;font-family:'Sora',sans-serif;font-size:1.05rem;letter-spacing:2px;text-align:center;width:180px;text-transform:uppercase}
+.destrava button{background:var(--green);color:#fff;border:none;border-radius:9px;padding:11px 20px;font-weight:700;cursor:pointer;margin-left:8px;font-family:inherit}
+.erro{color:var(--red);font-size:.86rem;margin-top:8px;display:none}
+.fim{display:none;text-align:center;color:var(--soft);background:var(--panel2);border:1px solid var(--green);border-radius:14px;padding:20px;margin-top:10px}
+.fim.show{display:block}
+@media(max-width:600px){.submit-inner{flex-direction:column;gap:8px}.submit-btn{width:100%}}
+</style>
+</head>
+<body>
+
+<header>
+  <span class="badge">🎯 Quiz · Biologia · 15 questões</span>
+  <h1>Evolução dos Seres Vivos</h1>
+  <p class="subtitle">treine antes da prova · responda todas para liberar o código</p>
+  <span class="unit-tag">Capítulo 4 · Conteúdo Mensal 2</span>
+  <div class="save-panel">
+    <div class="save-info" id="saveInfo">💾 Salva sozinho neste navegador.</div>
+    <div class="save-btns">
+      <button class="sbtn exp" onclick="exportar()">📥 Exportar</button>
+      <button class="sbtn imp" onclick="document.getElementById('arq').click()">📤 Importar</button>
+      <button class="sbtn zer" onclick="zerar()">🗑️ Zerar tudo</button>
+      <input type="file" id="arq" accept=".json" style="display:none" onchange="importar(event)">
+    </div>
+  </div>
+  <div class="intro">
+    <h2>📋 Como funciona</h2>
+    <ul>
+      <li>São <b>15 questões</b> de múltipla escolha (A, B, C, D).</li>
+      <li>Responda <b>todas</b> antes de enviar.</li>
+      <li>No fim aparece um <b>código</b> (MED-XX-YY). Digite-o para abrir o gabarito comentado.</li>
+      <li>Depois de enviar, não dá para trocar as respostas.</li>
+    </ul>
+  </div>
+</header>
+
+<div class="progress-wrap">
+  <div class="progress-inner">
+    <div class="progress-top"><span>Progresso</span><span><b id="pcount">0</b> de 15 respondidas</span></div>
+    <div class="progress-bar"><div class="progress-fill" id="pfill"></div></div>
+  </div>
+</div>
+
+<main>
+  <div class="codigo-barra" id="codigoBarra">
+    Você acertou <b id="acertos">0</b> de 15! Seu código:
+    <div class="cod" id="codigo">MED-00-XX</div>
+    <div style="font-size:.86rem">Mostre este código para a mamãe ✅ (fica salvo e não muda)</div>
+  </div>
+
+  <div class="destrava" id="destrava">
+    <h3>🔓 Liberar o gabarito comentado</h3>
+    <p style="font-size:.92rem;color:var(--soft);margin-bottom:10px">Digite o código que apareceu acima:</p>
+    <div><input id="inCod" placeholder="MED-..." maxlength="9"><button onclick="liberar()">Abrir</button></div>
+    <div class="erro" id="erroCod">Código não confere. Verifique e tente de novo.</div>
+  </div>
+
+  <div id="questions"></div>
+
+  <div class="fim" id="fim">🏁 Gabarito conferido! Agora vá para o <b style="color:var(--amber-deep)">Resumo</b> e depois encare o <b style="color:var(--amber-deep)">Simulado</b>. Boa prova!</div>
+</main>
+
+<div class="submit-bar" id="submitBar">
+  <div class="submit-inner">
+    <span class="submit-status"><b id="scount">0</b>/15 respondidas</span>
+    <button class="submit-btn" id="submitBtn" disabled onclick="enviar()">Finalizar quiz</button>
+  </div>
+</div>
+
+<script>
+const KEY='bioq_evol_quiz_v1';
+const QUESTOES=[
+  {q:"O que é <em>evolução</em>, em Biologia?",alts:["O processo de deixar os seres vivos mais fortes de propósito","O processo de modificação dos seres vivos ao longo das gerações","A criação dos seres vivos exatamente como são hoje","A morte natural das espécies mais fracas"],correct:1,exp:"Evolução é a modificação dos seres vivos ao longo das gerações, podendo gerar novas espécies. Não é ficar 'mais forte de propósito'."},
+  {q:"A semelhança dos ossos no braço humano, na asa do morcego e na nadadeira do golfinho é uma evidência de:",alts:["fixismo","ancestral comum (evolução)","seleção artificial feita pelo homem","que essas espécies não têm parentesco"],correct:1,exp:"São estruturas homólogas (mesmos ossos em formatos diferentes): evidência de ancestral comum, ou seja, de evolução."},
+  {q:"O <em>fixismo</em> defendia que:",alts:["as espécies mudam o tempo todo","as espécies foram criadas como são e nunca mudam","o homem cria novas espécies","o ambiente seleciona os mais adaptados"],correct:1,exp:"Fixismo: os seres foram criados como são e permanecem imutáveis. Foi a ideia dominante por quase 2000 anos."},
+  {q:"Segundo <em>Lamarck</em>, o pescoço da girafa ficou comprido porque:",alts:["as girafas de pescoço longo sobreviveram e as outras morreram","a girafa esticava o pescoço pelo uso e passou isso aos filhotes","houve uma mutação aleatória no DNA","o ambiente selecionou a variação já existente"],correct:1,exp:"Lamarck: lei do uso e desuso + transmissão dos caracteres adquiridos. O esforço 'criaria' e passaria a característica adiante. (Hoje sabemos que está errado.)"},
+  {q:"As duas leis propostas por Lamarck foram:",alts:["seleção natural e mutação","uso e desuso; transmissão dos caracteres adquiridos","recombinação e seleção artificial","fixismo e transformismo"],correct:1,exp:"Lamarck propôs a lei do uso e desuso e a lei da transmissão dos caracteres adquiridos."},
+  {q:"Segundo <em>Darwin</em>, como se explica o pescoço comprido da girafa?",alts:["o pescoço cresceu pelo esforço de esticar","já havia girafas com pescoços variados; as de pescoço longo sobreviveram mais","Deus criou a girafa já com o pescoço longo","o clima esticou o pescoço das girafas"],correct:1,exp:"Darwin: a variação já existe. O ambiente seleciona quem se dá melhor (pescoço longo alcança comida), e essa característica se torna comum."},
+  {q:"Na viagem do HMS <em>Beagle</em>, Darwin observou nas Ilhas Galápagos que os tentilhões tinham:",alts:["o mesmo bico em todas as ilhas","bicos diferentes conforme o alimento de cada ilha","penas que mudavam de cor no inverno","perdido a capacidade de voar"],correct:1,exp:"Darwin percebeu que o formato do bico dos tentilhões variava conforme o alimento de cada ilha — cada população adaptada ao seu ambiente."},
+  {q:"O naturalista que chegou às mesmas conclusões de Darwin e publicou com ele a teoria da seleção natural foi:",alts:["Aristóteles","Gregor Mendel","Alfred Russel Wallace","Jean-Baptiste Lamarck"],correct:2,exp:"Alfred Russel Wallace chegou às mesmas ideias e, com Darwin, apresentou a teoria da seleção natural (1858)."},
+  {q:"No caso do <em>melanismo industrial</em> das mariposas em Manchester, as mariposas escuras se tornaram mais comuns porque:",alts:["ficaram mais fortes que as claras","com os troncos escurecidos pela fuligem, elas se camuflavam e escapavam dos pássaros","o clima ficou mais frio","elas passaram a comer mais"],correct:1,exp:"Com a fuligem, os troncos escureceram. As mariposas escuras se camuflavam e sobreviviam; as claras eram vistas e predadas. É seleção natural."},
+  {q:"O <em>neodarwinismo</em> (teoria sintética) acrescentou à teoria de Darwin principalmente:",alts:["a ideia de fixismo","a genética: mutação e recombinação como fontes de variabilidade","a lei do uso e desuso","a criação divina das espécies"],correct:1,exp:"O neodarwinismo une Darwin à genética. As fontes de variabilidade são a mutação e a recombinação; a seleção natural atua sobre elas."},
+  {q:"Sobre as <em>mutações gênicas</em>, é correto dizer que:",alts:["são sempre prejudiciais ao ser vivo","acontecem de propósito, quando o ser vivo precisa","podem ser maléficas, neutras ou benéficas, e ocorrem ao acaso","não têm relação com a evolução"],correct:2,exp:"Mutações são 'erros' aleatórios no DNA. Podem ser maléficas, neutras ou benéficas. Não são dirigidas nem propositais."},
+  {q:"Uma bactéria que se torna resistente a um antibiótico é um exemplo de:",alts:["seleção natural: as resistentes já existiam e sobreviveram, deixando descendentes","lei do uso e desuso de Lamarck","a bactéria se acostumando com o remédio","seleção artificial feita pela bactéria"],correct:0,exp:"As bactérias resistentes já existiam por variação; o antibiótico eliminou as sensíveis e sobraram as resistentes, que se reproduziram. É seleção natural."},
+  {q:"Quando um animal tem <em>cores fortes que avisam ‘sou venenoso’</em> (como a rã azul), isso se chama:",alts:["mimetismo","camuflagem","aposematismo","seleção sexual"],correct:2,exp:"Aposematismo: coloração de aviso que indica ao predador que a presa é perigosa/venenosa. Mimetismo é imitar outro animal; camuflagem é se esconder no ambiente."},
+  {q:"O milho que comemos hoje, as raças de cães e o brócolis são exemplos de:",alts:["seleção natural feita pelo ambiente","seleção artificial feita pelo ser humano","fixismo","mutações espontâneas sem interferência humana"],correct:1,exp:"Seleção artificial: o ser humano escolhe e cruza os seres com as características desejadas (milho do teosinto, cães do lobo, brócolis da mostarda selvagem)."},
+  {q:"Qual afirmação está <em>correta</em> sobre a evolução?",alts:["As características surgem porque o ser vivo precisa delas para sobreviver","As características surgem ao acaso e vão sendo acumuladas ao longo das gerações","O ser humano não passou por evolução","Seleção natural e seleção artificial são a mesma coisa"],correct:1,exp:"As características surgem ao acaso (não 'por necessidade'). A seleção então favorece as vantajosas ao longo das gerações."}
+];
+
+let estado=carregar();
+function carregar(){try{const s=JSON.parse(localStorage.getItem(KEY));if(s)return s;}catch(e){}return{ordem:null,respostas:{},enviado:false,liberado:false,codigo:null,acertos:0,ultimo:null};}
+function salvar(){estado.ultimo=new Date().toLocaleString('pt-BR');localStorage.setItem(KEY,JSON.stringify(estado));document.getElementById('saveInfo').textContent='✅ Salvo em '+estado.ultimo;}
+function embaralhar(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+if(!estado.ordem)estado.ordem=embaralhar([...Array(QUESTOES.length).keys()]);
+if(!estado.altOrder){estado.altOrder={};QUESTOES.forEach((q,qid)=>{estado.altOrder[qid]=embaralhar([...Array(q.alts.length).keys()]);});}
+
+function render(){
+  const c=document.getElementById('questions');c.innerHTML='';
+  estado.ordem.forEach((qid,pos)=>{
+    const q=QUESTOES[qid];
+    const ord=estado.altOrder[qid]||[...Array(q.alts.length).keys()];
+    const corrLetter=String.fromCharCode(65+ord.indexOf(q.correct));
+    const div=document.createElement('div');div.className='question';div.id='q'+qid;
+    div.innerHTML=`<div class="q-head"><div class="q-badge">${String(pos+1).padStart(2,'0')}</div><div class="q-text">${q.q}</div></div>
+      <div class="alts">${ord.map((oi,disp)=>`<div class="alt" id="a${qid}_${oi}" onclick="escolher(${qid},${oi})"><span class="alt-letter">${String.fromCharCode(65+disp)}</span><span>${q.alts[oi]}</span></div>`).join('')}</div>
+      <div class="gab" id="g${qid}"><b>Resposta correta:</b> ${corrLetter}) ${q.alts[q.correct]}.<br>${q.exp}</div>`;
+    c.appendChild(div);
+  });
+  Object.keys(estado.respostas).forEach(qid=>{const j=estado.respostas[qid];const el=document.getElementById('a'+qid+'_'+j);if(el)el.classList.add('sel');});
+  if(estado.enviado)travar();
+  if(estado.liberado)mostrarGabarito();
+  if(estado.ultimo)document.getElementById('saveInfo').textContent='✅ Salvo em '+estado.ultimo;
+  atualizar();
+}
+function escolher(qid,j){
+  if(estado.enviado)return;
+  estado.respostas[qid]=j;
+  document.querySelectorAll('[id^="a'+qid+'_"]').forEach(el=>el.classList.remove('sel'));
+  document.getElementById('a'+qid+'_'+j).classList.add('sel');
+  document.getElementById('q'+qid).classList.remove('missing');
+  salvar();atualizar();
+}
+function atualizar(){
+  const n=Object.keys(estado.respostas).length;
+  document.getElementById('pcount').textContent=n;
+  document.getElementById('scount').textContent=n;
+  document.getElementById('pfill').style.width=(n/QUESTOES.length*100)+'%';
+  document.getElementById('submitBtn').disabled=(n<QUESTOES.length)||estado.enviado;
+}
+function letras(){const L="ABCDEFGHJKLMNPQRSTUVWXYZ";return L[Math.floor(Math.random()*L.length)]+L[Math.floor(Math.random()*L.length)];}
+function enviar(){
+  if(Object.keys(estado.respostas).length<QUESTOES.length){
+    QUESTOES.forEach((q,qid)=>{if(estado.respostas[qid]===undefined)document.getElementById('q'+qid).classList.add('missing');});
+    return;
+  }
+  let ac=0;QUESTOES.forEach((q,qid)=>{if(estado.respostas[qid]===q.correct)ac++;});
+  estado.acertos=ac;estado.enviado=true;
+  estado.codigo='MED-'+String(ac).padStart(2,'0')+'-'+letras();
+  salvar();
+  document.getElementById('acertos').textContent=ac;
+  document.getElementById('codigo').textContent=estado.codigo;
+  document.getElementById('codigoBarra').classList.add('show');
+  document.getElementById('destrava').classList.add('show');
+  travar();atualizar();
+  document.getElementById('codigoBarra').scrollIntoView({behavior:'smooth',block:'center'});
+}
+function travar(){document.querySelectorAll('.alt').forEach(el=>el.style.cursor='default');document.getElementById('codigoBarra').classList.add('show');document.getElementById('acertos').textContent=estado.acertos;document.getElementById('codigo').textContent=estado.codigo;document.getElementById('destrava').classList.add('show');}
+function liberar(){
+  const v=document.getElementById('inCod').value.trim().toUpperCase();
+  if(v===estado.codigo){estado.liberado=true;salvar();mostrarGabarito();document.getElementById('destrava').classList.remove('show');}
+  else document.getElementById('erroCod').style.display='block';
+}
+function mostrarGabarito(){
+  QUESTOES.forEach((q,qid)=>{
+    const sel=estado.respostas[qid];
+    document.getElementById('a'+qid+'_'+q.correct).classList.add('correct');
+    if(sel!==undefined&&sel!==q.correct)document.getElementById('a'+qid+'_'+sel).classList.add('wrong');
+    document.getElementById('g'+qid).classList.add('show');
+  });
+  document.getElementById('fim').classList.add('show');
+}
+function exportar(){const b=new Blob([JSON.stringify(estado,null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='progresso-bio-quiz.json';a.click();}
+function novaAltOrder(){const o={};QUESTOES.forEach((q,qid)=>{o[qid]=embaralhar([...Array(q.alts.length).keys()]);});return o;}
+function importar(ev){const f=ev.target.files[0];if(!f)return;const r=new FileReader();r.onload=e=>{try{estado=JSON.parse(e.target.result);if(!estado.ordem)estado.ordem=embaralhar([...Array(QUESTOES.length).keys()]);if(!estado.altOrder)estado.altOrder=novaAltOrder();salvar();render();}catch(x){alert('Arquivo inválido.');}};r.readAsText(f);}
+function zerar(){if(confirm('Apagar TODO o progresso deste Quiz?')){localStorage.removeItem(KEY);estado={ordem:embaralhar([...Array(QUESTOES.length).keys()]),altOrder:novaAltOrder(),respostas:{},enviado:false,liberado:false,codigo:null,acertos:0,ultimo:null};document.getElementById('codigoBarra').classList.remove('show');document.getElementById('destrava').classList.remove('show');document.getElementById('fim').classList.remove('show');render();}}
+
+render();
+</script>
+</body>
+</html>

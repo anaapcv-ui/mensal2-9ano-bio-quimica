@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Simulado — Biologia 9º ano — Evolução dos seres vivos (Cap. 4)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f5f2e9;--bg2:#efe9da;--panel:#fffdf8;--panel2:#f3efe3;--line:#ded7c4;
+  --txt:#26332a;--muted:#6d7a6b;--soft:#3f5142;
+  --green:#2e9e63;--green2:#1f7a4d;--green-soft:#e2f2e8;--dark:#123b28;
+  --amber:#e08a1e;--amber-soft:#fbefd8;
+  --red:#c8503a;--red-soft:#f8e5df;--red-deep:#a53c28;--blue:#3d7ea6;
+  --shadow:0 8px 26px rgba(58,74,52,.10);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--txt);line-height:1.6;min-height:100vh;padding-bottom:110px;font-size:17px}
+header{text-align:center;padding:36px 20px 24px;background:linear-gradient(160deg,var(--dark),#1f5c3d);border-bottom:4px solid var(--red);color:#eaf5ee}
+.badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.35);color:#fff;padding:6px 15px;border-radius:99px;font-size:.78rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:13px}
+h1{font-family:'Sora',sans-serif;font-size:clamp(1.7rem,5.5vw,2.7rem);font-weight:800;color:#fff;margin-bottom:5px}
+.subtitle{font-size:1rem;color:#c6ddd0}
+.unit-tag{display:block;margin-top:9px;font-size:.84rem;color:#a9c9ba}
+.save-panel{max-width:760px;margin:18px auto 0;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.25);border-radius:14px;padding:13px 16px;display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between}
+.save-info{font-size:.84rem;color:#cfe3d8}
+.save-btns{display:flex;gap:8px;flex-wrap:wrap}
+.sbtn{border:none;border-radius:9px;padding:8px 13px;font-size:.82rem;font-weight:700;cursor:pointer;font-family:inherit;color:#fff}
+.sbtn.exp{background:var(--blue)}.sbtn.imp{background:var(--amber)}.sbtn.zer{background:var(--red)}
+.intro{max-width:760px;margin:16px auto 0;background:var(--panel);border:1px solid var(--red);border-left:5px solid var(--red);border-radius:14px;padding:18px 20px}
+.intro h2{font-family:'Sora',sans-serif;color:var(--red-deep);font-size:1.05rem;margin-bottom:9px}
+.intro ul{list-style:none;color:var(--soft);font-size:.92rem}
+.intro li{padding:5px 0 5px 20px;position:relative}
+.intro li::before{content:'▸';position:absolute;left:0;color:var(--red)}
+.progress-wrap{position:sticky;top:0;z-index:50;background:rgba(245,242,233,.96);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);padding:13px 16px;margin-top:18px}
+.progress-inner{max-width:760px;margin:0 auto}
+.progress-top{display:flex;justify-content:space-between;font-size:.8rem;color:var(--muted);margin-bottom:8px}
+.progress-top b{color:var(--red-deep);font-family:'Sora',sans-serif}
+.progress-bar{height:7px;background:var(--panel2);border-radius:99px;overflow:hidden}
+.progress-fill{height:100%;width:0%;background:linear-gradient(90deg,var(--red),var(--amber));border-radius:99px;transition:width .5s}
+main{max-width:760px;margin:0 auto;padding:24px 18px}
+.codigo-barra{display:none;background:var(--dark);color:#fff;border-radius:14px;padding:18px;margin-bottom:20px;text-align:center}
+.codigo-barra.show{display:block;animation:fade .4s}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+.codigo-barra .cod{font-family:'Sora',sans-serif;font-size:1.8rem;font-weight:800;letter-spacing:2px;background:#0a2417;color:#ffd27a;display:inline-block;padding:7px 20px;border-radius:10px;margin:7px 0}
+.question{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:22px;margin-bottom:18px;box-shadow:var(--shadow)}
+.question.missing{border-color:var(--red);box-shadow:0 0 0 3px var(--red-soft)}
+.q-head{display:flex;gap:13px;margin-bottom:8px}
+.q-badge{flex-shrink:0;width:36px;height:36px;background:var(--dark);color:#fff;font-family:'Sora',sans-serif;font-weight:800;border-radius:10px;display:flex;align-items:center;justify-content:center}
+.q-type{display:inline-block;font-size:.68rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;padding:3px 9px;border-radius:99px;margin-bottom:8px}
+.t-mc{background:var(--green-soft);color:var(--green2);border:1px solid var(--green)}
+.t-vf{background:#e6eef6;color:#2b6088;border:1px solid var(--blue)}
+.t-soma{background:var(--amber-soft);color:#a86a10;border:1px solid var(--amber)}
+.q-text{color:var(--txt);font-size:1rem;font-weight:600;flex:1}
+.q-text em{color:var(--red-deep);font-style:normal;font-weight:700}
+.alts{display:flex;flex-direction:column;gap:8px;margin-top:12px}
+.alt{display:flex;align-items:center;gap:11px;background:var(--bg2);border:1px solid var(--line);border-radius:10px;padding:11px 13px;cursor:pointer;transition:.2s;font-size:.95rem;color:var(--soft)}
+.alt:hover{border-color:var(--red);color:var(--txt)}
+.alt.sel{border-color:var(--red);background:var(--red-soft);color:var(--txt)}
+.alt-letter{flex-shrink:0;width:28px;height:28px;background:var(--panel2);border:1px solid var(--line);color:var(--muted);border-radius:7px;display:flex;align-items:center;justify-content:center;font-family:'Sora',sans-serif;font-weight:700;font-size:.85rem}
+.alt.sel .alt-letter{background:var(--red);color:#fff;border-color:var(--red)}
+.alt.correct{border-color:var(--green);background:var(--green-soft)}
+.alt.correct .alt-letter{background:var(--green);color:#fff;border-color:var(--green)}
+.alt.wrong{border-color:var(--red);background:var(--red-soft);opacity:.9}
+.alt.wrong .alt-letter{background:var(--red);color:#fff;border-color:var(--red)}
+.vf-item,.soma-item{display:flex;align-items:center;gap:10px;background:var(--bg2);border:1px solid var(--line);border-radius:10px;padding:10px 13px;margin-top:8px;font-size:.95rem;color:var(--soft)}
+.vf-item .txt,.soma-item .txt{flex:1}
+.vf-btns{display:flex;gap:6px;flex-shrink:0}
+.vfb{width:38px;height:34px;border-radius:8px;border:1px solid var(--line);background:var(--panel);color:var(--muted);font-weight:800;cursor:pointer;font-family:inherit}
+.vfb.v.sel{background:var(--green);color:#fff;border-color:var(--green)}
+.vfb.f.sel{background:var(--red);color:#fff;border-color:var(--red)}
+.vfb.mark-ok{outline:2px solid var(--green)}
+.soma-n{flex-shrink:0;width:34px;height:34px;border-radius:8px;background:var(--panel2);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-family:'Sora',sans-serif;font-weight:800;font-size:.82rem;color:var(--muted);cursor:pointer}
+.soma-item.sel{border-color:var(--amber);background:var(--amber-soft)}
+.soma-item.sel .soma-n{background:var(--amber);color:#fff;border-color:var(--amber)}
+.soma-hint{font-size:.82rem;color:var(--muted);margin-top:8px}
+.gab{display:none;margin-top:12px;background:var(--green-soft);border-left:3px solid var(--green);border-radius:8px;padding:11px 13px;font-size:.92rem;color:var(--soft)}
+.gab.show{display:block}
+.gab b{color:var(--green2)}
+.gab .res{display:block;margin-top:6px;color:var(--red-deep);font-weight:700}
+.gab .res.ok{color:var(--green2)}
+.submit-bar{position:fixed;bottom:0;left:0;right:0;background:rgba(245,242,233,.97);backdrop-filter:blur(10px);border-top:1px solid var(--line);padding:13px 18px;z-index:40}
+.submit-inner{max-width:760px;margin:0 auto;display:flex;align-items:center;gap:14px;justify-content:space-between}
+.submit-status{font-size:.86rem;color:var(--muted)}
+.submit-status b{color:var(--red-deep)}
+.submit-btn{background:linear-gradient(135deg,var(--red),var(--red-deep));color:#fff;border:none;padding:12px 26px;font-family:'Sora',sans-serif;font-weight:700;border-radius:10px;cursor:pointer;font-size:.95rem}
+.submit-btn:disabled{opacity:.4;cursor:not-allowed}
+.destrava{display:none;background:var(--panel);border:1px dashed var(--red);border-radius:14px;padding:20px;margin-bottom:20px;text-align:center}
+.destrava.show{display:block}
+.destrava h3{font-family:'Sora',sans-serif;color:var(--red-deep);margin-bottom:8px}
+.destrava input{background:var(--bg2);border:1px solid var(--line);border-radius:9px;color:var(--txt);padding:10px 14px;font-family:'Sora',sans-serif;font-size:1.05rem;letter-spacing:2px;text-align:center;width:180px;text-transform:uppercase}
+.destrava button{background:var(--dark);color:#fff;border:none;border-radius:9px;padding:11px 20px;font-weight:700;cursor:pointer;margin-left:8px;font-family:inherit}
+.erro{color:var(--red);font-size:.86rem;margin-top:8px;display:none}
+.fim{display:none;text-align:center;color:var(--soft);background:var(--panel2);border:1px solid var(--green);border-radius:14px;padding:20px;margin-top:10px}
+.fim.show{display:block}
+@media(max-width:600px){.submit-inner{flex-direction:column;gap:8px}.submit-btn{width:100%}}
+</style>
+</head>
+<body>
+
+<header>
+  <span class="badge">📝 Simulado · Biologia</span>
+  <h1>Simulado — Evolução</h1>
+  <p class="subtitle">no estilo da prova · responda todas para liberar o código</p>
+  <span class="unit-tag">Capítulo 4 · Evolução dos seres vivos · Conteúdo Mensal 2</span>
+  <div class="save-panel">
+    <div class="save-info" id="saveInfo">💾 Salva sozinho neste navegador.</div>
+    <div class="save-btns">
+      <button class="sbtn exp" onclick="exportar()">📥 Exportar</button>
+      <button class="sbtn imp" onclick="document.getElementById('arq').click()">📤 Importar</button>
+      <button class="sbtn zer" onclick="zerar()">🗑️ Zerar tudo</button>
+      <input type="file" id="arq" accept=".json" style="display:none" onchange="importar(event)">
+    </div>
+  </div>
+</header>
+
+<div class="intro" style="margin-top:16px">
+  <h2>📋 Como funciona</h2>
+  <ul>
+    <li>São <b>26 questões</b> no estilo da prova: múltipla escolha, verdadeiro/falso, somatório e análise de afirmativas (I, II, III).</li>
+    <li>Responda <b>todas</b> antes de enviar. As questões vêm <b>embaralhadas</b>.</li>
+    <li>No fim aparece um <b>código</b> (SIM-XX-YY). Digite-o para abrir o gabarito comentado.</li>
+    <li>Depois de enviar, não dá para trocar as respostas.</li>
+  </ul>
+</div>
+
+<div class="progress-wrap">
+  <div class="progress-inner">
+    <div class="progress-top"><span>Progresso</span><span><b id="pcount">0</b> de 26 respondidas</span></div>
+    <div class="progress-bar"><div class="progress-fill" id="pfill"></div></div>
+  </div>
+</div>
+
+<main>
+  <div class="codigo-barra" id="codigoBarra">
+    Você acertou <b id="acertos">0</b> de 26! Seu código:
+    <div class="cod" id="codigo">SIM-00-XX</div>
+    <div style="font-size:.86rem">Mostre este código para a mamãe ✅ (fica salvo e não muda)</div>
+  </div>
+
+  <div class="destrava" id="destrava">
+    <h3>🔓 Liberar o gabarito comentado</h3>
+    <p style="font-size:.92rem;color:var(--soft);margin-bottom:10px">Digite o código que apareceu acima:</p>
+    <div><input id="inCod" placeholder="SIM-..." maxlength="9"><button onclick="liberar()">Abrir</button></div>
+    <div class="erro" id="erroCod">Código não confere. Verifique e tente de novo.</div>
+  </div>
+
+  <div id="questions"></div>
+
+  <div class="fim" id="fim">🏁 Simulado conferido! Revise as questões que errou no <b style="color:var(--red-deep)">Resumo</b>. Você está pronto(a). Boa prova! 🍀</div>
+</main>
+
+<div class="submit-bar" id="submitBar">
+  <div class="submit-inner">
+    <span class="submit-status"><b id="scount">0</b>/26 respondidas</span>
+    <button class="submit-btn" id="submitBtn" disabled onclick="enviar()">Finalizar simulado</button>
+  </div>
+</div>
+
+<script>
+const KEY='bioq_evol_sim_v1';
+const PREFIX='SIM';
+const QUESTOES=[
+  {type:'mc',q:"Além da anatomia e da embriologia, uma evidência da evolução em nível <em>molecular</em> é:",alts:["a comparação do DNA e das proteínas entre espécies","a contagem de quantos filhotes cada espécie tem","o tamanho do corpo dos animais","a cor dos olhos dos indivíduos"],correct:0,exp:"A bioquímica comparada analisa DNA e proteínas: quanto mais parecidas, mais próximas evolutivamente as espécies."},
+  {type:'mc',q:"Estruturas <em>homólogas</em> (como o braço humano e a asa do morcego) são aquelas que:",alts:["têm a mesma função, mas origem diferente","têm a mesma origem (mesmos ossos), mesmo com funções diferentes","não têm relação com a evolução","só existem em plantas"],correct:1,exp:"Homólogas = mesma origem/estrutura óssea, ainda que a função mude. São evidência de ancestral comum."},
+  {type:'mc',q:"Assinale a alternativa que descreve corretamente a diferença entre fixismo e transformismo:",alts:["fixismo diz que as espécies mudam; transformismo diz que não mudam","os dois dizem a mesma coisa","fixismo diz que as espécies não mudam; transformismo diz que elas se modificam com o tempo","transformismo foi criado por Aristóteles"],correct:2,exp:"Fixismo: espécies imutáveis. Transformismo: espécies se modificam ao longo do tempo (base da evolução)."},
+  {type:'mc',q:"Segundo Lamarck, os olhos das cobras-cegas são atrofiados porque:",alts:["elas nunca tiveram olhos","houve uma mutação benéfica","os olhos foram pouco usados e atrofiaram (desuso), passando isso aos descendentes","o ambiente selecionou as cegas"],correct:2,exp:"Pela lei do uso e desuso de Lamarck, órgãos pouco usados atrofiam, e essa característica seria transmitida — ideia hoje considerada incorreta."},
+  {type:'mc',q:"A ideia de que uma característica <em>adquirida durante a vida</em> é passada aos filhos corresponde à lei de Lamarck chamada:",alts:["lei da seleção natural","lei da transmissão dos caracteres adquiridos","lei da recombinação gênica","lei do ancestral comum"],correct:1,exp:"É a lei da transmissão dos caracteres adquiridos. Hoje sabemos que características ganhas em vida não são transmitidas dessa forma."},
+  {type:'mc',q:"A <em>seleção natural</em> de Darwin pode ser definida como:",alts:["a força do ser humano sobre os animais domésticos","a pressão do ambiente que favorece os indivíduos mais adaptados a sobreviver e se reproduzir","o crescimento de órgãos pelo uso","a criação de espécies imutáveis"],correct:1,exp:"Seleção natural = pressão do ambiente que seleciona, entre as variações existentes, quem é mais apto a sobreviver e reproduzir."},
+  {type:'mc',q:"A viagem de Darwin no HMS Beagle foi importante porque, nas Ilhas Galápagos, ele observou:",alts:["mariposas escuras em Manchester","tentilhões com bicos adaptados ao alimento de cada ilha","girafas de pescoço longo","o crossing-over nos cromossomos"],correct:1,exp:"Em Galápagos, Darwin viu que o bico dos tentilhões variava conforme o alimento de cada ilha, sugerindo adaptação ao ambiente."},
+  {type:'mc',q:"O <em>melanismo industrial</em> das mariposas mostra a seleção natural porque:",alts:["as mariposas mudaram de cor de propósito","com os troncos escurecidos, as escuras se camuflaram e sobreviveram mais que as claras","o ser humano pintou as mariposas","todas as mariposas morreram"],correct:1,exp:"A fuligem escureceu os troncos; as mariposas escuras se camuflaram e escaparam dos predadores, tornando-se mais frequentes."},
+  {type:'mc',q:"Os fatores evolutivos do <em>neodarwinismo</em> (teoria sintética) são:",alts:["uso, desuso e transmissão de caracteres","fixismo e criacionismo","mutação, recombinação gênica e seleção natural","apenas a seleção sexual"],correct:2,exp:"O neodarwinismo une Darwin à genética: mutação e recombinação geram variabilidade, e a seleção natural atua sobre ela."},
+  {type:'mc',q:"Sobre as mutações, assinale a alternativa CORRETA:",alts:["são sempre benéficas","ocorrem ao acaso e podem ser maléficas, neutras ou benéficas","só acontecem quando o animal precisa","não alteram o DNA"],correct:1,exp:"Mutações são alterações aleatórias no DNA e podem ser maléficas, neutras ou benéficas — não são dirigidas pela necessidade."},
+  {type:'mc',q:"O <em>crossing-over</em>, que ocorre na formação dos gametas, tem como consequência:",alts:["diminuir a variabilidade genética","aumentar a variabilidade genética, misturando genes","impedir a reprodução","criar clones idênticos"],correct:1,exp:"O crossing-over (recombinação) mistura os genes dos parentais, aumentando a variabilidade das características dos descendentes."},
+  {type:'mc',q:"Bactérias resistentes a um antibiótico surgem porque:",alts:["as bactérias se acostumam com o remédio ao longo da vida","as resistentes já existiam por variação e sobreviveram, deixando descendentes resistentes","o antibiótico cria a resistência de propósito","é uma seleção artificial feita pela bactéria"],correct:1,exp:"É seleção natural: o antibiótico elimina as sensíveis; as resistentes (que já existiam) sobrevivem e se reproduzem."},
+  {type:'mc',q:"O uso abusivo de agrotóxico faz surgirem ervas daninhas resistentes porque:",alts:["as ervas resistentes foram selecionadas pelo agrotóxico e se reproduziram","o agrotóxico modificou o DNA de todas as ervas de propósito","as ervas se acostumaram com o veneno","as ervas ficaram dependentes do agrotóxico"],correct:0,exp:"Assim como as bactérias: as ervas resistentes já existiam; o agrotóxico eliminou as sensíveis e restaram as resistentes (seleção natural)."},
+  {type:'mc',q:"O milho atual (a partir do teosinto) e as raças de cães (a partir do lobo) são exemplos de:",alts:["seleção natural","seleção artificial feita pelo ser humano","fixismo","mutação sem causa"],correct:1,exp:"Seleção artificial: o ser humano escolhe e cruza os seres vivos com as características desejadas."},
+  {type:'mc',q:"Sobre a evolução humana, é correto afirmar que o <em>Homo sapiens</em>:",alts:["nunca passou por evolução","é a única espécie viva do gênero Homo e se tornou sedentário com a agricultura","surgiu antes dos dinossauros","não usa ferramentas"],correct:1,exp:"O Homo sapiens é a única espécie viva do gênero Homo; com a agricultura e a pecuária (~10 mil anos), passou de nômade a sedentário."},
+  {type:'mc',q:"Uma cobra-coral-falsa que tem as mesmas cores da coral-verdadeira (venenosa) é um exemplo de:",alts:["camuflagem","aposematismo","mimetismo","seleção artificial"],correct:2,exp:"Mimetismo: um animal imita as cores/aparência de outro (perigoso) para afastar predadores."},
+  {type:'mc',q:"Assinale a alternativa CORRETA sobre como surgem as características na evolução:",alts:["surgem de propósito, porque o ser vivo precisa delas","surgem ao acaso e são acumuladas ao longo das gerações se forem vantajosas","são sempre transmitidas do ambiente para o DNA","só aparecem por seleção artificial"],correct:1,exp:"As características surgem ao acaso (mutação/recombinação). A seleção natural então favorece as vantajosas ao longo das gerações."},
+  {type:'mc',q:"O atobá-de-patas-azuis, cujo macho faz uma dança exibindo as patas para conquistar a fêmea, é um exemplo de:",alts:["seleção sexual","mimetismo","camuflagem","lei do uso e desuso"],correct:0,exp:"Seleção sexual: características que aumentam as chances de acasalar (como as patas azuis) tendem a ser mais transmitidas."},
+
+  {type:'vf',q:"Analise as afirmativas sobre Lamarck e Darwin como Verdadeiro (V) ou Falso (F):",items:[
+    {t:"Lamarck defendia a lei do uso e desuso e a transmissão dos caracteres adquiridos.",v:true},
+    {t:"Para Darwin, a variação já existe na população e o ambiente seleciona os mais adaptados.",v:true},
+    {t:"Darwin acreditava que o esforço do animal criava a característica e passava aos filhos.",v:false}
+  ],exp:"V-V-F. A 3ª é de Lamarck, não de Darwin. Para Darwin, a variação é pré-existente e a seleção natural atua sobre ela."},
+  {type:'vf',q:"Sobre as mutações, marque V ou F:",items:[
+    {t:"Toda mutação é prejudicial ao ser vivo.",v:false},
+    {t:"Uma mutação benéfica pode ser transmitida aos descendentes e levar a novas características.",v:true},
+    {t:"As mutações ocorrem ao acaso, e não porque o organismo precisa.",v:true}
+  ],exp:"F-V-V. Mutações podem ser maléficas, neutras ou benéficas, e ocorrem ao acaso."},
+  {type:'vf',q:"Sobre seleção natural e artificial, marque V ou F:",items:[
+    {t:"Na seleção natural, quem 'seleciona' é o ambiente.",v:true},
+    {t:"Na seleção artificial, quem seleciona é o ser humano.",v:true},
+    {t:"Bactérias resistentes a antibióticos são exemplo de seleção artificial.",v:false}
+  ],exp:"V-V-F. A resistência bacteriana é seleção NATURAL: o ambiente (o antibiótico) seleciona as resistentes."},
+
+  {type:'soma',q:"(Somatório) Sobre a origem e a evolução das espécies, some os números das afirmativas CORRETAS:",props:[
+    {n:"01",t:"Para o fixismo, cada espécie surgiu de forma independente e permaneceria sempre igual.",c:true},
+    {n:"02",t:"A lei da transmissão dos caracteres adquiridos afirma que mudanças pelo uso/desuso passam aos descendentes.",c:true},
+    {n:"04",t:"Darwin propôs a lei do uso e desuso como principal mecanismo da evolução.",c:false},
+    {n:"08",t:"A seleção natural atua sobre a variabilidade favorecendo os indivíduos mais adaptados ao ambiente.",c:true},
+    {n:"16",t:"As mutações fazem a variabilidade genética de uma população sempre diminuir.",c:false}
+  ],exp:"Corretas: 01 + 02 + 08 = 11. A 04 é de Lamarck (não Darwin) e a 16 está errada (mutações AUMENTAM a variabilidade)."},
+  {type:'soma',q:"(Somatório) Sobre a seleção natural segundo Darwin e o neodarwinismo, some as CORRETAS:",props:[
+    {n:"01",t:"A seleção natural favorece indivíduos com características vantajosas para o ambiente.",c:true},
+    {n:"02",t:"A seleção natural é independente do ambiente e age sempre da mesma forma.",c:false},
+    {n:"04",t:"Mutação e recombinação são fontes de variabilidade genética.",c:true},
+    {n:"08",t:"Características favoráveis e hereditárias tendem a ficar mais comuns ao longo das gerações.",c:true}
+  ],exp:"Corretas: 01 + 04 + 08 = 13. A 02 está errada: a seleção natural DEPENDE do ambiente e varia conforme ele."},
+  {type:'soma',q:"(Somatório) Sobre evidências e mecanismos da evolução, some as CORRETAS:",props:[
+    {n:"01",t:"Estruturas homólogas indicam ancestral comum.",c:true},
+    {n:"02",t:"A comparação de DNA e proteínas ajuda a mostrar o parentesco evolutivo.",c:true},
+    {n:"04",t:"A seleção artificial é feita pelo ambiente, sem participação humana.",c:false},
+    {n:"08",t:"O melanismo industrial das mariposas é um exemplo de seleção natural.",c:true}
+  ],exp:"Corretas: 01 + 02 + 08 = 11. A 04 está errada: a seleção ARTIFICIAL é feita pelo ser humano."},
+
+  {type:'mc',q:"Analise as afirmativas sobre <em>evidências da evolução</em>:<br>I. A anatomia comparada estuda ossos semelhantes em espécies diferentes.<br>II. A embriologia comparada mostra semelhança entre embriões de vertebrados.<br>III. A bioquímica comparada analisa DNA e proteínas.<br>Estão corretas:",alts:["apenas I","apenas I e II","apenas II e III","I, II e III"],correct:3,exp:"Todas estão corretas: anatomia, embriologia e bioquímica comparadas são as três evidências da evolução vistas no capítulo."},
+  {type:'mc',q:"Analise as afirmativas sobre <em>seleção natural</em>:<br>I. Nem sempre o mais forte sobrevive; às vezes vence a melhor camuflagem.<br>II. As características surgem porque o animal precisa delas.<br>III. A resistência de bactérias a antibióticos é um exemplo de seleção natural.<br>Estão corretas:",alts:["apenas I e III","apenas II","apenas I e II","I, II e III"],correct:0,exp:"I e III corretas. A II está errada: as características surgem ao acaso, não 'por necessidade'."}
+];
+
+let estado=carregar();
+function carregar(){try{const s=JSON.parse(localStorage.getItem(KEY));if(s)return s;}catch(e){}return{ordem:null,resp:{},enviado:false,liberado:false,codigo:null,acertos:0,ultimo:null};}
+function salvar(){estado.ultimo=new Date().toLocaleString('pt-BR');localStorage.setItem(KEY,JSON.stringify(estado));document.getElementById('saveInfo').textContent='✅ Salvo em '+estado.ultimo;}
+function embaralhar(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+if(!estado.ordem)estado.ordem=embaralhar([...Array(QUESTOES.length).keys()]);
+function novaAltOrder(){const o={};QUESTOES.forEach((q,qid)=>{if((q.type||'mc')==='mc')o[qid]=embaralhar([...Array(q.alts.length).keys()]);});return o;}
+if(!estado.altOrder)estado.altOrder=novaAltOrder();
+
+function typeLabel(t){return t==='mc'?['t-mc','Múltipla escolha']:t==='vf'?['t-vf','Verdadeiro ou Falso']:['t-soma','Somatório'];}
+
+function render(){
+  const c=document.getElementById('questions');c.innerHTML='';
+  estado.ordem.forEach((qid,pos)=>{
+    const q=QUESTOES[qid];const[cls,lab]=typeLabel(q.type);
+    const div=document.createElement('div');div.className='question';div.id='q'+qid;
+    let body='';
+    if(q.type==='mc'){
+      const ord=estado.altOrder[qid]||[...Array(q.alts.length).keys()];
+      body=`<div class="alts">${ord.map((oi,disp)=>`<div class="alt" id="a${qid}_${oi}" onclick="pickMC(${qid},${oi})"><span class="alt-letter">${String.fromCharCode(65+disp)}</span><span>${q.alts[oi]}</span></div>`).join('')}</div>`;
+    }else if(q.type==='vf'){
+      body=q.items.map((it,j)=>`<div class="vf-item" id="vf${qid}_${j}"><span class="txt">${String.fromCharCode(97+j)}) ${it.t}</span><span class="vf-btns"><button class="vfb v" onclick="pickVF(${qid},${j},true)">V</button><button class="vfb f" onclick="pickVF(${qid},${j},false)">F</button></span></div>`).join('');
+    }else{
+      body=q.props.map((p,j)=>`<div class="soma-item" id="sm${qid}_${j}" onclick="pickSoma(${qid},${j})"><span class="soma-n">${p.n}</span><span class="txt">${p.t}</span></div>`).join('')+`<div class="soma-hint">Toque nos números das afirmativas <b>corretas</b>. A soma é calculada no gabarito.</div>`;
+    }
+    div.innerHTML=`<div class="q-head"><div class="q-badge">${String(pos+1).padStart(2,'0')}</div><div style="flex:1"><span class="q-type ${cls}">${lab}</span><div class="q-text">${q.q}</div></div></div>${body}<div class="gab" id="g${qid}"></div>`;
+    c.appendChild(div);
+  });
+  restoreSel();
+  if(estado.enviado)travar();
+  if(estado.liberado)mostrarGabarito();
+  if(estado.ultimo)document.getElementById('saveInfo').textContent='✅ Salvo em '+estado.ultimo;
+  atualizar();
+}
+function pickMC(qid,j){if(estado.enviado)return;estado.resp[qid]={t:'mc',v:j};document.querySelectorAll('[id^="a'+qid+'_"]').forEach(el=>el.classList.remove('sel'));document.getElementById('a'+qid+'_'+j).classList.add('sel');clearMiss(qid);salvar();atualizar();}
+function pickVF(qid,j,val){if(estado.enviado)return;const r=estado.resp[qid]&&estado.resp[qid].t==='vf'?estado.resp[qid]:{t:'vf',v:{}};r.v[j]=val;estado.resp[qid]=r;const row=document.getElementById('vf'+qid+'_'+j);row.querySelector('.vfb.v').classList.toggle('sel',val===true);row.querySelector('.vfb.f').classList.toggle('sel',val===false);clearMiss(qid);salvar();atualizar();}
+function pickSoma(qid,j){if(estado.enviado)return;const r=estado.resp[qid]&&estado.resp[qid].t==='soma'?estado.resp[qid]:{t:'soma',v:[]};const idx=r.v.indexOf(j);if(idx>=0)r.v.splice(idx,1);else r.v.push(j);estado.resp[qid]=r;document.getElementById('sm'+qid+'_'+j).classList.toggle('sel');clearMiss(qid);salvar();atualizar();}
+function clearMiss(qid){document.getElementById('q'+qid).classList.remove('missing');}
+function isAnswered(qid){const q=QUESTOES[qid];const r=estado.resp[qid];if(!r)return false;if(q.type==='mc')return r.v!==undefined;if(q.type==='vf')return Object.keys(r.v).length===q.items.length;if(q.type==='soma')return r.v.length>0;return false;}
+function restoreSel(){
+  estado.ordem.forEach(qid=>{const q=QUESTOES[qid];const r=estado.resp[qid];if(!r)return;
+    if(q.type==='mc'&&r.v!==undefined){const el=document.getElementById('a'+qid+'_'+r.v);if(el)el.classList.add('sel');}
+    if(q.type==='vf'){Object.keys(r.v).forEach(j=>{const row=document.getElementById('vf'+qid+'_'+j);if(row){row.querySelector('.vfb.v').classList.toggle('sel',r.v[j]===true);row.querySelector('.vfb.f').classList.toggle('sel',r.v[j]===false);}});}
+    if(q.type==='soma'){r.v.forEach(j=>{const el=document.getElementById('sm'+qid+'_'+j);if(el)el.classList.add('sel');});}
+  });
+}
+function atualizar(){
+  let n=0;QUESTOES.forEach((q,qid)=>{if(isAnswered(qid))n++;});
+  document.getElementById('pcount').textContent=n;
+  document.getElementById('scount').textContent=n;
+  document.getElementById('pfill').style.width=(n/QUESTOES.length*100)+'%';
+  document.getElementById('submitBtn').disabled=(n<QUESTOES.length)||estado.enviado;
+}
+function corrigir(qid){
+  const q=QUESTOES[qid];const r=estado.resp[qid];
+  if(q.type==='mc')return r&&r.v===q.correct;
+  if(q.type==='vf')return q.items.every((it,j)=>r.v[j]===it.v);
+  if(q.type==='soma'){const corretas=q.props.map((p,j)=>p.c?j:-1).filter(x=>x>=0);const sel=[...r.v].sort();return corretas.length===sel.length&&corretas.sort().every((x,i)=>x===sel[i]);}
+  return false;
+}
+function letras(){const L="ABCDEFGHJKLMNPQRSTUVWXYZ";return L[Math.floor(Math.random()*L.length)]+L[Math.floor(Math.random()*L.length)];}
+function enviar(){
+  let n=0;QUESTOES.forEach((q,qid)=>{if(isAnswered(qid))n++;else document.getElementById('q'+qid).classList.add('missing');});
+  if(n<QUESTOES.length)return;
+  let ac=0;QUESTOES.forEach((q,qid)=>{if(corrigir(qid))ac++;});
+  estado.acertos=ac;estado.enviado=true;
+  estado.codigo=PREFIX+'-'+String(ac).padStart(2,'0')+'-'+letras();
+  salvar();
+  document.getElementById('acertos').textContent=ac;
+  document.getElementById('codigo').textContent=estado.codigo;
+  document.getElementById('codigoBarra').classList.add('show');
+  document.getElementById('destrava').classList.add('show');
+  travar();atualizar();
+  document.getElementById('codigoBarra').scrollIntoView({behavior:'smooth',block:'center'});
+}
+function travar(){document.getElementById('codigoBarra').classList.add('show');document.getElementById('acertos').textContent=estado.acertos;document.getElementById('codigo').textContent=estado.codigo;document.getElementById('destrava').classList.add('show');}
+function liberar(){const v=document.getElementById('inCod').value.trim().toUpperCase();if(v===estado.codigo){estado.liberado=true;salvar();mostrarGabarito();document.getElementById('destrava').classList.remove('show');}else document.getElementById('erroCod').style.display='block';}
+function mostrarGabarito(){
+  QUESTOES.forEach((q,qid)=>{
+    const r=estado.resp[qid]||{};const acertou=corrigir(qid);const g=document.getElementById('g'+qid);
+    let extra='';
+    if(q.type==='mc'){
+      const ord=estado.altOrder[qid]||[...Array(q.alts.length).keys()];
+      const corrLetter=String.fromCharCode(65+ord.indexOf(q.correct));
+      document.getElementById('a'+qid+'_'+q.correct).classList.add('correct');
+      if(r.v!==undefined&&r.v!==q.correct)document.getElementById('a'+qid+'_'+r.v).classList.add('wrong');
+      extra=`<b>Correta:</b> ${corrLetter}) ${q.alts[q.correct]}.<br>${q.exp}`;
+    }else if(q.type==='vf'){
+      q.items.forEach((it,j)=>{const row=document.getElementById('vf'+qid+'_'+j);const btn=row.querySelector(it.v?'.vfb.v':'.vfb.f');btn.classList.add('mark-ok');});
+      extra=`<b>Correto:</b> ${q.items.map(it=>it.v?'V':'F').join(' · ')}.<br>${q.exp}`;
+    }else{
+      const soma=q.props.reduce((s,p)=>s+(p.c?parseInt(p.n):0),0);
+      q.props.forEach((p,j)=>{if(p.c)document.getElementById('sm'+qid+'_'+j).classList.add('sel');});
+      extra=`<b>Soma correta = ${soma}</b> (afirmativas ${q.props.filter(p=>p.c).map(p=>p.n).join(' + ')}).<br>${q.exp}`;
+    }
+    g.innerHTML=extra+`<span class="res ${acertou?'ok':''}">${acertou?'✔ Você acertou esta questão':'✗ Você errou esta questão'}</span>`;
+    g.classList.add('show');
+  });
+  document.getElementById('fim').classList.add('show');
+}
+function exportar(){const b=new Blob([JSON.stringify(estado,null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='progresso-bio-simulado.json';a.click();}
+function importar(ev){const f=ev.target.files[0];if(!f)return;const r=new FileReader();r.onload=e=>{try{estado=JSON.parse(e.target.result);if(!estado.ordem)estado.ordem=embaralhar([...Array(QUESTOES.length).keys()]);if(!estado.altOrder)estado.altOrder=novaAltOrder();salvar();render();}catch(x){alert('Arquivo inválido.');}};r.readAsText(f);}
+function zerar(){if(confirm('Apagar TODO o progresso deste Simulado?')){localStorage.removeItem(KEY);estado={ordem:embaralhar([...Array(QUESTOES.length).keys()]),altOrder:novaAltOrder(),resp:{},enviado:false,liberado:false,codigo:null,acertos:0,ultimo:null};render();}}
+
+render();
+</script>
+</body>
+</html>

@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quiz — Química 9º ano — Ligações e Substâncias (Cap. 5 e 6)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#eef3f9;--bg2:#e4ecf5;--panel:#ffffff;--panel2:#eef2f8;--line:#d3ddea;
+  --txt:#1c2a3a;--muted:#5f708a;--soft:#31435c;
+  --green:#1f9d74;--green2:#147a5a;--green-soft:#dcf3ec;
+  --indigo:#4a54c9;--indigo2:#343dab;--indigo-soft:#e4e6fb;--indigo-deep:#2a3299;
+  --cyan:#0e9fb8;--cyan-soft:#d7f1f6;
+  --amber:#e0951e;--red:#d1504a;--red-soft:#fae0de;--blue:#3d7ea6;
+  --shadow:0 8px 26px rgba(40,60,90,.10);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Nunito',sans-serif;background:var(--bg);
+  background-image:radial-gradient(circle at 15% 8%,rgba(74,84,201,.07) 0,transparent 45%);
+  color:var(--txt);line-height:1.6;min-height:100vh;padding-bottom:110px;font-size:17px}
+header{text-align:center;padding:34px 20px 22px;background:linear-gradient(180deg,var(--indigo-soft),transparent);border-bottom:1px solid var(--line)}
+.badge{display:inline-flex;align-items:center;gap:8px;background:var(--panel);border:1px solid var(--indigo);color:var(--indigo-deep);padding:6px 15px;border-radius:99px;font-size:.78rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:13px}
+h1{font-family:'Sora',sans-serif;font-size:clamp(1.7rem,5.5vw,2.7rem);font-weight:800;color:var(--indigo2);margin-bottom:5px}
+.subtitle{font-size:1rem;color:var(--muted)}
+.unit-tag{display:block;margin-top:9px;font-size:.84rem;color:var(--soft)}
+.save-panel{max-width:760px;margin:18px auto 0;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:13px 16px;display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;box-shadow:var(--shadow)}
+.save-info{font-size:.84rem;color:var(--muted)}
+.save-btns{display:flex;gap:8px;flex-wrap:wrap}
+.sbtn{border:none;border-radius:9px;padding:8px 13px;font-size:.82rem;font-weight:700;cursor:pointer;font-family:inherit;color:#fff}
+.sbtn.exp{background:var(--blue)}.sbtn.imp{background:var(--amber)}.sbtn.zer{background:var(--red)}
+.intro{max-width:760px;margin:16px auto 0;background:var(--panel);border:1px solid var(--indigo);border-left:5px solid var(--indigo);border-radius:14px;padding:18px 20px}
+.intro h2{font-family:'Sora',sans-serif;color:var(--indigo-deep);font-size:1.05rem;margin-bottom:9px}
+.intro ul{list-style:none;color:var(--soft);font-size:.92rem}
+.intro li{padding:5px 0 5px 20px;position:relative}
+.intro li::before{content:'▸';position:absolute;left:0;color:var(--cyan)}
+.progress-wrap{position:sticky;top:0;z-index:50;background:rgba(238,243,249,.96);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);padding:13px 16px;margin-top:18px}
+.progress-inner{max-width:760px;margin:0 auto}
+.progress-top{display:flex;justify-content:space-between;font-size:.8rem;color:var(--muted);margin-bottom:8px}
+.progress-top b{color:var(--indigo-deep);font-family:'Sora',sans-serif}
+.progress-bar{height:7px;background:var(--panel2);border-radius:99px;overflow:hidden}
+.progress-fill{height:100%;width:0%;background:linear-gradient(90deg,var(--indigo),var(--cyan));border-radius:99px;transition:width .5s}
+main{max-width:760px;margin:0 auto;padding:24px 18px}
+.codigo-barra{display:none;background:var(--indigo);color:#fff;border-radius:14px;padding:18px;margin-bottom:20px;text-align:center}
+.codigo-barra.show{display:block;animation:fade .4s}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+.codigo-barra .cod{font-family:'Sora',sans-serif;font-size:1.8rem;font-weight:800;letter-spacing:2px;background:#20257a;color:#c9edf4;display:inline-block;padding:7px 20px;border-radius:10px;margin:7px 0}
+.question{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:22px;margin-bottom:18px;box-shadow:var(--shadow)}
+.question.missing{border-color:var(--red);box-shadow:0 0 0 3px var(--red-soft)}
+.q-head{display:flex;gap:13px;margin-bottom:13px}
+.q-badge{flex-shrink:0;width:36px;height:36px;background:var(--indigo);color:#fff;font-family:'Sora',sans-serif;font-weight:800;border-radius:10px;display:flex;align-items:center;justify-content:center}
+.q-text{color:var(--txt);font-size:1rem;font-weight:600;flex:1}
+.q-text em{color:var(--indigo-deep);font-style:normal;font-weight:700}
+.alts{display:flex;flex-direction:column;gap:8px}
+.alt{display:flex;align-items:center;gap:11px;background:var(--bg2);border:1px solid var(--line);border-radius:10px;padding:11px 13px;cursor:pointer;transition:.2s;font-size:.96rem;color:var(--soft)}
+.alt:hover{border-color:var(--indigo);color:var(--txt)}
+.alt.sel{border-color:var(--indigo);background:var(--indigo-soft);color:var(--txt)}
+.alt-letter{flex-shrink:0;width:28px;height:28px;background:var(--panel2);border:1px solid var(--line);color:var(--muted);border-radius:7px;display:flex;align-items:center;justify-content:center;font-family:'Sora',sans-serif;font-weight:700;font-size:.85rem}
+.alt.sel .alt-letter{background:var(--indigo);color:#fff;border-color:var(--indigo)}
+.alt.correct{border-color:var(--green);background:var(--green-soft)}
+.alt.correct .alt-letter{background:var(--green);color:#fff;border-color:var(--green)}
+.alt.wrong{border-color:var(--red);background:var(--red-soft);opacity:.9}
+.alt.wrong .alt-letter{background:var(--red);color:#fff;border-color:var(--red)}
+.gab{display:none;margin-top:11px;background:var(--green-soft);border-left:3px solid var(--green);border-radius:8px;padding:11px 13px;font-size:.92rem;color:var(--soft)}
+.gab.show{display:block}
+.gab b{color:var(--green2)}
+.submit-bar{position:fixed;bottom:0;left:0;right:0;background:rgba(238,243,249,.97);backdrop-filter:blur(10px);border-top:1px solid var(--line);padding:13px 18px;z-index:40}
+.submit-inner{max-width:760px;margin:0 auto;display:flex;align-items:center;gap:14px;justify-content:space-between}
+.submit-status{font-size:.86rem;color:var(--muted)}
+.submit-status b{color:var(--indigo-deep)}
+.submit-btn{background:linear-gradient(135deg,var(--indigo),var(--indigo-deep));color:#fff;border:none;padding:12px 26px;font-family:'Sora',sans-serif;font-weight:700;border-radius:10px;cursor:pointer;font-size:.95rem}
+.submit-btn:disabled{opacity:.4;cursor:not-allowed}
+.destrava{display:none;background:var(--panel);border:1px dashed var(--indigo);border-radius:14px;padding:20px;margin-bottom:20px;text-align:center}
+.destrava.show{display:block}
+.destrava h3{font-family:'Sora',sans-serif;color:var(--indigo-deep);margin-bottom:8px}
+.destrava input{background:var(--bg2);border:1px solid var(--line);border-radius:9px;color:var(--txt);padding:10px 14px;font-family:'Sora',sans-serif;font-size:1.05rem;letter-spacing:2px;text-align:center;width:180px;text-transform:uppercase}
+.destrava button{background:var(--cyan);color:#fff;border:none;border-radius:9px;padding:11px 20px;font-weight:700;cursor:pointer;margin-left:8px;font-family:inherit}
+.erro{color:var(--red);font-size:.86rem;margin-top:8px;display:none}
+.fim{display:none;text-align:center;color:var(--soft);background:var(--panel2);border:1px solid var(--green);border-radius:14px;padding:20px;margin-top:10px}
+.fim.show{display:block}
+@media(max-width:600px){.submit-inner{flex-direction:column;gap:8px}.submit-btn{width:100%}}
+</style>
+</head>
+<body>
+
+<header>
+  <span class="badge">🎯 Quiz · Química · 15 questões</span>
+  <h1>Ligações &amp; Substâncias</h1>
+  <p class="subtitle">treine antes da prova · responda todas para liberar o código</p>
+  <span class="unit-tag">Capítulos 5 e 6 · Conteúdo Mensal 2</span>
+  <div class="save-panel">
+    <div class="save-info" id="saveInfo">💾 Salva sozinho neste navegador.</div>
+    <div class="save-btns">
+      <button class="sbtn exp" onclick="exportar()">📥 Exportar</button>
+      <button class="sbtn imp" onclick="document.getElementById('arq').click()">📤 Importar</button>
+      <button class="sbtn zer" onclick="zerar()">🗑️ Zerar tudo</button>
+      <input type="file" id="arq" accept=".json" style="display:none" onchange="importar(event)">
+    </div>
+  </div>
+  <div class="intro">
+    <h2>📋 Como funciona</h2>
+    <ul>
+      <li>São <b>15 questões</b> de múltipla escolha (A, B, C, D).</li>
+      <li>Responda <b>todas</b> antes de enviar.</li>
+      <li>No fim aparece um <b>código</b> (MED-XX-YY). Digite-o para abrir o gabarito comentado.</li>
+      <li>Depois de enviar, não dá para trocar as respostas.</li>
+    </ul>
+  </div>
+</header>
+
+<div class="progress-wrap">
+  <div class="progress-inner">
+    <div class="progress-top"><span>Progresso</span><span><b id="pcount">0</b> de 15 respondidas</span></div>
+    <div class="progress-bar"><div class="progress-fill" id="pfill"></div></div>
+  </div>
+</div>
+
+<main>
+  <div class="codigo-barra" id="codigoBarra">
+    Você acertou <b id="acertos">0</b> de 15! Seu código:
+    <div class="cod" id="codigo">MED-00-XX</div>
+    <div style="font-size:.86rem">Mostre este código para a mamãe ✅ (fica salvo e não muda)</div>
+  </div>
+
+  <div class="destrava" id="destrava">
+    <h3>🔓 Liberar o gabarito comentado</h3>
+    <p style="font-size:.92rem;color:var(--soft);margin-bottom:10px">Digite o código que apareceu acima:</p>
+    <div><input id="inCod" placeholder="MED-..." maxlength="9"><button onclick="liberar()">Abrir</button></div>
+    <div class="erro" id="erroCod">Código não confere. Verifique e tente de novo.</div>
+  </div>
+
+  <div id="questions"></div>
+
+  <div class="fim" id="fim">🏁 Gabarito conferido! Agora vá para o <b style="color:var(--indigo-deep)">Resumo</b> e depois encare o <b style="color:var(--indigo-deep)">Simulado</b>. Boa prova!</div>
+</main>
+
+<div class="submit-bar" id="submitBar">
+  <div class="submit-inner">
+    <span class="submit-status"><b id="scount">0</b>/15 respondidas</span>
+    <button class="submit-btn" id="submitBtn" disabled onclick="enviar()">Finalizar quiz</button>
+  </div>
+</div>
+
+<script>
+const KEY='bioq_quim_quiz_v2';
+const QUESTOES=[
+  {q:"Segundo a <em>regra do octeto</em>, um átomo tende a ficar estável quando sua camada de valência tem:",alts:["2 elétrons, sempre","8 elétrons (com exceção do hélio, que se estabiliza com 2)","18 elétrons","nenhum elétron"],correct:1,exp:"Regra do octeto: estabilidade com 8 elétrons na camada de valência. O hélio é exceção (2 elétrons)."},
+  {q:"Por que os <em>gases nobres</em> quase não se combinam com outros átomos?",alts:["porque são muito pesados","porque já têm a camada de valência completa (já são estáveis)","porque são todos líquidos","porque só existem em laboratório"],correct:1,exp:"Os gases nobres já têm a camada de valência completa, ou seja, já são estáveis. Por isso raramente formam ligações."},
+  {q:"Na <em>ligação iônica</em>, os elétrons são:",alts:["compartilhados igualmente","transferidos de um átomo para o outro (um doa, o outro recebe)","espalhados numa nuvem","destruídos"],correct:1,exp:"Na ligação iônica há transferência de elétrons: um átomo doa e o outro recebe, formando íons."},
+  {q:"O NaCl (sal de cozinha) conduz eletricidade:",alts:["sempre, inclusive sólido","nunca","quando está dissolvido em água ou fundido (derretido)","apenas quando está bem seco"],correct:2,exp:"O NaCl sólido não conduz. Ele conduz quando dissolvido em água ou fundido, pois os íons ficam livres para se mover."},
+  {q:"Na <em>ligação covalente</em>, os átomos:",alts:["compartilham pares de elétrons, formando moléculas","transferem elétrons formando íons","perdem todos os elétrons","formam uma nuvem de elétrons livres"],correct:0,exp:"Na ligação covalente há compartilhamento de pares de elétrons, e isso forma moléculas."},
+  {q:"A <em>ligação metálica</em> é caracterizada por:",alts:["transferência total de elétrons","cátions envolvidos por uma nuvem de elétrons livres","compartilhamento de um único par de elétrons","ausência de elétrons"],correct:1,exp:"Nos metais, os elétrons livres formam uma 'nuvem' (mar de elétrons) em volta dos cátions do metal."},
+  {q:"Um <em>metal</em> reage com um <em>não metal</em>, havendo transferência de elétrons. O tipo de ligação formada é:",alts:["covalente","metálica","iônica","nenhuma ligação se forma"],correct:2,exp:"Metal + não metal com transferência de elétrons = ligação iônica (forma cátion e ânion)."},
+  {q:"Uma <em>substância pura</em> é aquela que:",alts:["é formada por apenas um tipo de componente e tem propriedades definidas","é sempre uma mistura de vários gases","muda de composição o tempo todo","só existe em laboratório"],correct:0,exp:"Substância pura = formada por apenas um tipo de componente, com composição constante e propriedades físicas definidas (ex.: ouro puro, água destilada, ferro puro)."},
+  {q:"Uma <em>substância simples</em> é formada por:",alts:["átomos de um único elemento químico (átomos iguais)","átomos de dois ou mais elementos diferentes","apenas misturas homogêneas","água e sal"],correct:0,exp:"Substância simples = um só tipo de elemento químico (átomos iguais). Ex.: gás oxigênio (O₂), gás nitrogênio (N₂), ouro (Au), ferro (Fe)."},
+  {q:"O <em>gás carbônico</em> (CO₂) é classificado como substância composta porque:",alts:["é formado por um só elemento","é formado pela união de átomos de dois elementos diferentes (carbono e oxigênio)","é um gás nobre","não tem fórmula química"],correct:1,exp:"Substância composta = união de átomos de dois ou mais elementos diferentes. No CO₂ há carbono e oxigênio."},
+  {q:"A propriedade de um mesmo elemento se organizar de <em>maneiras diferentes</em>, formando substâncias simples distintas, chama-se:",alts:["alotropia","ebulição","ionização","condensação"],correct:0,exp:"Alotropia: átomos de um mesmo elemento se unem de formas diferentes. As substâncias formadas são os alótropos."},
+  {q:"São exemplos de <em>alótropos do carbono</em>:",alts:["água e gelo","grafite, diamante, fulereno e grafeno","sódio e cloro","oxigênio e ozônio"],correct:1,exp:"Grafite, diamante, fulereno e grafeno são todos formados só por carbono, organizado de formas diferentes → alótropos do carbono."},
+  {q:"O gás oxigênio (O₂) e o gás ozônio (O₃) são <em>alótropos</em> porque:",alts:["são metais diferentes","são formados pelo mesmo elemento (oxigênio), mas com número diferente de átomos","são misturas heterogêneas","são substâncias compostas"],correct:1,exp:"Ambos são feitos só de oxigênio: o O₂ tem 2 átomos e o O₃ tem 3. Mesmo elemento organizado de formas diferentes = alótropos."},
+  {q:"Uma <em>mistura homogênea</em> (solução), como água com sal dissolvido, apresenta:",alts:["várias fases visíveis","aspecto uniforme e uma só fase","sempre duas camadas separadas","novos produtos químicos formados"],correct:1,exp:"Mistura homogênea tem aspecto uniforme e uma só fase. A substância dissolvida é o soluto; a que dissolve é o solvente. Numa mistura, as substâncias NÃO se combinam quimicamente."},
+  {q:"São exemplos de <em>mistura heterogênea</em> (mais de uma fase):",alts:["água com açúcar dissolvido","ar atmosférico filtrado","água com óleo e o granito","água destilada"],correct:2,exp:"Mistura heterogênea não tem aspecto uniforme e apresenta mais de uma fase. Ex.: água + óleo (2 fases) e o granito (quartzo, feldspato e mica)."}
+];
+
+let estado=carregar();
+function carregar(){try{const s=JSON.parse(localStorage.getItem(KEY));if(s)return s;}catch(e){}return{ordem:null,respostas:{},enviado:false,liberado:false,codigo:null,acertos:0,ultimo:null};}
+function salvar(){estado.ultimo=new Date().toLocaleString('pt-BR');localStorage.setItem(KEY,JSON.stringify(estado));document.getElementById('saveInfo').textContent='✅ Salvo em '+estado.ultimo;}
+function embaralhar(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+if(!estado.ordem)estado.ordem=embaralhar([...Array(QUESTOES.length).keys()]);
+if(!estado.altOrder){estado.altOrder={};QUESTOES.forEach((q,qid)=>{estado.altOrder[qid]=embaralhar([...Array(q.alts.length).keys()]);});}
+
+function render(){
+  const c=document.getElementById('questions');c.innerHTML='';
+  estado.ordem.forEach((qid,pos)=>{
+    const q=QUESTOES[qid];
+    const ord=estado.altOrder[qid]||[...Array(q.alts.length).keys()];
+    const corrLetter=String.fromCharCode(65+ord.indexOf(q.correct));
+    const div=document.createElement('div');div.className='question';div.id='q'+qid;
+    div.innerHTML=`<div class="q-head"><div class="q-badge">${String(pos+1).padStart(2,'0')}</div><div class="q-text">${q.q}</div></div>
+      <div class="alts">${ord.map((oi,disp)=>`<div class="alt" id="a${qid}_${oi}" onclick="escolher(${qid},${oi})"><span class="alt-letter">${String.fromCharCode(65+disp)}</span><span>${q.alts[oi]}</span></div>`).join('')}</div>
+      <div class="gab" id="g${qid}"><b>Resposta correta:</b> ${corrLetter}) ${q.alts[q.correct]}.<br>${q.exp}</div>`;
+    c.appendChild(div);
+  });
+  Object.keys(estado.respostas).forEach(qid=>{const j=estado.respostas[qid];const el=document.getElementById('a'+qid+'_'+j);if(el)el.classList.add('sel');});
+  if(estado.enviado)travar();
+  if(estado.liberado)mostrarGabarito();
+  if(estado.ultimo)document.getElementById('saveInfo').textContent='✅ Salvo em '+estado.ultimo;
+  atualizar();
+}
+function escolher(qid,j){
+  if(estado.enviado)return;
+  estado.respostas[qid]=j;
+  document.querySelectorAll('[id^="a'+qid+'_"]').forEach(el=>el.classList.remove('sel'));
+  document.getElementById('a'+qid+'_'+j).classList.add('sel');
+  document.getElementById('q'+qid).classList.remove('missing');
+  salvar();atualizar();
+}
+function atualizar(){
+  const n=Object.keys(estado.respostas).length;
+  document.getElementById('pcount').textContent=n;
+  document.getElementById('scount').textContent=n;
+  document.getElementById('pfill').style.width=(n/QUESTOES.length*100)+'%';
+  document.getElementById('submitBtn').disabled=(n<QUESTOES.length)||estado.enviado;
+}
+function letras(){const L="ABCDEFGHJKLMNPQRSTUVWXYZ";return L[Math.floor(Math.random()*L.length)]+L[Math.floor(Math.random()*L.length)];}
+function enviar(){
+  if(Object.keys(estado.respostas).length<QUESTOES.length){
+    QUESTOES.forEach((q,qid)=>{if(estado.respostas[qid]===undefined)document.getElementById('q'+qid).classList.add('missing');});
+    return;
+  }
+  let ac=0;QUESTOES.forEach((q,qid)=>{if(estado.respostas[qid]===q.correct)ac++;});
+  estado.acertos=ac;estado.enviado=true;
+  estado.codigo='MED-'+String(ac).padStart(2,'0')+'-'+letras();
+  salvar();
+  document.getElementById('acertos').textContent=ac;
+  document.getElementById('codigo').textContent=estado.codigo;
+  document.getElementById('codigoBarra').classList.add('show');
+  document.getElementById('destrava').classList.add('show');
+  travar();atualizar();
+  document.getElementById('codigoBarra').scrollIntoView({behavior:'smooth',block:'center'});
+}
+function travar(){document.querySelectorAll('.alt').forEach(el=>el.style.cursor='default');document.getElementById('codigoBarra').classList.add('show');document.getElementById('acertos').textContent=estado.acertos;document.getElementById('codigo').textContent=estado.codigo;document.getElementById('destrava').classList.add('show');}
+function liberar(){
+  const v=document.getElementById('inCod').value.trim().toUpperCase();
+  if(v===estado.codigo){estado.liberado=true;salvar();mostrarGabarito();document.getElementById('destrava').classList.remove('show');}
+  else document.getElementById('erroCod').style.display='block';
+}
+function mostrarGabarito(){
+  QUESTOES.forEach((q,qid)=>{
+    const sel=estado.respostas[qid];
+    document.getElementById('a'+qid+'_'+q.correct).classList.add('correct');
+    if(sel!==undefined&&sel!==q.correct)document.getElementById('a'+qid+'_'+sel).classList.add('wrong');
+    document.getElementById('g'+qid).classList.add('show');
+  });
+  document.getElementById('fim').classList.add('show');
+}
+function exportar(){const b=new Blob([JSON.stringify(estado,null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='progresso-quim-quiz.json';a.click();}
+function novaAltOrder(){const o={};QUESTOES.forEach((q,qid)=>{o[qid]=embaralhar([...Array(q.alts.length).keys()]);});return o;}
+function importar(ev){const f=ev.target.files[0];if(!f)return;const r=new FileReader();r.onload=e=>{try{estado=JSON.parse(e.target.result);if(!estado.ordem)estado.ordem=embaralhar([...Array(QUESTOES.length).keys()]);if(!estado.altOrder)estado.altOrder=novaAltOrder();salvar();render();}catch(x){alert('Arquivo inválido.');}};r.readAsText(f);}
+function zerar(){if(confirm('Apagar TODO o progresso deste Quiz?')){localStorage.removeItem(KEY);estado={ordem:embaralhar([...Array(QUESTOES.length).keys()]),altOrder:novaAltOrder(),respostas:{},enviado:false,liberado:false,codigo:null,acertos:0,ultimo:null};document.getElementById('codigoBarra').classList.remove('show');document.getElementById('destrava').classList.remove('show');document.getElementById('fim').classList.remove('show');render();}}
+
+render();
+</script>
+</body>
+</html>

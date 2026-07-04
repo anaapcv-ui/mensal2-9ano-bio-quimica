@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Simulado — Química 9º ano — Ligações e Substâncias (Cap. 5 e 6)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#eef3f9;--bg2:#e4ecf5;--panel:#ffffff;--panel2:#eef2f8;--line:#d3ddea;
+  --txt:#1c2a3a;--muted:#5f708a;--soft:#31435c;
+  --green:#1f9d74;--green2:#147a5a;--green-soft:#dcf3ec;
+  --indigo:#4a54c9;--indigo2:#343dab;--indigo-soft:#e4e6fb;--dark:#1b1f5c;
+  --cyan:#0e9fb8;--cyan-soft:#d7f1f6;
+  --amber:#e0951e;--amber-soft:#fbeed4;
+  --red:#d1504a;--red-soft:#fae0de;--red-deep:#ab3a34;--blue:#3d7ea6;
+  --shadow:0 8px 26px rgba(40,60,90,.10);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--txt);line-height:1.6;min-height:100vh;padding-bottom:110px;font-size:17px}
+header{text-align:center;padding:36px 20px 24px;background:linear-gradient(160deg,var(--dark),#343dab);border-bottom:4px solid var(--red);color:#eaeefb}
+.badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.35);color:#fff;padding:6px 15px;border-radius:99px;font-size:.78rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:13px}
+h1{font-family:'Sora',sans-serif;font-size:clamp(1.7rem,5.5vw,2.7rem);font-weight:800;color:#fff;margin-bottom:5px}
+.subtitle{font-size:1rem;color:#c6cdf0}
+.unit-tag{display:block;margin-top:9px;font-size:.84rem;color:#a9b2e4}
+.save-panel{max-width:760px;margin:18px auto 0;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.25);border-radius:14px;padding:13px 16px;display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between}
+.save-info{font-size:.84rem;color:#d3d8f2}
+.save-btns{display:flex;gap:8px;flex-wrap:wrap}
+.sbtn{border:none;border-radius:9px;padding:8px 13px;font-size:.82rem;font-weight:700;cursor:pointer;font-family:inherit;color:#fff}
+.sbtn.exp{background:var(--blue)}.sbtn.imp{background:var(--amber)}.sbtn.zer{background:var(--red)}
+.intro{max-width:760px;margin:16px auto 0;background:var(--panel);border:1px solid var(--red);border-left:5px solid var(--red);border-radius:14px;padding:18px 20px}
+.intro h2{font-family:'Sora',sans-serif;color:var(--red-deep);font-size:1.05rem;margin-bottom:9px}
+.intro ul{list-style:none;color:var(--soft);font-size:.92rem}
+.intro li{padding:5px 0 5px 20px;position:relative}
+.intro li::before{content:'▸';position:absolute;left:0;color:var(--red)}
+.progress-wrap{position:sticky;top:0;z-index:50;background:rgba(238,243,249,.96);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);padding:13px 16px;margin-top:18px}
+.progress-inner{max-width:760px;margin:0 auto}
+.progress-top{display:flex;justify-content:space-between;font-size:.8rem;color:var(--muted);margin-bottom:8px}
+.progress-top b{color:var(--red-deep);font-family:'Sora',sans-serif}
+.progress-bar{height:7px;background:var(--panel2);border-radius:99px;overflow:hidden}
+.progress-fill{height:100%;width:0%;background:linear-gradient(90deg,var(--red),var(--indigo));border-radius:99px;transition:width .5s}
+main{max-width:760px;margin:0 auto;padding:24px 18px}
+.codigo-barra{display:none;background:var(--dark);color:#fff;border-radius:14px;padding:18px;margin-bottom:20px;text-align:center}
+.codigo-barra.show{display:block;animation:fade .4s}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+.codigo-barra .cod{font-family:'Sora',sans-serif;font-size:1.8rem;font-weight:800;letter-spacing:2px;background:#0f1240;color:#a9e7f2;display:inline-block;padding:7px 20px;border-radius:10px;margin:7px 0}
+.question{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:22px;margin-bottom:18px;box-shadow:var(--shadow)}
+.question.missing{border-color:var(--red);box-shadow:0 0 0 3px var(--red-soft)}
+.q-head{display:flex;gap:13px;margin-bottom:8px}
+.q-badge{flex-shrink:0;width:36px;height:36px;background:var(--dark);color:#fff;font-family:'Sora',sans-serif;font-weight:800;border-radius:10px;display:flex;align-items:center;justify-content:center}
+.q-type{display:inline-block;font-size:.68rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;padding:3px 9px;border-radius:99px;margin-bottom:8px}
+.t-mc{background:var(--indigo-soft);color:var(--indigo2);border:1px solid var(--indigo)}
+.t-vf{background:var(--cyan-soft);color:#0a7d90;border:1px solid var(--cyan)}
+.t-soma{background:var(--amber-soft);color:#a86a10;border:1px solid var(--amber)}
+.q-text{color:var(--txt);font-size:1rem;font-weight:600;flex:1}
+.q-text em{color:var(--red-deep);font-style:normal;font-weight:700}
+.alts{display:flex;flex-direction:column;gap:8px;margin-top:12px}
+.alt{display:flex;align-items:center;gap:11px;background:var(--bg2);border:1px solid var(--line);border-radius:10px;padding:11px 13px;cursor:pointer;transition:.2s;font-size:.95rem;color:var(--soft)}
+.alt:hover{border-color:var(--red);color:var(--txt)}
+.alt.sel{border-color:var(--red);background:var(--red-soft);color:var(--txt)}
+.alt-letter{flex-shrink:0;width:28px;height:28px;background:var(--panel2);border:1px solid var(--line);color:var(--muted);border-radius:7px;display:flex;align-items:center;justify-content:center;font-family:'Sora',sans-serif;font-weight:700;font-size:.85rem}
+.alt.sel .alt-letter{background:var(--red);color:#fff;border-color:var(--red)}
+.alt.correct{border-color:var(--green);background:var(--green-soft)}
+.alt.correct .alt-letter{background:var(--green);color:#fff;border-color:var(--green)}
+.alt.wrong{border-color:var(--red);background:var(--red-soft);opacity:.9}
+.alt.wrong .alt-letter{background:var(--red);color:#fff;border-color:var(--red)}
+.vf-item,.soma-item{display:flex;align-items:center;gap:10px;background:var(--bg2);border:1px solid var(--line);border-radius:10px;padding:10px 13px;margin-top:8px;font-size:.95rem;color:var(--soft)}
+.vf-item .txt,.soma-item .txt{flex:1}
+.vf-btns{display:flex;gap:6px;flex-shrink:0}
+.vfb{width:38px;height:34px;border-radius:8px;border:1px solid var(--line);background:var(--panel);color:var(--muted);font-weight:800;cursor:pointer;font-family:inherit}
+.vfb.v.sel{background:var(--green);color:#fff;border-color:var(--green)}
+.vfb.f.sel{background:var(--red);color:#fff;border-color:var(--red)}
+.vfb.mark-ok{outline:2px solid var(--green)}
+.soma-n{flex-shrink:0;width:34px;height:34px;border-radius:8px;background:var(--panel2);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-family:'Sora',sans-serif;font-weight:800;font-size:.82rem;color:var(--muted);cursor:pointer}
+.soma-item.sel{border-color:var(--amber);background:var(--amber-soft)}
+.soma-item.sel .soma-n{background:var(--amber);color:#fff;border-color:var(--amber)}
+.soma-hint{font-size:.82rem;color:var(--muted);margin-top:8px}
+.gab{display:none;margin-top:12px;background:var(--green-soft);border-left:3px solid var(--green);border-radius:8px;padding:11px 13px;font-size:.92rem;color:var(--soft)}
+.gab.show{display:block}
+.gab b{color:var(--green2)}
+.gab .res{display:block;margin-top:6px;color:var(--red-deep);font-weight:700}
+.gab .res.ok{color:var(--green2)}
+.submit-bar{position:fixed;bottom:0;left:0;right:0;background:rgba(238,243,249,.97);backdrop-filter:blur(10px);border-top:1px solid var(--line);padding:13px 18px;z-index:40}
+.submit-inner{max-width:760px;margin:0 auto;display:flex;align-items:center;gap:14px;justify-content:space-between}
+.submit-status{font-size:.86rem;color:var(--muted)}
+.submit-status b{color:var(--red-deep)}
+.submit-btn{background:linear-gradient(135deg,var(--red),var(--red-deep));color:#fff;border:none;padding:12px 26px;font-family:'Sora',sans-serif;font-weight:700;border-radius:10px;cursor:pointer;font-size:.95rem}
+.submit-btn:disabled{opacity:.4;cursor:not-allowed}
+.destrava{display:none;background:var(--panel);border:1px dashed var(--red);border-radius:14px;padding:20px;margin-bottom:20px;text-align:center}
+.destrava.show{display:block}
+.destrava h3{font-family:'Sora',sans-serif;color:var(--red-deep);margin-bottom:8px}
+.destrava input{background:var(--bg2);border:1px solid var(--line);border-radius:9px;color:var(--txt);padding:10px 14px;font-family:'Sora',sans-serif;font-size:1.05rem;letter-spacing:2px;text-align:center;width:180px;text-transform:uppercase}
+.destrava button{background:var(--dark);color:#fff;border:none;border-radius:9px;padding:11px 20px;font-weight:700;cursor:pointer;margin-left:8px;font-family:inherit}
+.erro{color:var(--red);font-size:.86rem;margin-top:8px;display:none}
+.fim{display:none;text-align:center;color:var(--soft);background:var(--panel2);border:1px solid var(--green);border-radius:14px;padding:20px;margin-top:10px}
+.fim.show{display:block}
+@media(max-width:600px){.submit-inner{flex-direction:column;gap:8px}.submit-btn{width:100%}}
+</style>
+</head>
+<body>
+
+<header>
+  <span class="badge">📝 Simulado · Química</span>
+  <h1>Simulado — Ligações &amp; Substâncias</h1>
+  <p class="subtitle">no estilo da prova · responda todas para liberar o código</p>
+  <span class="unit-tag">Capítulos 5 e 6 · Ligações e substâncias · Conteúdo Mensal 2</span>
+  <div class="save-panel">
+    <div class="save-info" id="saveInfo">💾 Salva sozinho neste navegador.</div>
+    <div class="save-btns">
+      <button class="sbtn exp" onclick="exportar()">📥 Exportar</button>
+      <button class="sbtn imp" onclick="document.getElementById('arq').click()">📤 Importar</button>
+      <button class="sbtn zer" onclick="zerar()">🗑️ Zerar tudo</button>
+      <input type="file" id="arq" accept=".json" style="display:none" onchange="importar(event)">
+    </div>
+  </div>
+</header>
+
+<div class="intro" style="margin-top:16px">
+  <h2>📋 Como funciona</h2>
+  <ul>
+    <li>São <b>28 questões</b> no estilo da prova: múltipla escolha, verdadeiro/falso, somatório e análise de afirmativas (I, II, III).</li>
+    <li>Responda <b>todas</b> antes de enviar. As questões vêm <b>embaralhadas</b>.</li>
+    <li>No fim aparece um <b>código</b> (SIM-XX-YY). Digite-o para abrir o gabarito comentado.</li>
+    <li>Depois de enviar, não dá para trocar as respostas.</li>
+  </ul>
+</div>
+
+<div class="progress-wrap">
+  <div class="progress-inner">
+    <div class="progress-top"><span>Progresso</span><span><b id="pcount">0</b> de 28 respondidas</span></div>
+    <div class="progress-bar"><div class="progress-fill" id="pfill"></div></div>
+  </div>
+</div>
+
+<main>
+  <div class="codigo-barra" id="codigoBarra">
+    Você acertou <b id="acertos">0</b> de 28! Seu código:
+    <div class="cod" id="codigo">SIM-00-XX</div>
+    <div style="font-size:.86rem">Mostre este código para a mamãe ✅ (fica salvo e não muda)</div>
+  </div>
+
+  <div class="destrava" id="destrava">
+    <h3>🔓 Liberar o gabarito comentado</h3>
+    <p style="font-size:.92rem;color:var(--soft);margin-bottom:10px">Digite o código que apareceu acima:</p>
+    <div><input id="inCod" placeholder="SIM-..." maxlength="9"><button onclick="liberar()">Abrir</button></div>
+    <div class="erro" id="erroCod">Código não confere. Verifique e tente de novo.</div>
+  </div>
+
+  <div id="questions"></div>
+
+  <div class="fim" id="fim">🏁 Simulado conferido! Revise as questões que errou no <b style="color:var(--red-deep)">Resumo</b>. Você está pronto(a). Boa prova! 🍀</div>
+</main>
+
+<div class="submit-bar" id="submitBar">
+  <div class="submit-inner">
+    <span class="submit-status"><b id="scount">0</b>/28 respondidas</span>
+    <button class="submit-btn" id="submitBtn" disabled onclick="enviar()">Finalizar simulado</button>
+  </div>
+</div>
+
+<script>
+const KEY='bioq_quim_sim_v2';
+const PREFIX='SIM';
+const QUESTOES=[
+  {type:'mc',q:"Segundo a regra do octeto, um átomo (com exceção do hélio) fica estável com:",alts:["2 elétrons na valência","8 elétrons na camada de valência","10 prótons","nenhum nêutron"],correct:1,exp:"Regra do octeto: 8 elétrons na camada de valência. O hélio é a exceção (2 elétrons)."},
+  {type:'mc',q:"Os gases nobres quase não formam ligações porque:",alts:["são radioativos","já possuem a camada de valência completa (são estáveis)","são metais pesados","perdem elétrons facilmente"],correct:1,exp:"Os gases nobres já têm a camada de valência completa; por isso já são estáveis e quase não se combinam."},
+  {type:'mc',q:"No gás carbônico (CO₂), o número de átomos de cada elemento é:",alts:["2 de carbono e 1 de oxigênio","1 de carbono e 2 de oxigênio","1 de carbono e 1 de oxigênio","2 de carbono e 2 de oxigênio"],correct:1,exp:"O numerozinho vale para o átomo antes dele: C (sem número) = 1 carbono; O₂ = 2 oxigênios."},
+  {type:'mc',q:"A ligação iônica ocorre por:",alts:["compartilhamento de pares de elétrons","transferência de elétrons entre os átomos (formando íons)","uma nuvem de elétrons livres","fusão dos núcleos"],correct:1,exp:"Na ligação iônica há transferência de elétrons: um átomo doa (vira cátion) e o outro recebe (vira ânion)."},
+  {type:'mc',q:"Quando o cloro recebe 1 elétron na ligação com o sódio, ele se torna:",alts:["um cátion Cl⁺","um ânion Cl⁻","um átomo neutro","um gás nobre líquido"],correct:1,exp:"Ao receber elétrons, o cloro fica com mais elétrons que prótons → ânion Cl⁻ (negativo)."},
+  {type:'mc',q:"O NaCl conduz corrente elétrica quando está:",alts:["sólido e seco","dissolvido em água ou fundido","em pó, à temperatura ambiente","dentro de um pote fechado"],correct:1,exp:"O NaCl sólido não conduz; ele conduz quando dissolvido em água ou fundido, pois os íons ficam livres."},
+  {type:'mc',q:"O cálcio (valência +2) se liga ao flúor (valência −1). A fórmula do composto é:",alts:["CaF","CaF₂","Ca₂F","Ca₂F₂"],correct:1,exp:"O cálcio doa 2 elétrons (Ca²⁺) e cada flúor recebe 1 (F⁻). São precisos 2 flúores: CaF₂."},
+  {type:'mc',q:"Na formação do gás hidrogênio (H₂), os dois átomos:",alts:["transferem elétrons um para o outro","compartilham um par de elétrons (ligação covalente)","perdem seus elétrons","formam um cátion e um ânion"],correct:1,exp:"É uma ligação covalente: os dois hidrogênios compartilham um par de elétrons, e cada um passa a 'ter' 2."},
+  {type:'mc',q:"A ligação metálica é caracterizada por:",alts:["cátions envolvidos por uma nuvem de elétrons livres","transferência total de elétrons formando sal","um único par de elétrons compartilhado","átomos sem nenhum elétron"],correct:0,exp:"Nos metais, os elétrons livres formam uma 'nuvem' (mar de elétrons) em torno dos cátions."},
+  {type:'mc',q:"A propriedade de um metal poder ser transformado em <em>lâminas ou chapas</em> chama-se:",alts:["ductilidade","maleabilidade","condutividade","brilho"],correct:1,exp:"Maleabilidade = virar lâminas/chapas. Ductilidade = virar fios. Cuidado para não confundir!"},
+  {type:'mc',q:"Assinale a liga metálica formada por ferro, cromo e níquel:",alts:["latão","bronze","aço inoxidável","ouro 18 quilates"],correct:2,exp:"Aço inoxidável = ferro + cromo + níquel. Latão = zinco + cobre; ouro 18k = ouro + outros metais."},
+  {type:'mc',q:"A massa molecular do gás oxigênio (O₂), sabendo que O = 16 u, é:",alts:["16 u","32 u","8 u","18 u"],correct:1,exp:"O₂ tem 2 átomos de oxigênio: 16 × 2 = 32 u."},
+
+  {type:'vf',q:"Sobre íons e tipos de ligação, marque V ou F:",items:[
+    {t:"O cátion é um íon positivo, que perdeu elétrons.",v:true},
+    {t:"O ânion é um íon negativo, que ganhou elétrons.",v:true},
+    {t:"A ligação iônica ocorre entre dois não metais.",v:false}
+  ],exp:"V-V-F. A ligação iônica ocorre entre metal e não metal. Entre dois não metais (ametais) a ligação é covalente."},
+  {type:'vf',q:"Sobre as propriedades dos metais, marque V ou F:",items:[
+    {t:"Os metais conduzem bem a eletricidade e o calor.",v:true},
+    {t:"Ser maleável significa poder virar fios.",v:false},
+    {t:"O latão é um exemplo de liga metálica.",v:true}
+  ],exp:"V-F-V. Maleável = virar lâminas; virar fios é ser dúctil. O latão (zinco + cobre) é uma liga metálica."},
+  {type:'vf',q:"Sobre a regra do octeto e os gases nobres, marque V ou F:",items:[
+    {t:"A regra do octeto diz que a estabilidade vem com 8 elétrons na valência.",v:true},
+    {t:"O hélio é estável com apenas 2 elétrons.",v:true},
+    {t:"Os gases nobres se combinam com facilidade com outros elementos.",v:false}
+  ],exp:"V-V-F. Os gases nobres já são estáveis e quase NÃO se combinam."},
+
+  {type:'soma',q:"(Somatório) Sobre a ligação iônica no NaCl, some as afirmativas CORRETAS:",props:[
+    {n:"01",t:"O sódio doa 1 elétron e se torna o cátion Na⁺.",c:true},
+    {n:"02",t:"O cloro recebe 1 elétron e se torna o ânion Cl⁻.",c:true},
+    {n:"04",t:"O NaCl no estado sólido conduz muito bem a eletricidade.",c:false},
+    {n:"08",t:"A soma das cargas positivas e negativas do composto é neutra.",c:true}
+  ],exp:"Corretas: 01 + 02 + 08 = 11. A 04 é falsa: o NaCl sólido NÃO conduz (só dissolvido em água ou fundido)."},
+  {type:'soma',q:"(Somatório) Sobre as ligações covalente e metálica, some as CORRETAS:",props:[
+    {n:"01",t:"Na ligação covalente, os átomos compartilham pares de elétrons.",c:true},
+    {n:"02",t:"A ligação covalente ocorre entre ametais e com o hidrogênio.",c:true},
+    {n:"04",t:"Na ligação metálica, os elétrons ficam presos e não se movem.",c:false},
+    {n:"08",t:"As ligas metálicas são misturas de metais, como o bronze e o aço.",c:true}
+  ],exp:"Corretas: 01 + 02 + 08 = 11. A 04 é falsa: na ligação metálica os elétrons são LIVRES e se movem (nuvem eletrônica)."},
+  {type:'soma',q:"(Somatório) Sobre fórmulas e massa molecular, some as CORRETAS:",props:[
+    {n:"01",t:"Em H₂O há 2 átomos de hidrogênio e 1 de oxigênio.",c:true},
+    {n:"02",t:"A massa molecular da água é 18 u.",c:true},
+    {n:"04",t:"Na fórmula estrutural plana, cada par de elétrons vira um tracinho.",c:true},
+    {n:"08",t:"Os gases nobres precisam se ligar a outros átomos para ficarem estáveis.",c:false}
+  ],exp:"Corretas: 01 + 02 + 04 = 7. A 08 é falsa: os gases nobres já são estáveis e quase não se ligam."},
+
+  {type:'mc',q:"Analise as afirmativas sobre os <em>três tipos de ligação</em>:<br>I. Iônica: transferência de elétrons (metal + não metal).<br>II. Covalente: compartilhamento de elétrons (ametais/H).<br>III. Metálica: nuvem de elétrons livres (metais).<br>Estão corretas:",alts:["apenas I","apenas I e II","apenas III","I, II e III"],correct:3,exp:"Todas corretas: iônica (transferência), covalente (compartilhamento) e metálica (nuvem de elétrons)."},
+  {type:'mc',q:"Analise as afirmativas sobre <em>metais</em>:<br>I. Os metais possuem brilho quando polidos.<br>II. Os metais conduzem bem calor e eletricidade.<br>III. Nas ligas metálicas, os átomos formam moléculas por ligação covalente.<br>Estão corretas:",alts:["apenas I e II","apenas III","apenas II e III","I, II e III"],correct:0,exp:"I e II corretas. A III é falsa: metais fazem ligação METÁLICA (nuvem de elétrons), não covalente, e não formam moléculas."},
+
+  {type:'mc',q:"Uma <em>substância pura</em> caracteriza-se por:",alts:["ter composição sempre variável","ser formada por um só tipo de componente, com propriedades definidas","ser obrigatoriamente uma mistura de gases","não possuir propriedades físicas"],correct:1,exp:"Substância pura = formada por um só tipo de componente, com composição constante e propriedades definidas (ex.: ouro puro, água destilada, ferro puro)."},
+  {type:'mc',q:"Assinale a alternativa que apresenta <em>apenas substâncias simples</em>:",alts:["O₂, N₂ e Fe","H₂O, CO₂ e NaCl","CO₂, O₂ e H₂O","NaCl, Au e CO"],correct:0,exp:"Substância simples = um só elemento. O₂, N₂ e Fe são simples. H₂O, CO₂, NaCl e CO têm mais de um elemento (compostas)."},
+  {type:'mc',q:"Grafite, diamante, fulereno e grafeno são exemplos de:",alts:["misturas heterogêneas","substâncias compostas","alótropos do carbono","gases nobres"],correct:2,exp:"Todos são formados só por carbono, organizado de formas diferentes → alótropos do carbono."},
+  {type:'mc',q:"O granito (quartzo, feldspato e mica) e a mistura de água com óleo são exemplos de:",alts:["substâncias puras","misturas homogêneas","misturas heterogêneas","substâncias simples"],correct:2,exp:"Ambos apresentam mais de uma fase visível → misturas heterogêneas."},
+
+  {type:'vf',q:"Sobre substâncias simples e compostas, marque V ou F:",items:[
+    {t:"Uma substância simples é formada por um único elemento químico.",v:true},
+    {t:"O gás carbônico (CO₂) é uma substância composta.",v:true},
+    {t:"O gás ozônio (O₃) é uma substância composta, porque tem 3 átomos.",v:false}
+  ],exp:"V-V-F. O ozônio é SIMPLES: tem 3 átomos, mas todos do mesmo elemento (oxigênio)."},
+  {type:'vf',q:"Sobre misturas e sistemas, marque V ou F:",items:[
+    {t:"Uma mistura homogênea tem aspecto uniforme e uma só fase.",v:true},
+    {t:"Numa solução, o soluto é a substância que dissolve a outra.",v:false},
+    {t:"Um sistema com uma só fase é chamado de monofásico (homogêneo).",v:true}
+  ],exp:"V-F-V. O soluto é o que é DISSOLVIDO; quem dissolve é o solvente."},
+
+  {type:'soma',q:"(Somatório) Sobre substâncias puras e alotropia, some as CORRETAS:",props:[
+    {n:"01",t:"Substância pura tem composição constante e propriedades definidas.",c:true},
+    {n:"02",t:"O ouro (Au) e o ferro (Fe) puros são substâncias simples.",c:true},
+    {n:"04",t:"Alotropia é quando elementos diferentes formam a mesma substância.",c:false},
+    {n:"08",t:"O oxigênio forma dois alótropos: o gás oxigênio (O₂) e o ozônio (O₃).",c:true}
+  ],exp:"Corretas: 01 + 02 + 08 = 11. A 04 é falsa: alotropia é o MESMO elemento se organizando de formas diferentes."},
+  {type:'soma',q:"(Somatório) Sobre misturas e fases, some as CORRETAS:",props:[
+    {n:"01",t:"Numa mistura, as substâncias não se combinam quimicamente.",c:true},
+    {n:"02",t:"A água com óleo é uma mistura heterogênea, com duas fases.",c:true},
+    {n:"04",t:"O ar atmosférico é um exemplo de mistura homogênea.",c:true},
+    {n:"08",t:"Uma mistura heterogênea possui sempre uma só fase.",c:false}
+  ],exp:"Corretas: 01 + 02 + 04 = 7. A 08 é falsa: a mistura heterogênea tem DUAS ou mais fases."}
+];
+
+let estado=carregar();
+function carregar(){try{const s=JSON.parse(localStorage.getItem(KEY));if(s)return s;}catch(e){}return{ordem:null,resp:{},enviado:false,liberado:false,codigo:null,acertos:0,ultimo:null};}
+function salvar(){estado.ultimo=new Date().toLocaleString('pt-BR');localStorage.setItem(KEY,JSON.stringify(estado));document.getElementById('saveInfo').textContent='✅ Salvo em '+estado.ultimo;}
+function embaralhar(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+if(!estado.ordem)estado.ordem=embaralhar([...Array(QUESTOES.length).keys()]);
+function novaAltOrder(){const o={};QUESTOES.forEach((q,qid)=>{if((q.type||'mc')==='mc')o[qid]=embaralhar([...Array(q.alts.length).keys()]);});return o;}
+if(!estado.altOrder)estado.altOrder=novaAltOrder();
+
+function typeLabel(t){return t==='mc'?['t-mc','Múltipla escolha']:t==='vf'?['t-vf','Verdadeiro ou Falso']:['t-soma','Somatório'];}
+
+function render(){
+  const c=document.getElementById('questions');c.innerHTML='';
+  estado.ordem.forEach((qid,pos)=>{
+    const q=QUESTOES[qid];const[cls,lab]=typeLabel(q.type);
+    const div=document.createElement('div');div.className='question';div.id='q'+qid;
+    let body='';
+    if(q.type==='mc'){
+      const ord=estado.altOrder[qid]||[...Array(q.alts.length).keys()];
+      body=`<div class="alts">${ord.map((oi,disp)=>`<div class="alt" id="a${qid}_${oi}" onclick="pickMC(${qid},${oi})"><span class="alt-letter">${String.fromCharCode(65+disp)}</span><span>${q.alts[oi]}</span></div>`).join('')}</div>`;
+    }else if(q.type==='vf'){
+      body=q.items.map((it,j)=>`<div class="vf-item" id="vf${qid}_${j}"><span class="txt">${String.fromCharCode(97+j)}) ${it.t}</span><span class="vf-btns"><button class="vfb v" onclick="pickVF(${qid},${j},true)">V</button><button class="vfb f" onclick="pickVF(${qid},${j},false)">F</button></span></div>`).join('');
+    }else{
+      body=q.props.map((p,j)=>`<div class="soma-item" id="sm${qid}_${j}" onclick="pickSoma(${qid},${j})"><span class="soma-n">${p.n}</span><span class="txt">${p.t}</span></div>`).join('')+`<div class="soma-hint">Toque nos números das afirmativas <b>corretas</b>. A soma é calculada no gabarito.</div>`;
+    }
+    div.innerHTML=`<div class="q-head"><div class="q-badge">${String(pos+1).padStart(2,'0')}</div><div style="flex:1"><span class="q-type ${cls}">${lab}</span><div class="q-text">${q.q}</div></div></div>${body}<div class="gab" id="g${qid}"></div>`;
+    c.appendChild(div);
+  });
+  restoreSel();
+  if(estado.enviado)travar();
+  if(estado.liberado)mostrarGabarito();
+  if(estado.ultimo)document.getElementById('saveInfo').textContent='✅ Salvo em '+estado.ultimo;
+  atualizar();
+}
+function pickMC(qid,j){if(estado.enviado)return;estado.resp[qid]={t:'mc',v:j};document.querySelectorAll('[id^="a'+qid+'_"]').forEach(el=>el.classList.remove('sel'));document.getElementById('a'+qid+'_'+j).classList.add('sel');clearMiss(qid);salvar();atualizar();}
+function pickVF(qid,j,val){if(estado.enviado)return;const r=estado.resp[qid]&&estado.resp[qid].t==='vf'?estado.resp[qid]:{t:'vf',v:{}};r.v[j]=val;estado.resp[qid]=r;const row=document.getElementById('vf'+qid+'_'+j);row.querySelector('.vfb.v').classList.toggle('sel',val===true);row.querySelector('.vfb.f').classList.toggle('sel',val===false);clearMiss(qid);salvar();atualizar();}
+function pickSoma(qid,j){if(estado.enviado)return;const r=estado.resp[qid]&&estado.resp[qid].t==='soma'?estado.resp[qid]:{t:'soma',v:[]};const idx=r.v.indexOf(j);if(idx>=0)r.v.splice(idx,1);else r.v.push(j);estado.resp[qid]=r;document.getElementById('sm'+qid+'_'+j).classList.toggle('sel');clearMiss(qid);salvar();atualizar();}
+function clearMiss(qid){document.getElementById('q'+qid).classList.remove('missing');}
+function isAnswered(qid){const q=QUESTOES[qid];const r=estado.resp[qid];if(!r)return false;if(q.type==='mc')return r.v!==undefined;if(q.type==='vf')return Object.keys(r.v).length===q.items.length;if(q.type==='soma')return r.v.length>0;return false;}
+function restoreSel(){
+  estado.ordem.forEach(qid=>{const q=QUESTOES[qid];const r=estado.resp[qid];if(!r)return;
+    if(q.type==='mc'&&r.v!==undefined){const el=document.getElementById('a'+qid+'_'+r.v);if(el)el.classList.add('sel');}
+    if(q.type==='vf'){Object.keys(r.v).forEach(j=>{const row=document.getElementById('vf'+qid+'_'+j);if(row){row.querySelector('.vfb.v').classList.toggle('sel',r.v[j]===true);row.querySelector('.vfb.f').classList.toggle('sel',r.v[j]===false);}});}
+    if(q.type==='soma'){r.v.forEach(j=>{const el=document.getElementById('sm'+qid+'_'+j);if(el)el.classList.add('sel');});}
+  });
+}
+function atualizar(){
+  let n=0;QUESTOES.forEach((q,qid)=>{if(isAnswered(qid))n++;});
+  document.getElementById('pcount').textContent=n;
+  document.getElementById('scount').textContent=n;
+  document.getElementById('pfill').style.width=(n/QUESTOES.length*100)+'%';
+  document.getElementById('submitBtn').disabled=(n<QUESTOES.length)||estado.enviado;
+}
+function corrigir(qid){
+  const q=QUESTOES[qid];const r=estado.resp[qid];
+  if(q.type==='mc')return r&&r.v===q.correct;
+  if(q.type==='vf')return q.items.every((it,j)=>r.v[j]===it.v);
+  if(q.type==='soma'){const corretas=q.props.map((p,j)=>p.c?j:-1).filter(x=>x>=0);const sel=[...r.v].sort();return corretas.length===sel.length&&corretas.sort().every((x,i)=>x===sel[i]);}
+  return false;
+}
+function letras(){const L="ABCDEFGHJKLMNPQRSTUVWXYZ";return L[Math.floor(Math.random()*L.length)]+L[Math.floor(Math.random()*L.length)];}
+function enviar(){
+  let n=0;QUESTOES.forEach((q,qid)=>{if(isAnswered(qid))n++;else document.getElementById('q'+qid).classList.add('missing');});
+  if(n<QUESTOES.length)return;
+  let ac=0;QUESTOES.forEach((q,qid)=>{if(corrigir(qid))ac++;});
+  estado.acertos=ac;estado.enviado=true;
+  estado.codigo=PREFIX+'-'+String(ac).padStart(2,'0')+'-'+letras();
+  salvar();
+  document.getElementById('acertos').textContent=ac;
+  document.getElementById('codigo').textContent=estado.codigo;
+  document.getElementById('codigoBarra').classList.add('show');
+  document.getElementById('destrava').classList.add('show');
+  travar();atualizar();
+  document.getElementById('codigoBarra').scrollIntoView({behavior:'smooth',block:'center'});
+}
+function travar(){document.getElementById('codigoBarra').classList.add('show');document.getElementById('acertos').textContent=estado.acertos;document.getElementById('codigo').textContent=estado.codigo;document.getElementById('destrava').classList.add('show');}
+function liberar(){const v=document.getElementById('inCod').value.trim().toUpperCase();if(v===estado.codigo){estado.liberado=true;salvar();mostrarGabarito();document.getElementById('destrava').classList.remove('show');}else document.getElementById('erroCod').style.display='block';}
+function mostrarGabarito(){
+  QUESTOES.forEach((q,qid)=>{
+    const r=estado.resp[qid]||{};const acertou=corrigir(qid);const g=document.getElementById('g'+qid);
+    let extra='';
+    if(q.type==='mc'){
+      const ord=estado.altOrder[qid]||[...Array(q.alts.length).keys()];
+      const corrLetter=String.fromCharCode(65+ord.indexOf(q.correct));
+      document.getElementById('a'+qid+'_'+q.correct).classList.add('correct');
+      if(r.v!==undefined&&r.v!==q.correct)document.getElementById('a'+qid+'_'+r.v).classList.add('wrong');
+      extra=`<b>Correta:</b> ${corrLetter}) ${q.alts[q.correct]}.<br>${q.exp}`;
+    }else if(q.type==='vf'){
+      q.items.forEach((it,j)=>{const row=document.getElementById('vf'+qid+'_'+j);const btn=row.querySelector(it.v?'.vfb.v':'.vfb.f');btn.classList.add('mark-ok');});
+      extra=`<b>Correto:</b> ${q.items.map(it=>it.v?'V':'F').join(' · ')}.<br>${q.exp}`;
+    }else{
+      const soma=q.props.reduce((s,p)=>s+(p.c?parseInt(p.n):0),0);
+      q.props.forEach((p,j)=>{if(p.c)document.getElementById('sm'+qid+'_'+j).classList.add('sel');});
+      extra=`<b>Soma correta = ${soma}</b> (afirmativas ${q.props.filter(p=>p.c).map(p=>p.n).join(' + ')}).<br>${q.exp}`;
+    }
+    g.innerHTML=extra+`<span class="res ${acertou?'ok':''}">${acertou?'✔ Você acertou esta questão':'✗ Você errou esta questão'}</span>`;
+    g.classList.add('show');
+  });
+  document.getElementById('fim').classList.add('show');
+}
+function exportar(){const b=new Blob([JSON.stringify(estado,null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='progresso-quim-simulado.json';a.click();}
+function importar(ev){const f=ev.target.files[0];if(!f)return;const r=new FileReader();r.onload=e=>{try{estado=JSON.parse(e.target.result);if(!estado.ordem)estado.ordem=embaralhar([...Array(QUESTOES.length).keys()]);if(!estado.altOrder)estado.altOrder=novaAltOrder();salvar();render();}catch(x){alert('Arquivo inválido.');}};r.readAsText(f);}
+function zerar(){if(confirm('Apagar TODO o progresso deste Simulado?')){localStorage.removeItem(KEY);estado={ordem:embaralhar([...Array(QUESTOES.length).keys()]),altOrder:novaAltOrder(),resp:{},enviado:false,liberado:false,codigo:null,acertos:0,ultimo:null};render();}}
+
+render();
+</script>
+</body>
+</html>
